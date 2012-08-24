@@ -9,7 +9,7 @@ include_directories($ENV{IFDHC_DIR}/ifdh)
 add_library(IFDHService   SHARED ${IFDHService_sources} )
 # the resulting libraries have the same base name
 set_target_properties( IFDHService PROPERTIES OUTPUT_NAME IFDHService )
-target_link_libraries(ifdh_LIBS)
+target_link_libraries( IFDHService $ENV{IFDHC_DIR}/ifdh/ifdh.a )
 
 install ( TARGETS IFDHService DESTINATION ${flavorqual_dir}/lib )
 
