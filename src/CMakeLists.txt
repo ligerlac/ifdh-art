@@ -59,6 +59,9 @@ include(InstallSource)
 include(EnsureOutOfSourceBuild)
 include(CetMake)
 
+include_directories($ENV{FHICLCPP_INC} $ENV{CETLIB_INC} $ENV{CPP0X_INC} $ENV{BOOST_INC} $ENV{ART_INC} $ENV{MESSAGEFACILITY_INC} $ENV{CPP0X_INC} $ENV{BOOST_INC} $ENV{ART_INC} $ENV{MESSAGEFACILITY_INC})
+include_directories( $ENV{LIBSIGCPP_INC}/sigc++-2.0 $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include)
+
 # make sure someone isn't typing cmake in the source code tree
 cet_ensure_out_of_source_build()
 
@@ -113,6 +116,7 @@ endif()
 
 # source
 subdirs (IFDHService)
+subdirs (IFBeamService)
 
 # testing
 #subdirs(test)
