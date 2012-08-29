@@ -4,15 +4,18 @@
 #include "fhiclcpp/ParameterSet.h"
 
 #include "FileTransfer.h"
+#include "IFDHService.h"
 
 namespace ifdh {
 
 class IFFileTransfer : public art::FileTransfer {
+
 public:
   IFFileTransfer(const fhicl::ParameterSet&, art::ActivityRegistry& );
   ~IFFileTransfer();
+
 private:
-  art::ServiceHandle<IFDHService> ifdh_handle;
+  art::ServiceHandle<IFDHService> _ifdh_handle;
   virtual int doTranslateToLocalFilename(std::string const & uri,
                              std::string & fileFQname);
 };

@@ -10,7 +10,7 @@ IFFileTransfer::~IFFileTransfer() {
   ; 
 }
 
-virtual int 
+int 
 IFFileTransfer::doTranslateToLocalFilename( std::string const & uri, std::string & fileFQname) {
    fileFQname = _ifdh_handle->fetchInput(uri);
 }
