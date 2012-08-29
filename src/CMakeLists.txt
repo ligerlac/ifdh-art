@@ -117,6 +117,8 @@ endif()
 # source
 subdirs (IFDHService)
 subdirs (IFBeamService)
+subdirs (IFCatalog)
+subdirs (IFFileTransfer)
 
 # testing
 #subdirs(test)
