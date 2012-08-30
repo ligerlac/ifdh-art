@@ -1,7 +1,7 @@
 
 #include "IFFileTransfer.h"
 
-namespace ifdh {
+namespace ifdh_ns {
 
 IFFileTransfer::IFFileTransfer(const fhicl::ParameterSet&, art::ActivityRegistry& ) {
    ;
@@ -16,3 +16,7 @@ IFFileTransfer::doTranslateToLocalFilename( std::string const & uri, std::string
 }
 
 }
+
+#ifdef DEFINE_ART_SERVICE
+DEFINE_ART_SERVICE(ifdh_ns::IFFileTransfer);
+#endif

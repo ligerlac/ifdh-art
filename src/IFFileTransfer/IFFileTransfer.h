@@ -6,7 +6,7 @@
 #include "FileTransfer.h"
 #include "IFDHService.h"
 
-namespace ifdh {
+namespace ifdh_ns {
 
 class IFFileTransfer : public art::FileTransfer {
 
