@@ -6,7 +6,7 @@
 #include "CatalogInterface.h"
 #include "IFDHService.h"
 
-namespace ifdh {
+namespace ifdh_ns {
 
 class IFCatalogInterface : public art::CatalogInterface {
 

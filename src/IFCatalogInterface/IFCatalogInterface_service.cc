@@ -1,6 +1,6 @@
 #include "IFCatalogInterface.h"
 
-namespace ifdh {
+namespace ifdh_ns {
 
 IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& ) { 
    ; 
@@ -68,3 +68,6 @@ IFCatalogInterface::doRewind() {
 }
 
 }
+#ifdef DEFINE_ART_SERVICE
+DEFINE_ART_SERVICE(ifdh_ns::IFCatalogInterface);
+#endif
