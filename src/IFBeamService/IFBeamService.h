@@ -18,9 +18,6 @@ public:
 
 }
 
-#ifdef DEFINE_ART_SERVICE
-DEFINE_ART_SERVICE(ifbeam_ns::IFBeamService);
-#endif
 
 // this is redundant, given the ifbeam include,  but just to be clear
 
