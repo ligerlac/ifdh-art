@@ -6,14 +6,14 @@
 
 namespace ifbeam_ns {
 
-class IFBeamService  {
+class IFBeam  {
        
 public:
         
         std::auto_ptr<BeamFolder> getBeamFolder(std::string bundle_name, std::string url, double time_width);
 
         // ART constructor...
-        IFBeamService( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
+        IFBeam( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
 };
 
 }

@@ -15,7 +15,7 @@ public:
   ~IFFileTransfer();
 
 private:
-  art::ServiceHandle<IFDHService> _ifdh_handle;
+  art::ServiceHandle<IFDH> _ifdh_handle;
   virtual int doTranslateToLocalFilename(std::string const & uri,
                              std::string & fileFQname);
 };

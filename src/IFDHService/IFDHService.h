@@ -8,11 +8,11 @@
 
 namespace ifdh_ns {
 
-class IFDHService : public ifdh {
+class IFDH : public ifdh {
 public:
        
         // ART constructor...
-        IFDHService( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
+        IFDH( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
 
 };
 

@@ -14,7 +14,7 @@ public:
   IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& );
   ~IFCatalogInterface();
 private:
-  art::ServiceHandle<IFDHService> _ifdh_handle;
+  art::ServiceHandle<IFDH> _ifdh_handle;
   std::string _process_id;
   std::string _proj_uri;
   std::string _project_name;
