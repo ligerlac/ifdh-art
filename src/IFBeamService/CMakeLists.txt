@@ -1,11 +1,12 @@
 
-include($ENV{ART_FQ_DIR}/Modules/BuildPlugins.cmake)
+include($ENV{ART_DIR}/Modules/BuildPlugins.cmake)
 
 include_directories($ENV{IFDHC_DIR}/ifbeam)
 include_directories($ENV{IFDHC_DIR}/util)
 
 simple_plugin(IFBeam "service" 
          $ENV{IFDHC_DIR}/ifbeam/libifbeam.a 
+         -L$ENV{ART_FQ_DIR}/lib
          )
 
 install_headers()
