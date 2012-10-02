@@ -13,6 +13,5 @@ nucondbService::getFolder(std::string name, std::string url, std:: string tag ) 
 }
 
 }
-#ifdef DEFINE_ART_SERVICE
+
 DEFINE_ART_SERVICE(nucondb_ns::nucondbService);
-#endif

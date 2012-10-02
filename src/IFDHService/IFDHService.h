@@ -5,6 +5,7 @@
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "cetlib/exception.h"
+#include "art/Framework/Services/Registry/ServiceMacros.h"
 
 namespace ifdh_ns {
 

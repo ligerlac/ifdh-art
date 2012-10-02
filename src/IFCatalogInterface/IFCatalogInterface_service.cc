@@ -68,6 +68,5 @@ IFCatalogInterface::doRewind() {
 }
 
 }
-#ifdef DEFINE_ART_SERVICE
+
 DEFINE_ART_SERVICE(ifdh_ns::IFCatalogInterface);
-#endif
