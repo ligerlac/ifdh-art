@@ -1,8 +1,13 @@
+#ifndef FILETRANSFER_H
+#define FILETRANSFER_H
+
 namespace art {
 class FileTransfer {
 public:
   int translateToLocalFilename(std::string const & uri,
-                               std::string & fileFQname);
+                               std::string & fileFQname) {
+	doTranslateToLocalFilename(uri, fileFQname);
+     }
 
   // Remaining boilerplate:
   virtual ~FileTransfer() = 0;
@@ -16,3 +21,4 @@ private:
 };
 
 }
+#endif // FILETRANSFER_H

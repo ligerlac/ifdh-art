@@ -1,3 +1,5 @@
+#ifndef IFCATALOGINTERFACE
+#define IFCATALOGINTERFACE
 #include "art/Framework/Services/Optional/TFileService.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "fhiclcpp/ParameterSet.h"
@@ -14,6 +16,7 @@ class IFCatalogInterface : public art::CatalogInterface {
 public:
   IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& );
   ~IFCatalogInterface();
+
 private:
   art::ServiceHandle<IFDH> _ifdh_handle;
   std::string _process_id;
@@ -37,3 +40,4 @@ private:
 };
 
 }
+#endif IFCATALOGINTERFACE

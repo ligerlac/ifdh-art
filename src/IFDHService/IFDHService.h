@@ -1,3 +1,5 @@
+#ifndef IFDHSERVICE_H
+#define IFDHSERVICE_H
 #include "ifdh.h"
 
 // ART bits...
@@ -20,3 +22,4 @@ public:
 }
 
 using namespace ifdh_ns;
+#endif // IFDHSERVICE_H

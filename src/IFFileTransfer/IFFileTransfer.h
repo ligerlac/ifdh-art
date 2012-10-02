@@ -1,3 +1,6 @@
+#ifndef IFFILETRANSFER_H
+#define IFFILETRANSFER_H
+
 #include "art/Framework/Services/Optional/TFileService.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
@@ -22,3 +25,4 @@ private:
 };
 
 }
+#endif //IFFILETRANSFER_H

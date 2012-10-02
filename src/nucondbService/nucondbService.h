@@ -1,3 +1,5 @@
+#ifndef NUCONDBSERVICE_H
+#define NUCONDBSERVICE_H
 #include "nucondb.h"
 
 // ART bits...
@@ -14,7 +16,7 @@ class nucondbService  {
 public:
         // ART constructor...
         nucondbService( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
-        std::auto_ptr<Folder> getFolder(std::string name, std::string url, std::string tag = "");
+        std::unique_ptr<Folder> getFolder(std::string name, std::string url, std::string tag = "");
 };
 
 }
@@ -22,3 +24,4 @@ public:
 // this is redundant, given the include,  but just to be clear
 
 using namespace nucondb_ns;
+#endif // NUCONDBSERVICE_H
