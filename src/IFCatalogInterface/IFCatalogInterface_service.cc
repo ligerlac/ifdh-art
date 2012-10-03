@@ -2,34 +2,46 @@
 
 namespace ifdh_ns {
 
-IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& ) { 
+IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& ) : 
+    _process_id(""), 
+    _project_name(""), 
+    _sam_station(""), 
+    _proj_uri("") 
+{ 
    ; 
 }
-IFCatalogInterface::~IFCatalogInterface() { 
-   _ifdh_handle->setStatus(_proj_uri, _process_id, "ok");
+
+IFCatalogInterface::~IFCatalogInterface() throw () { 
+   if( _proj_uri.length())  
+       _ifdh_handle->setStatus(_proj_uri, _process_id, "ok");
 }
 
 void 
 IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
-    _process_id = item[0];  /* is this right??? */
-    _project_name = item[1];
-    _sam_station =  item[2];
-    _proj_uri = _ifdh_handle->findProject(_project_name, _sam_station);
+    if (item.size() >= 3) {
+        _process_id = item[0];  /* is this right??? */
+        _project_name = item[1];
+        _sam_station =  item[2];
+        _proj_uri = _ifdh_handle->findProject(_project_name, _sam_station);
+    }
 }
 
 int  
 IFCatalogInterface::doGetNextFileURI(std::string & uri, double & waitTime) {
-    uri = _ifdh_handle->getNextFile(_proj_uri,_process_id);
-    if (uri.length()) {
-        return 1;
-    } else {
-        return 0;
+    if( _proj_uri.length())  {
+	uri = _ifdh_handle->getNextFile(_proj_uri,_process_id);
+	if (uri.length()) {
+	    return 1;
+	}
     }
+    return 0;
 }
 
 void 
 IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition status) {
-   _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,(int)status?"ok":"bad");
+   if( _proj_uri.length()) {
+       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,(int)status?"ok":"bad");
+   }
 }
 
 void 

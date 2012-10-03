@@ -5,8 +5,8 @@
 #include "fhiclcpp/ParameterSet.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceMacros.h"
+#include "art/Framework/Services/Interfaces/CatalogInterface.h"
 
-#include "CatalogInterface.h"
 #include "IFDHService.h"
 
 namespace ifdh_ns {
@@ -15,7 +15,7 @@ class IFCatalogInterface : public art::CatalogInterface {
 
 public:
   IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& );
-  ~IFCatalogInterface();
+  virtual ~IFCatalogInterface() throw();
 
 private:
   art::ServiceHandle<IFDH> _ifdh_handle;

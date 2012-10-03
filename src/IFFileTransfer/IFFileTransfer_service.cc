@@ -6,7 +6,7 @@ namespace ifdh_ns {
 IFFileTransfer::IFFileTransfer(const fhicl::ParameterSet&, art::ActivityRegistry& ) {
    ;
 }
-IFFileTransfer::~IFFileTransfer() {
+IFFileTransfer::~IFFileTransfer() throw () {
   ; 
 }
 

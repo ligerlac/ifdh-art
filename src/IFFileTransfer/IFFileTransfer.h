@@ -6,8 +6,8 @@
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "fhiclcpp/ParameterSet.h"
 #include "art/Framework/Services/Registry/ServiceMacros.h"
+#include "art/Framework/Services/Interfaces/FileTransfer.h"
 
-#include "FileTransfer.h"
 #include "IFDHService.h"
 
 namespace ifdh_ns {
@@ -16,7 +16,7 @@ class IFFileTransfer : public art::FileTransfer {
 
 public:
   IFFileTransfer(const fhicl::ParameterSet&, art::ActivityRegistry& );
-  ~IFFileTransfer();
+  ~IFFileTransfer() throw ();
 
 private:
   art::ServiceHandle<IFDH> _ifdh_handle;
