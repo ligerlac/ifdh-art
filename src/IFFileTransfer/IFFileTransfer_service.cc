@@ -17,4 +17,5 @@ IFFileTransfer::doTranslateToLocalFilename( std::string const & uri, std::string
 
 }
 
-DEFINE_ART_SERVICE(ifdh_ns::IFFileTransfer);
+//DEFINE_ART_SERVICE(ifdh_ns::IFFileTransfer);
+DEFINE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFFileTransfer, art::FileTransfer);

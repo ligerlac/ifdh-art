@@ -40,4 +40,4 @@ private:
 };
 
 }
-#endif IFCATALOGINTERFACE
+#endif // IFCATALOGINTERFACE
