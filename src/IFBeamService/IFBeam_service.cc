@@ -1,4 +1,4 @@
-#include "IFBeamService.h"
+#include "IFBeam_service.h"
 
 namespace ifbeam_ns {
 

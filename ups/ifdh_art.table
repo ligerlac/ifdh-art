@@ -12,3 +12,17 @@ Action=setup
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
      PathPrepend(LD_LIBRARY_PATH, ${UPS_PROD_DIR}/lib)
 
+Action=build
+     SetupEnv()
+     ProdDir()
+     EnvSet(ARCH,"--std=c++11 -g0")
+     Execute(rm -rf ${UPS_PROD_DIR}/lib ${UPS_PROD_DIR}/inc   , NO_UPS_ENV)
+     Execute(mkdir -p ${UPS_PROD_DIR}/inc                     , NO_UPS_ENV)
+     Execute(cp ${UPS_PROD_DIR}/src/*/*.h ${UPS_PROD_DIR}/inc , NO_UPS_ENV)
+     Execute(mkdir -p ${UPS_PROD_DIR}/build                   , NO_UPS_ENV)
+     Execute(cd ${UPS_PROD_DIR}/build                         , NO_UPS_ENV)
+     Execute(cmake ../src                                     , NO_UPS_ENV)
+     Execute(make                                             , NO_UPS_ENV)
+     Execute(mv lib ..                                        , NO_UPS_ENV)
+     Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)
+     Execute(rm -rf build                                     , NO_UPS_ENV)

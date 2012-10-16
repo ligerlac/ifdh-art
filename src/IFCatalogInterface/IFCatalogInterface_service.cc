@@ -1,4 +1,4 @@
-#include "IFCatalogInterface.h"
+#include "IFCatalogInterface_service.h"
 
 namespace ifdh_ns {
 

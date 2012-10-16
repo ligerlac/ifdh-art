@@ -7,7 +7,7 @@
 #include "art/Framework/Services/Registry/ServiceMacros.h"
 #include "art/Framework/Services/Interfaces/CatalogInterface.h"
 
-#include "IFDHService.h"
+#include "IFDH_service.h"
 
 namespace ifdh_ns {
 

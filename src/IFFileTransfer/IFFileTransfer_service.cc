@@ -1,5 +1,5 @@
 
-#include "IFFileTransfer.h"
+#include "IFFileTransfer_service.h"
 
 namespace ifdh_ns {
 
