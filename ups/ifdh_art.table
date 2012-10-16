@@ -1,14 +1,25 @@
 File=table
 Product=ifdh_art
 
+Group:
+
 Qualifiers=""
 Flavor=ANY
+
+Qualifiers=e2
+Flavor=ANY
+
+Qualifiers=a2
+Flavor=ANY
+
+
+Common:
 
 Action=setup
      SetupEnv()
      ProdDir()
      SetupRequired(ifdhc)
-     SetupRequired(art ${UPS_REQ_QUALIFIERS})
+     SetupRequired(art v1_02_02 ${UPS_REQ_QUALIFIERS})
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
      PathPrepend(LD_LIBRARY_PATH, ${UPS_PROD_DIR}/lib)
 
@@ -26,3 +37,5 @@ Action=build
      Execute(mv lib ..                                        , NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)
      Execute(rm -rf build                                     , NO_UPS_ENV)
+
+end:
