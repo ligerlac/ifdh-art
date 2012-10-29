@@ -18,7 +18,7 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
 
 void 
 IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
-    if (item.size() >= 3) {
+    if (item.size() ) {
         _process_id = item[0];  /* is this right??? */
         _proj_uri = item[1];
     }
