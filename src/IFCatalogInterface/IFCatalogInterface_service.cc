@@ -20,9 +20,7 @@ void
 IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
     if (item.size() >= 3) {
         _process_id = item[0];  /* is this right??? */
-        _project_name = item[1];
-        _sam_station =  item[2];
-        _proj_uri = _ifdh_handle->findProject(_project_name, _sam_station);
+        _proj_uri = item[1];
     }
 }
 
