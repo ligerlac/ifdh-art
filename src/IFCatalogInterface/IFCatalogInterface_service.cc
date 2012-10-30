@@ -1,14 +1,27 @@
 #include "IFCatalogInterface_service.h"
+#include "messagefacility/MessageLogger/MessageLogger.h"
 
 namespace ifdh_ns {
 
-IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet&, art::ActivityRegistry& ) : 
+IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, art::ActivityRegistry& ar ) : 
     _process_id(""), 
     _project_name(""), 
     _sam_station(""), 
     _proj_uri("") 
 { 
-   ; 
+    std::vector<std::string> cfgkeys = cfg.get_keys();
+    std::string s;
+
+    mf::LogVerbatim("test") << "IFCatalogInterface constructor, got keys:";
+    for (std::vector<std::string>::iterator p = cfgkeys.begin(); p != cfgkeys.end(
+  ); p++ ) {
+	 mf::LogVerbatim("test")<< *p << ", ";
+    }
+
+    if ( cfg.get_if_present("WebURI", s) ) {
+	mf::LogVerbatim("test") << "IFCatalogInterface: setting _proj_uri to:" << s << "\n";
+	_proj_uri = s;
+    }
 }
 
 IFCatalogInterface::~IFCatalogInterface() throw () { 
@@ -19,8 +32,8 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
 void 
 IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
     if (item.size() ) {
-        _process_id = item[0];  /* is this right??? */
-        _proj_uri = item[1];
+        _process_id = item[0]; 
+       mf::LogVerbatim("test") << "IFCatalogInterface doConfigure, got id:" << item[0];
     }
 }
 
