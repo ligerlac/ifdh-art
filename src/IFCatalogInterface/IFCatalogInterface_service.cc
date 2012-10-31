@@ -18,7 +18,7 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, art::Acti
 	 mf::LogVerbatim("test")<< *p << ", ";
     }
 
-    if ( cfg.get_if_present("WebURI", s) ) {
+    if ( cfg.get_if_present("webURI", s) ) {
 	mf::LogVerbatim("test") << "IFCatalogInterface: setting _proj_uri to:" << s << "\n";
 	_proj_uri = s;
     }
