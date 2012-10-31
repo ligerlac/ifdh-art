@@ -51,7 +51,7 @@ IFCatalogInterface::doGetNextFileURI(std::string & uri, double & waitTime) {
 void 
 IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition status) {
    if( _proj_uri.length()) {
-       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,(int)status?"ok":"bad");
+       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,(status==art::FileDisposition::CONSUMED)?"ok":"bad");
    }
 }
 
