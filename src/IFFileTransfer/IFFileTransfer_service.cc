@@ -1,5 +1,8 @@
 
+#include "messagefacility/MessageLogger/MessageLogger.h"
+#include "art/Framework/Services/Interfaces/FileTransferStatus.h"
 #include "IFFileTransfer_service.h"
+
 
 namespace ifdh_ns {
 
@@ -12,7 +15,9 @@ IFFileTransfer::~IFFileTransfer() throw () {
 
 int 
 IFFileTransfer::doTranslateToLocalFilename( std::string const & uri, std::string & fileFQname) {
-   fileFQname = _ifdh_handle->fetchInput(uri);
+    fileFQname = _ifdh_handle->fetchInput(uri);
+    mf::LogVerbatim("test") << "IFFileTransfer: copied " << uri << " to " << fileFQname << "\n";
+    return art::FileTransferStatus::CREATED;
 }
 
 }

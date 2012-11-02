@@ -1,4 +1,5 @@
 #include "IFCatalogInterface_service.h"
+#include "art/Framework/Services/Interfaces/FileDeliveryStatus.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
 namespace ifdh_ns {
@@ -7,7 +8,8 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, art::Acti
     _process_id(""), 
     _project_name(""), 
     _sam_station(""), 
-    _proj_uri("") 
+    _proj_uri(""),
+    _last_file_uri("")
 { 
     std::vector<std::string> cfgkeys = cfg.get_keys();
     std::string s;
@@ -25,8 +27,13 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, art::Acti
 }
 
 IFCatalogInterface::~IFCatalogInterface() throw () { 
-   if( _proj_uri.length())  
-       _ifdh_handle->setStatus(_proj_uri, _process_id, "ok");
+    if( _last_file_uri.length() ) {
+       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,_last_file_uri,"consumed");
+       _last_file_uri = "";
+    }
+    if( _proj_uri.length()) {
+        _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
+    }
 }
 
 void 
@@ -39,19 +46,35 @@ IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
 
 int  
 IFCatalogInterface::doGetNextFileURI(std::string & uri, double & waitTime) {
+    if( _last_file_uri.length() ) {
+       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,_last_file_uri,"consumed");
+       _last_file_uri = "";
+    }
     if( _proj_uri.length())  {
 	uri = _ifdh_handle->getNextFile(_proj_uri,_process_id);
+        _last_file_uri = uri;
 	if (uri.length()) {
-	    return 1;
-	}
+	    return art::FileDeliveryStatus::SUCCESS;
+	} else {
+	    return art::FileDeliveryStatus::NO_MORE_FILES;
+        }
     }
-    return 0;
+    return art::FileDeliveryStatus::BAD_REQUEST;
 }
+
+static const char *statusmap[] = {
+    "transferred",
+    "consumed",
+    "skipped",
+};
 
 void 
 IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition status) {
    if( _proj_uri.length()) {
-       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,(status==art::FileDisposition::CONSUMED)?"ok":"bad");
+       _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,statusmap[int(status)]);
+       if (status != art::FileDisposition::TRANSFERRED) {
+          _last_file_uri = "";
+       }
    }
 }
 

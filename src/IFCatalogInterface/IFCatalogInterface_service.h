@@ -23,6 +23,7 @@ private:
   std::string _proj_uri;
   std::string _project_name;
   std::string _sam_station;
+  std::string _last_file_uri;
 
   virtual void doConfigure(std::vector<std::string> const & item);
   virtual int  doGetNextFileURI(std::string & uri, double & waitTime);
