@@ -114,7 +114,7 @@ endif()
 
 # The environment has been established, now generate the Makefiles.
 
-ADD_DEFINITIONS($ENV{ARCH})
+ADD_DEFINITIONS($ENV{ARCH} -pedantic-errors -Wall -Werror)
 # source
 subdirs (IFDHService)
 subdirs (IFBeamService)

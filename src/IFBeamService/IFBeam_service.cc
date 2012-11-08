@@ -13,4 +13,4 @@ IFBeam::getBeamFolder(std::string bundle_name, std::string url, double time_widt
 }
 }
 
-DEFINE_ART_SERVICE(ifbeam_ns::IFBeam);
+DEFINE_ART_SERVICE(ifbeam_ns::IFBeam)

@@ -23,9 +23,12 @@ IFDH::IFDH( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r) {
   } else {
       mf::LogVerbatim("test") << "IFDH: didn't find a base uri...\n";
   }
+  if ( cfg.get_if_present("debug", s) ) {
+      mf::LogVerbatim("test") << "IFDH: turning on debug\n";
+      this->set_debug(s);
+  }
 }      
 
 }
 
-DEFINE_ART_SERVICE(ifdh_ns::IFDH);
-
+DEFINE_ART_SERVICE(ifdh_ns::IFDH)
