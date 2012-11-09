@@ -27,16 +27,15 @@ Common:
 Action=setup
      SetupEnv()
      ProdDir()
-     SetupRequired(ifdhc v0_6 -q ${UPS_REQ_QUALIFIERS}:)
-     SetupRequired(art v1_02_04 -q ${UPS_REQ_QUALIFIERS}:)
+     SetupRequired(ifdhc v0_7 -q ${UPS_REQ_QUALIFIERS}:)
+     SetupRequired(art v1_02_05 -q ${UPS_REQ_QUALIFIERS}:)
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
      PathPrepend(LD_LIBRARY_PATH, ${UPS_PROD_DIR}/lib)
 
 Action=build
      SetupEnv()
      ProdDir()
-     EnvSet(ARCH,"--std=c++11 -g0")
-     #EnvSet(ARCH,"--std=c++11 -g0 -p -pg")
+     EnvSet(ARCH,"$ART_CXXFLAGS")
      Execute(rm -rf ${UPS_PROD_DIR}/lib ${UPS_PROD_DIR}/inc   , NO_UPS_ENV)
      Execute(mkdir -p ${UPS_PROD_DIR}/inc                     , NO_UPS_ENV)
      Execute(cp ${UPS_PROD_DIR}/src/*/*.h ${UPS_PROD_DIR}/inc , NO_UPS_ENV)

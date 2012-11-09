@@ -18,7 +18,7 @@ IFFileTransfer::doTranslateToLocalFilename( std::string const & uri, std::string
     mf::LogVerbatim("test") << "IFFileTransfer: entered for uri: " << uri << "\n";
     fileFQname = _ifdh_handle->fetchInput(uri);
     mf::LogVerbatim("test") << "IFFileTransfer: copied " << uri << " to " << fileFQname << "\n";
-    return art::FileTransferStatus::CREATED;
+    return art::FileTransferStatus::SUCCESS;
 }
 
 }
