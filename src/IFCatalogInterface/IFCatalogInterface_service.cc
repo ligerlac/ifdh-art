@@ -34,6 +34,14 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
         // shouldn't we have updated the status already?
         doUpdateStatus(_last_file_uri, art::FileDisposition::CONSUMED);
     }
+    // 
+    // add any ouput files we didn't see in outputFileClosed()
+    //
+    for (size_t i = 0; i < _output_files.size(); i++) {
+        if ( ! _output_ignore[i] ) {
+            _ifdh_handle->addOutputFile(_output_files[i]);
+        }
+    }
     if( _proj_uri.length()) {
        _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
     }
@@ -100,15 +108,44 @@ IFCatalogInterface::doOutputFileOpened(std::string const & module_label) {
 void 
 IFCatalogInterface::doOutputModuleInitiated(std::string const & module_label,
 			       fhicl::ParameterSet const & pset) {
-   mf::LogVerbatim("test")  << "IFCatalogInteface doOutputModuleInitiated: " << module_label << "\n";
-   ;
+    std::string s;
+    bool ignore = false;
+    std::vector<std::string> cfgkeys = pset.get_keys();
+    mf::LogVerbatim("test") << "IFCatalogInterface doOutputModuleInitiated, got keys:";
+    for (std::vector<std::string>::iterator p = cfgkeys.begin(); p != cfgkeys.end(
+  ); p++ ) {
+	 mf::LogVerbatim("test")<< *p << ", ";
+    }
+   
+    if ( pset.get_if_present("fileName", s) ) {
+       _output_files.push_back(s);
+    }
+    if ( pset.get_if_present("sam_ignore", ignore) ) {
+      ;
+    }
+    _output_ignore.push_back(ignore);
 }
+     
 
 void 
 IFCatalogInterface::doOutputFileClosed(std::string const & module_label,
 			  std::string const & fileFQname) {
-   mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: " << module_label << ", " << fileFQname << "\n";
+     mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: " << module_label << ", " << fileFQname << "\n";
+    for (size_t i = 0; i < _output_files.size(); i++) {
+        if ( fileFQname == _output_files[i] ) {
+            // if we aren't ignoring it, add it to our ifdh output list
+            if (!_output_ignore[i] ) {
+		_ifdh_handle->addOutputFile(_output_files[i]);
+		_output_files.erase(_output_files.begin()+i);
+		_output_ignore.erase(_output_ignore.begin()+i);
+            }
+ 	    return;
+        }
+    }
+    // if we never saw it initialized, just add it
+    mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: unregistered, adding anyway\n";
     _ifdh_handle->addOutputFile(fileFQname);
+    return;
 }
 
 void 

@@ -6,6 +6,7 @@
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceMacros.h"
 #include "art/Framework/Services/Interfaces/CatalogInterface.h"
+#include <vector>
 
 #include "IFDH_service.h"
 
@@ -24,6 +25,8 @@ private:
   std::string _project_name;
   std::string _sam_station;
   std::string _last_file_uri;
+  std::vector<std::string> _output_files;
+  std::vector<bool> _output_ignore;
 
   virtual void doConfigure(std::vector<std::string> const & item);
   virtual int  doGetNextFileURI(std::string & uri, double & waitTime);
