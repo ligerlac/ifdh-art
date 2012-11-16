@@ -37,7 +37,7 @@ Common:
 Action=setup
      SetupEnv()
      ProdDir()
-     SetupRequired(ifdhc v0_8 -q ${UPS_REQ_QUALIFIERS}:)
+     SetupRequired(ifdhc v0_7 -q ${UPS_REQ_QUALIFIERS}:)
      SetupRequired(art v1_02_06 -q ${UPS_REQ_QUALIFIERS}:)
      If( test -d ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
         EnvSet(IFDH_ART_FQ_DIR, ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
