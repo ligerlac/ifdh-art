@@ -3,49 +3,75 @@ Product=ifdh_art
 
 Group:
 
+Flavor=ANY
 Qualifiers=""
-Flavor=ANY
+_qualbits=
 
-Qualifiers=foo
 Flavor=ANY
-
-Qualifiers=e2:prof
-Flavor=ANY
-
 Qualifiers=e2:debug
-Flavor=ANY
+_qualbits=e2-debug
 
-Qualifiers=e2:prof:nu
 Flavor=ANY
+Qualifiers=e2:debug
+_qualbits=e2-debug
 
+Flavor=ANY
+Qualifiers=e2:prof
+_qualbits=e2-prof
+
+Flavor=ANY
 Qualifiers=e2:debug:nu
-Flavor=ANY
+_qualbits=e2-nu-debug
 
+Flavor=ANY
+Qualifiers=e2:debug:nu
+_qualbits=e2-nu-debug
+
+Flavor=ANY
+Qualifiers=e2:prof:nu
+_qualbits=e2-nu-prof
 
 Common:
+
 
 Action=setup
      SetupEnv()
      ProdDir()
      SetupRequired(ifdhc v0_8 -q ${UPS_REQ_QUALIFIERS}:)
      SetupRequired(art v1_02_06 -q ${UPS_REQ_QUALIFIERS}:)
+     If( test -d ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
+        EnvSet(IFDH_ART_FQ_DIR, ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
+     Else()
+        EnvSet(IFDH_ART_FQ_DIR, ${UPS_PROD_DIR} )
+     EndIf( test -d ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
-     PathPrepend(LD_LIBRARY_PATH, ${UPS_PROD_DIR}/lib)
+     PathPrepend(LD_LIBRARY_PATH, $IFDH_ART_FQ_DIR/lib)
+
+
 
 Action=build
      SetupEnv()
      ProdDir()
      EnvSet(ARCH,"$ART_CXXFLAGS")
-     Execute(rm -rf ${UPS_PROD_DIR}/lib ${UPS_PROD_DIR}/inc   , NO_UPS_ENV)
-     Execute(mkdir -p ${UPS_PROD_DIR}/inc                     , NO_UPS_ENV)
-     Execute(cp ${UPS_PROD_DIR}/src/*/*.h ${UPS_PROD_DIR}/inc , NO_UPS_ENV)
+     EnvSet(IFDH_ART_FQ_DIR, ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
+     Execute(rm -rf $IFDH_ART_FQ_DIR/lib $IFDH_ART_FQ_DIR/inc   , NO_UPS_ENV)
+     Execute(mkdir -p $IFDH_ART_FQ_DIR/inc                     , NO_UPS_ENV)
+     Execute(cp ${UPS_PROD_DIR}/src/*/*.h $IFDH_ART_FQ_DIR/inc , NO_UPS_ENV)
      Execute(mkdir -p ${UPS_PROD_DIR}/build                   , NO_UPS_ENV)
      SourceRequired(${UPS_PROD_DIR}/ups/setup_for_development, NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}/build                         , NO_UPS_ENV)
      Execute(cmake ../src                                     , NO_UPS_ENV)
      Execute(make                                             , NO_UPS_ENV)
-     Execute(mv lib ..                                        , NO_UPS_ENV)
+     Execute(mv lib $IFDH_ART_FQ_DIR                          , NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)
-     #Execute(rm -rf build                                     , NO_UPS_ENV)
+     #Execute(rm -rf build                                    , NO_UPS_ENV)
 
 end:
+File=table
+Product=ifdhc
+
+Group:
+
+
+Common:
+End:
