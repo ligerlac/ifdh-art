@@ -15,7 +15,9 @@ conf=/dev/null
 exe=$EXPERIMENT
 quals=nu:e2:debug
 vers=v0_2
+renam=none
 
+datadir=$TMPDIR/ifdh_$$
 
 #
 # parse options we know, collect rest in $args
@@ -28,6 +30,7 @@ do
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
+    x-R|x--rename)  renam="$2"; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
     esac
     break
@@ -43,7 +46,7 @@ then
     export IFDH_BASE_URI=http://samweb.fnal.gov:8480/sam/$EXPERIMENT/api
 fi
 
-hostname=`hostname`
+hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
 sleep 5
 consumer_id=`ifdh establishProcess $projurl demo 1 $hostname $GRID_USER "" "" ""`
@@ -77,6 +80,38 @@ command="\"${cmd}\" -c \"$conf\" $args"
 echo "Running: $command"
 eval "$command"
 res=$?
+
+#
+# ART can't currently name output files based on input files
+#    so we have  a pass here to rename output files either
+#    "uniq" -- unique prefix
+#    "s/this/that/" -- make output input file with changes
+#  We rename the files and change the output_list, so the
+#  ifdh copyBackOutput will copy back the updated names.
+#
+case $renam in
+none) ;;
+uniq) while read f < $datadir/output_list
+      do
+         fnew="u_$hostname_$$_$f"
+         echo $fnew >> $datadir/output_list.new
+         mv $datadir/$f $datadir/$fnew
+      done
+      mv $datadir/output_list.new $datadir/output_list
+      ;;
+s/* ) 
+      fix="sed -e $renam"
+      pr -t -2 $datadir/output_list $datadir/input_list 
+      while read f  infile
+      do
+         fnew=`echo $infile | $fix`
+         echo $fnew >> $datadir/output_list.new
+         mv $datadir/$f $datadir/$fnew
+      done
+      mv $datadir/output_list.new $datadir/output_list
+      ;;
+esac
+
 
 if [ "x$dest" != "x" && "$res" = "0" ]
 then
