@@ -14,7 +14,7 @@ dest=""
 conf=/dev/null
 exe=$EXPERIMENT
 quals=nu:e2:debug
-vers=v0_2
+vers=v0_4
 renam=""
 
 
@@ -37,7 +37,12 @@ done
 
 if [ "x$IFDH_ART_DIR" = "x" ] 
 then
-    . `ups setup -j ifdh_art $vers -q $quals:`
+    . `ups setup ifdh_art $vers -q $quals:`
+fi
+
+if [ "x$CPN_DIR" = "x" ] 
+then
+    . `ups setup cpn -z /grid/fermiapp/products/common/db`
 fi
 
 if [ "x$IFDH_BASE_URI" = "x" ]
