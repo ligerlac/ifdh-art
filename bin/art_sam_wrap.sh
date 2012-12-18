@@ -15,6 +15,7 @@ conf=/dev/null
 exe=$EXPERIMENT
 quals=nu:e2:debug
 vers=v0_2
+renam=""
 
 
 #
@@ -26,6 +27,7 @@ do
     x-q|x--quals)   quals="$2"; shift; shift; continue;;
     x-c|x--config)  conf="$2";  shift; shift; continue;;
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
+    x-R|x--rename)     renam="$2";   shift; shift; continue;;
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
@@ -78,16 +80,21 @@ echo "Running: $command"
 eval "$command"
 res=$?
 
-if [ "x$dest" != "x" && "$res" = "0" ]
+if [ "x$renam" != "x" -a "$res" = "0" ]
+then
+    ifdh renameOutput $renam
+fi
+
+if [ "x$dest" != "x" -a "$res" = "0" ]
 then
     ifdh copyBackOutput "$dest"
 fi
-
-ifdh cleanup
 
 if $update_via_fcl
 then
     rm ${conf}
 fi
+
+# ifdh cleanup
 
 exit $res
