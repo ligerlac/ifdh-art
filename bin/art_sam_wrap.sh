@@ -16,6 +16,7 @@ exe=$EXPERIMENT
 quals=nu:e2:debug
 vers=v0_2
 renam=none
+limit=""
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -31,6 +32,7 @@ do
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
+    x-L|x--limit)   limit="$2"; shift; shift; continue
     *)              args="$args \"$1\""; shift; continue;;
     esac
     break
@@ -49,7 +51,7 @@ fi
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
 sleep 5
-consumer_id=`ifdh establishProcess $projurl demo 1 $hostname $GRID_USER "" "" ""`
+consumer_id=`ifdh establishProcess $projurl demo 1 $hostname $GRID_USER "" "" "$limit"`
 
 update_via_fcl=true
 
@@ -89,29 +91,13 @@ res=$?
 #  We rename the files and change the output_list, so the
 #  ifdh copyBackOutput will copy back the updated names.
 #
+# XXXX this relies on hacking code to make an input_list of files...
+#
 case $renam in
 none) ;;
-uniq) while read f < $datadir/output_list
-      do
-         fnew="u_$hostname_$$_$f"
-         echo $fnew >> $datadir/output_list.new
-         mv $datadir/$f $datadir/$fnew
-      done
-      mv $datadir/output_list.new $datadir/output_list
-      ;;
-s/* ) 
-      fix="sed -e $renam"
-      pr -t -2 $datadir/output_list $datadir/input_list 
-      while read f  infile
-      do
-         fnew=`echo $infile | $fix`
-         echo $fnew >> $datadir/output_list.new
-         mv $datadir/$f $datadir/$fnew
-      done
-      mv $datadir/output_list.new $datadir/output_list
+*)    ifdh renameOutput $renam
       ;;
 esac
-
 
 if [ "x$dest" != "x" && "$res" = "0" ]
 then
