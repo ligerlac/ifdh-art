@@ -14,8 +14,8 @@ dest=""
 conf=/dev/null
 exe=$EXPERIMENT
 quals=nu:e2:debug
-vers=v0_2
-renam=none
+vers=v0_4
+renam=""
 limit=""
 
 datadir=$TMPDIR/ifdh_$$
@@ -29,6 +29,7 @@ do
     x-q|x--quals)   quals="$2"; shift; shift; continue;;
     x-c|x--config)  conf="$2";  shift; shift; continue;;
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
+    x-R|x--rename)     renam="$2";   shift; shift; continue;;
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
@@ -40,7 +41,12 @@ done
 
 if [ "x$IFDH_ART_DIR" = "x" ] 
 then
-    . `ups setup -j ifdh_art $vers -q $quals:`
+    . `ups setup ifdh_art $vers -q $quals:`
+fi
+
+if [ "x$CPN_DIR" = "x" ] 
+then
+    . `ups setup cpn -z /grid/fermiapp/products/common/db`
 fi
 
 if [ "x$IFDH_BASE_URI" = "x" ]
@@ -83,32 +89,21 @@ echo "Running: $command"
 eval "$command"
 res=$?
 
-#
-# ART can't currently name output files based on input files
-#    so we have  a pass here to rename output files either
-#    "uniq" -- unique prefix
-#    "s/this/that/" -- make output input file with changes
-#  We rename the files and change the output_list, so the
-#  ifdh copyBackOutput will copy back the updated names.
-#
-# XXXX this relies on hacking code to make an input_list of files...
-#
-case $renam in
-none) ;;
-*)    ifdh renameOutput $renam
-      ;;
-esac
+if [ "x$renam" != "x" -a "$res" = "0" ]
+then
+    ifdh renameOutput $renam
+fi
 
-if [ "x$dest" != "x" && "$res" = "0" ]
+if [ "x$dest" != "x" -a "$res" = "0" ]
 then
     ifdh copyBackOutput "$dest"
 fi
-
-ifdh cleanup
 
 if $update_via_fcl
 then
     rm ${conf}
 fi
+
+# ifdh cleanup
 
 exit $res
