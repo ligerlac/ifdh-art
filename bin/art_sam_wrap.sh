@@ -5,6 +5,7 @@
 # which sets environment variables:
 #  $SAM_PROJECT_NAME 
 #  $EXPERIMENT
+#  $GRID_USER
 # and also has setup whatever is needed to find the art executable
 # (i.e. "nova" or "gm2") for that experiment
 #
@@ -57,7 +58,7 @@ fi
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
 sleep 5
-consumer_id=`ifdh establishProcess $projurl demo 1 $hostname $GRID_USER "" "" "$limit"`
+consumer_id=`ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
 
 update_via_fcl=true
 
