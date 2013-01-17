@@ -15,7 +15,7 @@ dest=""
 conf=/dev/null
 exe=$EXPERIMENT
 quals=nu:e2:debug
-vers=v0_4
+vers=v1_0_rc1
 renam=""
 limit=""
 
@@ -34,7 +34,7 @@ do
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
-    x-L|x--limit)   limit="$2"; shift; shift; continue
+    x-L|x--limit)   limit="$2"; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
     esac
     break
