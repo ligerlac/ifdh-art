@@ -18,6 +18,7 @@ quals=nu:e2:debug
 vers=v1_0_rc1
 renam=""
 limit=""
+getconfig=false
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -33,6 +34,7 @@ do
     x-R|x--rename)     renam="$2";   shift; shift; continue;;
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
+    x-g|x--getconfig)getconfig=true; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
@@ -60,6 +62,31 @@ projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
 sleep 5
 consumer_id=`ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
 
+echo project url: $projurl
+echo consumer id: $consumer_id
+
+if getconfig
+then
+
+    uri=`ifdh getNextFile $projurl $consumer_id`
+    res=0
+    while [ -n "$uri" -a "$res" = 0 ]
+    do
+	fname=`ifdh fetchInput "$uri"`
+        conf="$fname"
+	ifdh updateFileStatus $cpurl  $consumer_id $fname transferred
+	command="\"${cmd}\" -c \"$conf\" $args"
+	if eval "$command"
+        then 
+	   ifdh updateFileStatus $cpurl  $consumer_id $fname consumed
+        else
+	   res=$?
+	   ifdh updateFileStatus $cpurl  $consumer_id $fname skipped
+        fi
+        uri=`ifdh getNextFile $projurl $consumer_id`
+    done
+else
+
 update_via_fcl=true
 
 if $update_via_fcl
@@ -80,8 +107,6 @@ else
     args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
 fi
 
-echo project url: $projurl
-echo consumer id: $consumer_id
 
 cd $TMPDIR
 
@@ -89,6 +114,8 @@ command="\"${cmd}\" -c \"$conf\" $args"
 echo "Running: $command"
 eval "$command"
 res=$?
+
+fi
 
 if [ "x$renam" != "x" -a "$res" = "0" ]
 then
@@ -105,6 +132,15 @@ then
     rm ${conf}
 fi
 
-# ifdh cleanup
+if [ "$res" = 0 ]
+then
+    ifdh setStatus $cpurl $consumer_id  completed
+else
+    ifdh setStatus $cpurl $consumer_id  bad
+fi
+
+ifdh endProject $cpurl 
+
+ifdh cleanup
 
 exit $res
