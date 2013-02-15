@@ -5,7 +5,7 @@ include_directories($ENV{IFDHC_DIR}/nucondb)
 include_directories($ENV{IFDHC_DIR}/util)
 
 simple_plugin(nucondb "service" 
-	$ENV{IFDHC_DIR}/nucondb/libnucondb.so
+	$ENV{IFDHC_FQ_DIR}/lib/libnucondb.so
         -L$ENV{ART_FQ_DIR}/lib
         )
 
