@@ -14,7 +14,7 @@ class IFBeam  {
        
 public:
         
-        std::unique_ptr<BeamFolder> getBeamFolder(std::string bundle_name, std::string url, double time_width);
+        std::unique_ptr<BeamFolder> getBeamFolder(std::string bundle_name, std::string url = "", double time_width = 1200.0);
 
         // ART constructor...
         IFBeam( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r);
