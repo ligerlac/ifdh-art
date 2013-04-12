@@ -7,6 +7,8 @@ Build bits:
 
 mkdir /tmp/$USER$$
 cd /tmp/$USER$$
+
+setup nova
 setup git
 
 git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc/ifdhc.git
