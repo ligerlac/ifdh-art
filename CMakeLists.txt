@@ -44,6 +44,7 @@ cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
  find_ups_product( art v1_06_00 )
+ find_ups_product( ifdhc v1_1_0 )
 
 
 cet_check_gcc()
@@ -52,12 +53,18 @@ cet_check_gcc()
 # notice use of ENV to invoke an external variable
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
+include_directories($ENV{IFDHC_DIR}/ifdh)
+include_directories($ENV{IFDHC_DIR}/util)
+
 
 # have to make sure cmake doesn't select the system libraries
 # define libsigc
 cet_find_library( SIGC    NAMES sigc-2.0  PATHS ENV LIBSIGCPP_LIB NO_DEFAULT_PATH )
 # define cppunit
 cet_find_library( CPPUNIT NAMES cppunit   PATHS ENV CPPUNIT_LIB   NO_DEFAULT_PATH )
+
+#ifdhc
+cet_find_library( IFDH NAMES ifdh PATHS $ENV{IFDHC_FQ_DIR}/lib NO_DEFAULT_PATH )
 
 # SQLite
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
