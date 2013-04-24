@@ -43,15 +43,8 @@ endif()
 cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
-find_ups_product( cppunit v1_12_1 )
-find_ups_product( gccxml v0_9 )
-find_ups_product( libsigcpp v2_2_10 )
-find_ups_product( clhep v2_1_2_2 )
-find_ups_product( cetbuildtools v3_03_00 )
-find_ups_product( messagefacility v1_10_00 )
-find_ups_product( sqlite v3_07_08_00 )
-find_ups_root( v5_34_00 )
-find_ups_product( tbb v4_1 )
+ find_ups_product( art v1_06_00 )
+
 
 cet_check_gcc()
 
@@ -59,9 +52,6 @@ cet_check_gcc()
 # notice use of ENV to invoke an external variable
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
-
-# define CLHEP
-cet_find_library( CLHEP  NAMES CLHEP   PATHS ENV CLHEP_LIB_DIR NO_DEFAULT_PATH )
 
 # have to make sure cmake doesn't select the system libraries
 # define libsigc
