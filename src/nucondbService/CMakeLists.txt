@@ -1,13 +1,9 @@
 
-include($ENV{ART_DIR}/Modules/BuildPlugins.cmake)
-
-include_directories($ENV{ART_DIR}/include)
-include_directories($ENV{IFDHC_DIR}/nucondb)
-include_directories($ENV{IFDHC_DIR}/util)
 
 simple_plugin(nucondb "service" 
-	$ENV{IFDHC_FQ_DIR}/lib/libnucondb.so
-        -L$ENV{ART_FQ_DIR}/lib
+			   ${NUCONDB} 
+                           ${MF_MESSAGELOGGER}
+			   ${FHICLCPP}
         )
 
 install_headers()

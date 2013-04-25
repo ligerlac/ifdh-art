@@ -32,4 +32,4 @@ IFDH::IFDH( fhicl::ParameterSet const & cfg, __attribute__((unused)) art::Activi
 }
 
 //DEFINE_ART_SERVICE(ifdh_ns::IFDH)
-DECLARE_ART_SERVICE_INTERFACE(ifdh_ns::IFDH,LEGACY)
+DEFINE_ART_SERVICE(ifdh_ns::IFDH)

@@ -1,7 +1,7 @@
 # source
 subdirs (IFDHService)
 subdirs (IFBeamService)
-subdirs (IFCatalogInterface)
-subdirs (IFFileTransfer)
 subdirs (nucondbService)
+subdirs (IFFileTransfer)
+subdirs (IFCatalogInterface)
 

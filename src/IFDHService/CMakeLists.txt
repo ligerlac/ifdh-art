@@ -1,7 +1,9 @@
 
 
-simple_plugin(IFDH service ${IFDH} 
+simple_plugin(IFDH service 
+			   ${IFDH} 
                            ${MF_MESSAGELOGGER}
+                           ${MF_UTILITIES}
 			   ${FHICLCPP}
              )
 

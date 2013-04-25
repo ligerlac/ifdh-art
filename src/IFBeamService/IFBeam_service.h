@@ -23,6 +23,7 @@ public:
 }
 
 
+DECLARE_ART_SERVICE_INTERFACE(ifbeam_ns::IFBeam, LEGACY)
 // this is redundant, given the ifbeam include,  but just to be clear
 
 using namespace ifbeam_ns;

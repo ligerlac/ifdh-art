@@ -1,10 +1,16 @@
 #include "IFCatalogInterface_service.h"
-#include "art/Framework/Services/Interfaces/FileDeliveryStatus.h"
+#include "art/Framework/Services/FileServiceInterfaces/FileDeliveryStatus.h"
+#include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
+#include "art/Framework/Services/Registry/ActivityRegistry.h"
+#include "art/Framework/Services/Registry/ServiceMacros.h"
+#include "art/Framework/Services/Registry/detail/ServiceHelper.h"
+
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
 namespace ifdh_ns {
 
-IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, art::ActivityRegistry& ar ) : 
+
+IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, __attribute__((unused)) art::ActivityRegistry& ar ) : 
     _process_id(""), 
     _proj_uri(""),
     _project_name(""), 
@@ -57,7 +63,7 @@ IFCatalogInterface::doConfigure(std::vector<std::string> const & item) {
 
 
 int  
-IFCatalogInterface::doGetNextFileURI(std::string & uri, double & waitTime) {
+IFCatalogInterface::doGetNextFileURI(std::string & uri, __attribute__((unused)) double & waitTime) {
     mf::LogVerbatim("test") << "IFCatalogInterface entering doGetNextFile\n";
     if ( _last_file_uri.length() ) {
         mf::LogVerbatim("test") << "Updating status in doGetNextFile\n";
@@ -106,7 +112,7 @@ IFCatalogInterface::doOutputFileOpened(std::string const & module_label) {
 }
 
 void 
-IFCatalogInterface::doOutputModuleInitiated(std::string const & module_label,
+IFCatalogInterface::doOutputModuleInitiated(__attribute__((unused)) std::string const & module_label,
 			       fhicl::ParameterSet const & pset) {
     std::string s;
     bool ignore = false;
@@ -149,9 +155,9 @@ IFCatalogInterface::doOutputFileClosed(std::string const & module_label,
 }
 
 void 
-IFCatalogInterface::doEventSelected(std::string const & module_label,
-		       art::EventID const & event_id,
-		       art::HLTGlobalStatus const & acceptance_info) {
+IFCatalogInterface::doEventSelected(__attribute((unused)) std::string const & module_label,
+		       __attribute((unused)) art::EventID const & event_id,
+		       __attribute((unused)) art::HLTGlobalStatus const & acceptance_info) {
     ;
 }
 

@@ -1,15 +1,13 @@
 
-include($ENV{ART_DIR}/Modules/BuildPlugins.cmake)
-include_directories($ENV{ART_DIR}/include)
-include_directories($ENV{IFDHC_DIR}/ifdh)
-
 simple_plugin(IFCatalogInterface "service" 
-                    -L$ENV{ART_FQ_DIR}/lib
-                    -L../IFDHService
+			   ${IFDH} 
+                           ${ARTFRAMEWORKCORE}
+                           ${ARTUTILITIES}
+                           ${MF_MESSAGELOGGER}
+                           ${MF_UTILITIES}
+                           ${CETLIB}
+			   ${FHICLCPP}
 		)
-
-include_directories($ENV{IFDHC_DIR}/ifdh)
-include_directories($ENV{IFDHC_DIR}/util)
 include_directories(../IFDHService)
 
 install_headers()

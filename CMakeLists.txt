@@ -53,8 +53,8 @@ cet_check_gcc()
 # notice use of ENV to invoke an external variable
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
-include_directories($ENV{IFDHC_DIR}/ifdh)
-include_directories($ENV{IFDHC_DIR}/util)
+include_directories($ENV{IFDHC_DIR}/inc)
+include_directories($ENV{ART_DIR}/include)
 
 
 # have to make sure cmake doesn't select the system libraries
@@ -64,10 +64,15 @@ cet_find_library( SIGC    NAMES sigc-2.0  PATHS ENV LIBSIGCPP_LIB NO_DEFAULT_PAT
 cet_find_library( CPPUNIT NAMES cppunit   PATHS ENV CPPUNIT_LIB   NO_DEFAULT_PATH )
 
 #ifdhc
-cet_find_library( IFDH NAMES ifdh PATHS $ENV{IFDHC_FQ_DIR}/lib NO_DEFAULT_PATH )
+cet_find_library( IFDH NAMES ifdh PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
+cet_find_library( IFBEAM NAMES ifbeam PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
+cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
 
 # SQLite
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
+
+cet_find_library(ARTFRAMEWORKCORE NAMES art_Framework_Core PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
+cet_find_library(ARTUTILITIES NAMES art_Utilities PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
 
 # macros for art_dictionary and simple_plugin
 include(ArtDictionary)

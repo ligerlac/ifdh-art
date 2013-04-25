@@ -1,12 +1,12 @@
 
 #include "messagefacility/MessageLogger/MessageLogger.h"
-#include "art/Framework/Services/Interfaces/FileTransferStatus.h"
+#include "art/Framework/Services/FileServiceInterfaces/FileTransferStatus.h"
 #include "IFFileTransfer_service.h"
 
 
 namespace ifdh_ns {
 
-IFFileTransfer::IFFileTransfer(const fhicl::ParameterSet&, art::ActivityRegistry& ) {
+IFFileTransfer::IFFileTransfer(__attribute__((unused)) const fhicl::ParameterSet&, __attribute__((unused)) art::ActivityRegistry& ) {
    ;
 }
 IFFileTransfer::~IFFileTransfer() throw () {
