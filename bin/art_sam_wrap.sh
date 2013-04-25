@@ -77,10 +77,12 @@ echo project url: $projurl
 echo consumer id: $consumer_id
 
 cd $TMPDIR
-check_space()
+check_space
 
 if $getconfig
 then
+
+    echo "Getconfig case:"
 
     uri=`ifdh getNextFile $projurl $consumer_id`
     res=0
@@ -88,22 +90,25 @@ then
     do
 	fname=`ifdh fetchInput "$uri"`
         conf="$fname"
-	ifdh updateFileStatus $cpurl  $consumer_id $fname transferred
+	ifdh updateFileStatus $projurl  $consumer_id $fname transferred
 	command="\"${cmd}\" -c \"$conf\" $args"
         echo "Running: $command"
 	if eval "$command"
         then 
-	   ifdh updateFileStatus $cpurl  $consumer_id $fname consumed
+	   ifdh updateFileStatus $projurl  $consumer_id $fname consumed
         else
 	   res=$?
-	   ifdh updateFileStatus $cpurl  $consumer_id $fname skipped
+	   ifdh updateFileStatus $projurl  $consumer_id $fname skipped
         fi
         uri=`ifdh getNextFile $projurl $consumer_id`
     done
 
 else
+    echo "Not Getconfig case:"
 
     update_via_fcl=true
+
+    : $update_via_fcl
 
     if $update_via_fcl
     then
@@ -117,7 +122,7 @@ else
     services.user.CatalogInterface.webURI: "$projurl"
     services.user.FileTransfer.service_provider: "IFFileTransfer"
     source.fileNames: [ "$consumer_id" ]
-    EOF
+EOF
 
     else
 	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
@@ -129,6 +134,11 @@ else
     echo "Running: $command"
     eval "$command"
     res=$?
+
+    if $update_via_fcl
+    then
+        rm ${conf}
+    fi
 
 fi
 
@@ -142,19 +152,15 @@ then
     ifdh copyBackOutput "$dest"
 fi
 
-if $update_via_fcl
-then
-    rm ${conf}
-fi
 
 if [ "$res" = 0 ]
 then
-    ifdh setStatus $cpurl $consumer_id  completed
+    ifdh setStatus $projurl $consumer_id  completed
 else
-    ifdh setStatus $cpurl $consumer_id  bad
+    ifdh setStatus $projurl $consumer_id  bad
 fi
 
-ifdh endProject $cpurl 
+ifdh endProject $projurl 
 
 ifdh cleanup
 
