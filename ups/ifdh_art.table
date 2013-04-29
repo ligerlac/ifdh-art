@@ -12,24 +12,16 @@ Qualifiers=e2:debug
 _qualbits=e2-debug
 
 Flavor=ANY
-Qualifiers=e2:debug
-_qualbits=e2-debug
-
-Flavor=ANY
 Qualifiers=e2:prof
 _qualbits=e2-prof
 
 Flavor=ANY
 Qualifiers=e2:debug:nu
-_qualbits=e2-nu-debug
-
-Flavor=ANY
-Qualifiers=e2:debug:nu
-_qualbits=e2-nu-debug
+_qualbits=e2-debug
 
 Flavor=ANY
 Qualifiers=e2:prof:nu
-_qualbits=e2-nu-prof
+_qualbits=e2-prof
 
 Common:
 

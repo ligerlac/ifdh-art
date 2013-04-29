@@ -84,7 +84,7 @@ then
 
     echo "Getconfig case:"
 
-    uri=`ifdh getNextFile $projurl $consumer_id`
+    uri=`ifdh getNextFile $projurl $consumer_id | tail -1`
     res=0
     while [ -n "$uri" -a "$res" = 0 ]
     do
@@ -128,7 +128,9 @@ EOF
 	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
     fi
 
+    ups active
 
+    printenv
 
     command="\"${cmd}\" -c \"$conf\" $args"
     echo "Running: $command"
