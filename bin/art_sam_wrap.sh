@@ -19,6 +19,7 @@ vers=v1_0_rc1
 renam=""
 limit=""
 getconfig=false
+use_gdb=false
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -35,6 +36,7 @@ do
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-g|x--getconfig)getconfig=true; shift; continue;;
+    x-G|x--with-gdb)use_gdb=true; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
@@ -88,7 +90,7 @@ then
     res=0
     while [ -n "$uri" -a "$res" = 0 ]
     do
-	fname=`ifdh fetchInput "$uri"`
+	fname=`ifdh fetchInput "$uri" | tail -1`
         conf="$fname"
 	ifdh updateFileStatus $projurl  $consumer_id $fname transferred
 	command="\"${cmd}\" -c \"$conf\" $args"
@@ -128,11 +130,19 @@ EOF
 	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
     fi
 
-    ups active
-
-    printenv
+    #
+    #debugging 
+    #
+    # ups active
+    # printenv
 
     command="\"${cmd}\" -c \"$conf\" $args"
+
+    if $use_gdb
+    then
+         command="gdb --args $command"
+    fi
+
     echo "Running: $command"
     eval "$command"
     res=$?
