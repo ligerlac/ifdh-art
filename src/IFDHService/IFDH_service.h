@@ -23,7 +23,7 @@ public:
 
 }
 
-DECLARE_ART_SERVICE_INTERFACE(ifdh_ns::IFDH,LEGACY)
+DECLARE_ART_SERVICE(ifdh_ns::IFDH,LEGACY)
 using namespace ifdh_ns;
 
 #endif // IFDHSERVICE_H
