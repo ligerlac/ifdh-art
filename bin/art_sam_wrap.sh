@@ -46,10 +46,10 @@ done
 
 check_space() {
    set : `df -P . | tail -1`
-   avail=$5
-   if [ $avail -lt 100 ] 
+   avail_blocks=$5
+   if [ $avail_blocks -lt 1024 ] 
    then
-       echo "Not enough space on this node in `pwd`."
+       echo "Not enough space (only ${avail_blocks}k) on this node in `pwd`."
        df -H .
        exit 1
    fi
@@ -172,7 +172,7 @@ else
     ifdh setStatus $projurl $consumer_id  bad
 fi
 
-ifdh endProject $projurl 
+ifdh endProcess $projurl $consumer_id
 
 ifdh cleanup
 
