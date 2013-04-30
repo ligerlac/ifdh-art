@@ -118,8 +118,8 @@ else
 	cp $conf ${TMPDIR:=/var/tmp}/conf.$$
 	conf=$TMPDIR/conf.$$
 	cat >> $conf <<EOF
-    #services.user.IFDH: {}
-    #services.user.IFDH.debug: "1"
+    services.user.IFDH: {}
+    services.user.IFDH.debug: "1"
     services.user.CatalogInterface.service_provider: "IFCatalogInterface"
     services.user.CatalogInterface.webURI: "$projurl"
     services.user.FileTransfer.service_provider: "IFFileTransfer"
