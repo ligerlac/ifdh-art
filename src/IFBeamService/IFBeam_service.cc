@@ -2,7 +2,7 @@
 
 namespace ifbeam_ns {
 
-IFBeam::IFBeam( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r) {
+IFBeam::IFBeam( __attribute__((unused)) fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {
      ;
 }
         
@@ -13,4 +13,6 @@ IFBeam::getBeamFolder(std::string bundle_name, std::string url, double time_widt
 }
 }
 
+// DEFINE_ART_SERVICE(ifbeam_ns::IFBeam)
 DEFINE_ART_SERVICE(ifbeam_ns::IFBeam)
+

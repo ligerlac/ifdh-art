@@ -6,7 +6,7 @@
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "fhiclcpp/ParameterSet.h"
 #include "art/Framework/Services/Registry/ServiceMacros.h"
-#include "art/Framework/Services/Interfaces/FileTransfer.h"
+#include "art/Framework/Services/FileServiceInterfaces/FileTransfer.h"
 
 #include "IFDH_service.h"
 
@@ -25,4 +25,6 @@ private:
 };
 
 }
+DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFFileTransfer, art::FileTransfer, LEGACY)
+
 #endif //IFFILETRANSFER_H

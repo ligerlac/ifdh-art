@@ -12,24 +12,16 @@ Qualifiers=e2:debug
 _qualbits=e2-debug
 
 Flavor=ANY
-Qualifiers=e2:debug
-_qualbits=e2-debug
-
-Flavor=ANY
 Qualifiers=e2:prof
 _qualbits=e2-prof
 
 Flavor=ANY
 Qualifiers=e2:debug:nu
-_qualbits=e2-nu-debug
-
-Flavor=ANY
-Qualifiers=e2:debug:nu
-_qualbits=e2-nu-debug
+_qualbits=e2-debug
 
 Flavor=ANY
 Qualifiers=e2:prof:nu
-_qualbits=e2-nu-prof
+_qualbits=e2-prof
 
 Common:
 
@@ -37,8 +29,8 @@ Common:
 Action=setup
      SetupEnv()
      ProdDir()
-     SetupRequired(ifdhc v1_0_rc1 -q ${UPS_REQ_QUALIFIERS}:)
-     SetupRequired(art v1_03_08 -q ${UPS_REQ_QUALIFIERS}:)
+     SetupRequired(ifdhc v1_1_3 -q ${UPS_REQ_QUALIFIERS}:)
+     SetupRequired(art v1_06_00 -q ${UPS_REQ_QUALIFIERS}:)
      If( test -d ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
         EnvSet(IFDH_ART_FQ_DIR, ${UPS_PROD_DIR}/`ups flavor -4`-${_qualbits} )
      Else()
@@ -58,9 +50,10 @@ Action=build
      Execute(mkdir -p $IFDH_ART_FQ_DIR/inc                     , NO_UPS_ENV)
      Execute(cp ${UPS_PROD_DIR}/src/*/*.h $IFDH_ART_FQ_DIR/inc , NO_UPS_ENV)
      Execute(mkdir -p ${UPS_PROD_DIR}/build                   , NO_UPS_ENV)
-     SourceRequired(${UPS_PROD_DIR}/ups/setup_for_development, NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}/build                         , NO_UPS_ENV)
-     Execute(cmake ../src                                     , NO_UPS_ENV)
+     Execute(. `ups setup ups`, NO_UPS_ENV)
+     Execute(source ${UPS_PROD_DIR}/ups/setup_for_development ${UPS_OPTIONS}, NO_UPS_ENV)
+     Execute(cmake -DCMAKE_BUILD_TYPE=$CETPKG_TYPE $CETPKG_SOURCE ,NO_UPS_ENV)
      Execute(make                                             , NO_UPS_ENV)
      Execute(mv lib $IFDH_ART_FQ_DIR                          , NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)

@@ -1,12 +1,14 @@
 
-include($ENV{ART_DIR}/Modules/BuildPlugins.cmake)
-
-include_directories($ENV{IFDHC_DIR}/ifdh)
-include_directories($ENV{IFDHC_DIR}/util)
 include_directories(../IFDHService)
 
 simple_plugin(IFFileTransfer "service" 
-                    -L$ENV{ART_FQ_DIR}/lib
+			   ${IFDH} 
+                           ${ARTFRAMEWORKCORE}
+                           ${ARTUTILITIES}
+                           ${MF_MESSAGELOGGER}
+                           ${MF_UTILITIES}
+                           ${CETLIB}
+			   ${FHICLCPP}
            )
 
 install_headers()

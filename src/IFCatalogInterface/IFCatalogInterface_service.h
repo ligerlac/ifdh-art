@@ -5,7 +5,7 @@
 #include "fhiclcpp/ParameterSet.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceMacros.h"
-#include "art/Framework/Services/Interfaces/CatalogInterface.h"
+#include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
 #include <vector>
 
 #include "IFDH_service.h"
@@ -44,4 +44,6 @@ private:
 };
 
 }
+DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFCatalogInterface, art::CatalogInterface, LEGACY)
+
 #endif // IFCATALOGINTERFACE

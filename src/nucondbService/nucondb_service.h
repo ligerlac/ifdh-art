@@ -21,6 +21,8 @@ public:
 
 }
 
+DECLARE_ART_SERVICE_INTERFACE(nucondb_ns::nucondbService,LEGACY)
+
 // this is redundant, given the include,  but just to be clear
 
 using namespace nucondb_ns;

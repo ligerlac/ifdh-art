@@ -4,7 +4,7 @@ namespace nucondb_ns {
 
 
 // ART constructor...
-nucondbService::nucondbService( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r) {}
+nucondbService::nucondbService( __attribute__((unused)) fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {}
 
 std::unique_ptr<Folder> 
 nucondbService::getFolder(std::string name, std::string url, std:: string tag ) { 
@@ -14,4 +14,5 @@ nucondbService::getFolder(std::string name, std::string url, std:: string tag ) 
 
 }
 
+//DEFINE_ART_SERVICE(nucondb_ns::nucondbService)
 DEFINE_ART_SERVICE(nucondb_ns::nucondbService)

@@ -19,6 +19,7 @@ vers=v1_0_rc1
 renam=""
 limit=""
 getconfig=false
+use_gdb=false
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -35,6 +36,7 @@ do
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-g|x--getconfig)getconfig=true; shift; continue;;
+    x-G|x--with-gdb)use_gdb=true; shift; continue;;
     x-R|x--rename)  renam="$2"; shift; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
@@ -77,33 +79,38 @@ echo project url: $projurl
 echo consumer id: $consumer_id
 
 cd $TMPDIR
-check_space()
+check_space
 
 if $getconfig
 then
 
-    uri=`ifdh getNextFile $projurl $consumer_id`
+    echo "Getconfig case:"
+
+    uri=`ifdh getNextFile $projurl $consumer_id | tail -1`
     res=0
     while [ -n "$uri" -a "$res" = 0 ]
     do
-	fname=`ifdh fetchInput "$uri"`
+	fname=`ifdh fetchInput "$uri" | tail -1`
         conf="$fname"
-	ifdh updateFileStatus $cpurl  $consumer_id $fname transferred
+	ifdh updateFileStatus $projurl  $consumer_id $fname transferred
 	command="\"${cmd}\" -c \"$conf\" $args"
         echo "Running: $command"
 	if eval "$command"
         then 
-	   ifdh updateFileStatus $cpurl  $consumer_id $fname consumed
+	   ifdh updateFileStatus $projurl  $consumer_id $fname consumed
         else
 	   res=$?
-	   ifdh updateFileStatus $cpurl  $consumer_id $fname skipped
+	   ifdh updateFileStatus $projurl  $consumer_id $fname skipped
         fi
         uri=`ifdh getNextFile $projurl $consumer_id`
     done
 
 else
+    echo "Not Getconfig case:"
 
     update_via_fcl=true
+
+    : $update_via_fcl
 
     if $update_via_fcl
     then
@@ -117,18 +124,33 @@ else
     services.user.CatalogInterface.webURI: "$projurl"
     services.user.FileTransfer.service_provider: "IFFileTransfer"
     source.fileNames: [ "$consumer_id" ]
-    EOF
+EOF
 
     else
 	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
     fi
 
-
+    #
+    #debugging 
+    #
+    # ups active
+    # printenv
 
     command="\"${cmd}\" -c \"$conf\" $args"
+
+    if $use_gdb
+    then
+         command="gdb --args $command"
+    fi
+
     echo "Running: $command"
     eval "$command"
     res=$?
+
+    if $update_via_fcl
+    then
+        rm ${conf}
+    fi
 
 fi
 
@@ -142,19 +164,15 @@ then
     ifdh copyBackOutput "$dest"
 fi
 
-if $update_via_fcl
-then
-    rm ${conf}
-fi
 
 if [ "$res" = 0 ]
 then
-    ifdh setStatus $cpurl $consumer_id  completed
+    ifdh setStatus $projurl $consumer_id  completed
 else
-    ifdh setStatus $cpurl $consumer_id  bad
+    ifdh setStatus $projurl $consumer_id  bad
 fi
 
-ifdh endProject $cpurl 
+ifdh endProject $projurl 
 
 ifdh cleanup
 

@@ -4,6 +4,8 @@
 
 // ART bits...
 #include "fhiclcpp/ParameterSet.h"
+#include "art/Framework/Services/Registry/ServicesManager.h"
+#include "art/Framework/Services/Registry/detail/ServiceHelper.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
 #include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "cetlib/exception.h"
@@ -21,5 +23,7 @@ public:
 
 }
 
+DECLARE_ART_SERVICE_INTERFACE(ifdh_ns::IFDH,LEGACY)
 using namespace ifdh_ns;
+
 #endif // IFDHSERVICE_H
