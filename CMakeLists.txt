@@ -44,7 +44,7 @@ cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
  find_ups_product( art v1_06_00 )
- find_ups_product( ifdhc v1_1_0 )
+ find_ups_product( ifdhc v1_1_3 )
 
 
 cet_check_gcc()
