@@ -8,7 +8,8 @@ Build bits:
 mkdir /tmp/$USER$$
 cd /tmp/$USER$$
 
-setup nova, git
+PRODUCTS=/nusoft/app/externals:$PRODUCTS
+setup git, upd
 
 git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc/ifdhc.git
 git clone ssh://p-ifdh-art@cdcvs.fnal.gov/cvs/projects/ifdh-art/ifdh_art.git
@@ -19,7 +20,7 @@ git clone ssh://p-ifdh-art@cdcvs.fnal.gov/cvs/projects/ifdh-art/ifdh_art.git
 cd ifdhc ; setup -. ifdhc $DECLAREBITS ; cd ..
 (cd ifdh_art && sh  buildifdh_art.sh $buildargs)
 
-export VERSION=v1_1_1
+export VERSION=v1_2_0
 (cd ifdhc && upd addproduct -r `pwd` -M ups -m ifdhc.table $DECLAREBITS ifdhc $VERSION)
 (cd ifdh_art && upd addproduct -r `pwd` -M ups -m ifdh_art.table $DECLAREBITS ifdh_art $VERSION)
 
