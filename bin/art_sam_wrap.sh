@@ -72,7 +72,7 @@ fi
 
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
-sleep 5
+sleep 5 
 consumer_id=`ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
 
 echo project url: $projurl
@@ -140,7 +140,7 @@ EOF
 
     if $use_gdb
     then
-         command="gdb --args $command"
+         command="printf 'run\nwhere\nquit\n' | gdb --args $command"
     fi
 
     echo "Running: $command"
@@ -167,13 +167,13 @@ fi
 
 if [ "$res" = 0 ]
 then
-    ifdh setStatus $projurl $consumer_id  completed
+    ifdh setStatus "$projurl" "$consumer_id"  completed
 else
-    ifdh setStatus $projurl $consumer_id  bad
+    ifdh setStatus "$projurl" "$consumer_id"  bad
 fi
 
-ifdh endProcess $projurl $consumer_id
+ifdh endProcess "$projurl" "$consumer_id"
 
-ifdh cleanup
+ifdh cleanup -x
 
 exit $res
