@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_2_2
+parent ifdh_art	v1_2_3
 defaultqual	e2
 
 # These optional lines define the installed directories where headers,
@@ -22,7 +22,7 @@ bindir      fq_dir      bin
 product		version
 art		v1_06_00
 gcc		v4_7_1
-ifdhc		v1_2_2
+ifdhc		v1_2_3
 
 # list products required ONLY for the build
 # any products here must NOT have qualifiers
