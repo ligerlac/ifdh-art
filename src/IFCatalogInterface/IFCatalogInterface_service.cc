@@ -48,7 +48,7 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
             _ifdh_handle->addOutputFile(_output_files[i]);
         }
     }
-    if( _proj_uri.length()) {
+    if( _proj_uri.length() &&  _process_id.length() ) {
        _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
     }
 }
