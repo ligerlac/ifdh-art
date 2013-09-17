@@ -92,7 +92,7 @@ cet_find_library(ARTFRAMEWORKCORE NAMES art_Framework_Core PATHS $ENV{ART_LIB} N
 cet_find_library(ARTUTILITIES NAMES art_Utilities PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
 cet_find_library(MF_MESSAGELOGGER NAMES MF_MessageLogger PATHS $ENV{MESSAGEFACILITY_LIB} NO_DEFAULT_PATH) 
 cet_find_library(MF_UTILITIES NAME MF_Utilities PATHS $ENV{MESSAGEFACILITY_LIB} NO_DEFAULT_PATH) 
-cet_find_library(CETLIB NAME cetlib PATHS $ENV{CETLIB_LIB} NO_DEFAULT_PATH)
+cet_find_library(CETLIBX NAME cetlib PATHS $ENV{CETLIB_LIB} NO_DEFAULT_PATH)
 cet_find_library(FHICLCPP NAME fhiclcpp PATHS $ENV{FHICLCPP_LIB} NO_DEFAULT_PATH)
 
 # macros for art_dictionary and simple_plugin

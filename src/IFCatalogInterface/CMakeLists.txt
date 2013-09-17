@@ -6,7 +6,7 @@ simple_plugin(IFCatalogInterface "service"
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIBX}
 		)
 include_directories(../IFDHService)
 

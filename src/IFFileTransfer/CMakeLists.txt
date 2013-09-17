@@ -7,8 +7,8 @@ simple_plugin(IFFileTransfer "service"
                            ${ARTUTILITIES}
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
-                           ${CETLIB}
 			   ${FHICLCPP}
+                           ${CETLIBX}
            )
 
 install_headers()

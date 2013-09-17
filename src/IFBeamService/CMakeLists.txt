@@ -5,7 +5,7 @@ simple_plugin(IFBeam "service"
 			   ${IFBEAM} 
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIBX}
          )
 
 install_headers()

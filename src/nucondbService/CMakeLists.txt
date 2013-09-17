@@ -4,7 +4,7 @@ simple_plugin(nucondb "service"
 			   ${NUCONDB} 
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIBX}
         )
 
 install_headers()
