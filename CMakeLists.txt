@@ -58,6 +58,7 @@ include_directories($ENV{ART_DIR}/include)
 include_directories($ENV{FHICLCPP_INC})
 include_directories($ENV{CPP0X_INC})
 include_directories($ENV{CETLIB_INC})
+include_directories($ENV{BOOST_INC})
 
 
 # have to make sure cmake doesn't select the system libraries
