@@ -29,8 +29,10 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/Modules
 include(CetCMakeEnv)
 cet_cmake_env()
 
-cet_set_compiler_flags(DIAGS VIGILANT WERROR NO_UNDEFINED EXTRA_FLAGS -pedantic)
-cet_set_compiler_flags(DIAGS VIGILANT WERROR NO_UNDEFINED EXTRA_FLAGS -pedantic)
+#cet_set_compiler_flags(DIAGS VIGILANT WERROR NO_UNDEFINED EXTRA_FLAGS -pedantic)
+#cet_set_compiler_flags(DIAGS VIGILANT WERROR NO_UNDEFINED EXTRA_FLAGS -pedantic)
+cet_set_compiler_flags(DIAGS VIGILANT NO_UNDEFINED EXTRA_FLAGS -pedantic)
+cet_set_compiler_flags(DIAGS VIGILANT NO_UNDEFINED EXTRA_FLAGS -pedantic)
 cet_have_qual(e4 E4)
 if ( E4 )
   cet_add_compiler_flags(CXX -std=c++11)
