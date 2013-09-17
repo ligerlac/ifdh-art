@@ -72,8 +72,6 @@ link_directories($ENV{FHICLCPP_LIB})
 link_directories($ENV{MESSAGEFACILITY_LIB})
 
 
-
-
 # have to make sure cmake doesn't select the system libraries
 # define libsigc
 cet_find_library( SIGC    NAMES sigc-2.0  PATHS ENV LIBSIGCPP_LIB NO_DEFAULT_PATH )
@@ -90,6 +88,10 @@ cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
 
 cet_find_library(ARTFRAMEWORKCORE NAMES art_Framework_Core PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
 cet_find_library(ARTUTILITIES NAMES art_Utilities PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
+cet_find_library(MF_MESSAGELOGGER NAMES MF_MessageLogger PATHS $ENV{MESSAGEFACILITY_LIB} NO_DEFAULT_PATH) 
+cet_find_library(MF_UTILITIES NAME MF_Utilities PATHS $ENV{MESSAGEFACILITY_LIB} NO_DEFAULT_PATH) 
+cet_find_library(CETLIB NAME cetlib PATHS $ENV{CETLIB_LIB} NO_DEFAULT_PATH)
+cet_find_library(FHICLCPP NAME fhiclcpp PATHS $ENV{FHICLCPP_LIB} NO_DEFAULT_PATH)
 
 # macros for art_dictionary and simple_plugin
 include(ArtDictionary)
