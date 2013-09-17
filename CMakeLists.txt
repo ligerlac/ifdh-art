@@ -55,10 +55,13 @@ include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
 include_directories($ENV{IFDHC_DIR}/inc)
 include_directories($ENV{ART_DIR}/include)
-include_directories($ENV{FHICLCPP_INC})
-include_directories($ENV{CPP0X_INC})
-include_directories($ENV{CETLIB_INC})
 include_directories($ENV{BOOST_INC})
+include_directories($ENV{CETLIB_INC})
+include_directories($ENV{CPP0X_INC})
+include_directories($ENV{CPPUNIT_INC})
+include_directories($ENV{FHICLCPP_INC})
+include_directories($ENV{MESSAGEFACILITY_INC})
+
 
 
 # have to make sure cmake doesn't select the system libraries
