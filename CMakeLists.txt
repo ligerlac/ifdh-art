@@ -63,6 +63,13 @@ include_directories($ENV{CPP0X_INC})
 include_directories($ENV{CPPUNIT_INC})
 include_directories($ENV{FHICLCPP_INC})
 include_directories($ENV{MESSAGEFACILITY_INC})
+link_directories($ENV{BOOST_LIB})
+link_directories($ENV{CETLIB_LIB})
+link_directories($ENV{CPP0X_LIB})
+link_directories($ENV{CPPUNIT_LIB})
+link_directories($ENV{FHICLCPP_LIB})
+link_directories($ENV{MESSAGEFACILITY_LIB})
+
 
 
 
@@ -81,7 +88,6 @@ cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
 
 cet_find_library(ARTFRAMEWORKCORE NAMES art_Framework_Core PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
-cet_find_library(ARTFRAMEWORKSERVICESREGISTRY NAMES art_Framework_SERVICES_REGISTRY  PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
 cet_find_library(ARTUTILITIES NAMES art_Utilities PATHS $ENV{ART_LIB} NO_DEFAULT_PATH) 
 
 # macros for art_dictionary and simple_plugin
