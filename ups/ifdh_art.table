@@ -8,20 +8,20 @@ Qualifiers=""
 _qualbits=
 
 Flavor=ANY
-Qualifiers=e2:debug
-_qualbits=e2-debug
+Qualifiers=e4:debug
+_qualbits=e4-debug
 
 Flavor=ANY
-Qualifiers=e2:prof
-_qualbits=e2-prof
+Qualifiers=e4:prof
+_qualbits=e4-prof
 
 Flavor=ANY
-Qualifiers=e2:debug:nu
-_qualbits=e2-debug
+Qualifiers=e4:debug:nu
+_qualbits=e4-debug
 
 Flavor=ANY
-Qualifiers=e2:prof:nu
-_qualbits=e2-prof
+Qualifiers=e4:prof:nu
+_qualbits=e4-prof
 
 Common:
 

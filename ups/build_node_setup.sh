@@ -1,9 +1,9 @@
 
 case `hostname` in
-novagpvm02*) export buildargs="debug e2"
-                export DECLAREBITS="-q debug:e2 -4"
+novagpvm02*) export buildargs="debug e4"
+                export DECLAREBITS="-q debug:e4 -4"
                 ;;
-novagpvm03*) export buildargs="prof e2"
-                export DECLAREBITS="-q e2:prof -4"
+novagpvm03*) export buildargs="prof e4"
+                export DECLAREBITS="-q ef:prof -4"
                  ;;
 esac
