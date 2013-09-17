@@ -12,10 +12,12 @@
 #  make package (builds distribution tarfile)
 # ======================================================================
 
+SET ( CMAKE_VERBOSE_MAKEFILE true )
 
 # use cmake 2.8 or later
 cmake_minimum_required (VERSION 2.8)
 
+SET ( CMAKE_VERBOSE_MAKEFILE true )
 # cetbuildtools contains our cmake modules
 SET ( CETBUILDTOOLS_VERSION $ENV{CETBUILDTOOLS_VERSION} )
 IF (NOT CETBUILDTOOLS_VERSION)
@@ -56,20 +58,20 @@ cet_check_gcc()
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
 include_directories($ENV{IFDHC_DIR}/inc)
-include_directories($ENV{ART_DIR}/include)
+#include_directories($ENV{ART_DIR}/include)
 include_directories($ENV{BOOST_INC})
-include_directories($ENV{CETLIB_INC})
-include_directories($ENV{CPP0X_INC})
-include_directories($ENV{CPPUNIT_INC})
-include_directories($ENV{FHICLCPP_INC})
-include_directories($ENV{MESSAGEFACILITY_INC})
-link_directories($ENV{ART_LIB})
+#include_directories($ENV{CETLIB_INC})
+#include_directories($ENV{CPP0X_INC})
+#include_directories($ENV{CPPUNIT_INC})
+#include_directories($ENV{FHICLCPP_INC})
+#include_directories($ENV{MESSAGEFACILITY_INC})
+#link_directories($ENV{ART_LIB})
 link_directories($ENV{BOOST_LIB})
-link_directories($ENV{CETLIB_LIB})
-link_directories($ENV{CPP0X_LIB})
-link_directories($ENV{CPPUNIT_LIB})
-link_directories($ENV{FHICLCPP_LIB})
-link_directories($ENV{MESSAGEFACILITY_LIB})
+#link_directories($ENV{CETLIB_LIB})
+#link_directories($ENV{CPP0X_LIB})
+#link_directories($ENV{CPPUNIT_LIB})
+#link_directories($ENV{FHICLCPP_LIB})
+#link_directories($ENV{MESSAGEFACILITY_LIB})
 
 
 # have to make sure cmake doesn't select the system libraries
