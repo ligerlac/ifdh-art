@@ -44,7 +44,7 @@ test -z "$db" -a "$ss" = csh && set me=`history 1|sed 's/^[ 	0-9:]*//'` && test 
 #echo This script lives in $db
 
 test -z "$db" && echo "$msg2" || vecho_ "db=$db"
-test -n "$db" && setenv CETPKG_SOURCE `dirname $db`
+test -n "$db" && setenv CETPKG_SOURCE `dirname $db`/src
 
 # make sure we know the current directory
 setenv CETPKG_BUILD `pwd`
