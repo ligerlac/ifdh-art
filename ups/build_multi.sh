@@ -19,8 +19,9 @@ export VERSION=v1_2_5
 (cd ifdh_art && sh  buildifdh_art.sh $buildargs)
 mv ifdh_art/Lin*/lib/*Beam* ifdhc/Lin*/lib
 mv ifdh_art/Lin*/inc/*Beam* ifdhc/inc
-(cd ifdhc && make distrib && upd addproduct -T ifdhc.tar  -M ups -m ifdhc.table $DECLAREBITS ifdhc $VERSION)
-(cd ifdhc && make distrib && upd addproduct -T ifbeam.tar  -M ups -m ifdbeam.table $DECLAREBITS ifbeam $VERSION)
+(cd ifdhc && make distrib )
+(cd ifdhc && upd addproduct -T ifdhc.tar.gz  -M ups -m ifdhc.table $DECLAREBITS ifdhc $VERSION)
+(cd ifdhc && upd addproduct -T ifbeam.tar.gz  -M ups -m ifbeam.table $DECLAREBITS ifbeam $VERSION)
 (cd ifdh_art && upd addproduct -r `pwd` -M ups -m ifdh_art.table $DECLAREBITS ifdh_art $VERSION)
 
 cd 
