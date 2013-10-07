@@ -1,5 +1,5 @@
 
-hostlist="novagpvm02 novagpvm03 novadaq-far-datamon novadaq-far-datamon"
+hostlist="novagpvm02 novagpvm03 novasoft@novadaq-far-datamon novasoft@novadaq-far-datamon"
 
 cat <<'EOF'
 Build bits:
@@ -30,4 +30,3 @@ EOF
 
 
 multixterm -xc "ssh %n" $hostlist
-
