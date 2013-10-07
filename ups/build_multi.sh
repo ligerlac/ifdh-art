@@ -1,5 +1,5 @@
 
-hostlist="novagpvm02 novagpvm03 novadaq-far-datamon"
+hostlist="novagpvm02 novagpvm03 novadaq-far-datamon novadaq-far-datamon"
 
 cat <<'EOF'
 Build bits:
