@@ -1,5 +1,5 @@
 
-case `hostname` in
+case `hostname`-$BUILD_EXTRA in
 novagpvm02*) export buildargs="debug e4"
                 export DECLAREBITS="-q debug:e4 -4"
                 ;;
