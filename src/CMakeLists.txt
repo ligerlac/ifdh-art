@@ -99,8 +99,6 @@ cet_find_library(FHICLCPP NAME fhiclcpp PATHS $ENV{FHICLCPP_LIB} NO_DEFAULT_PATH
 include(ArtDictionary)
 include(BuildPlugins)
 
-# tools (first)
-add_subdirectory(src)
 
 # packaging utility
 include(UseCPack)
