@@ -12,7 +12,7 @@ PRODUCTS=`pwd`/p:/nusoft/app/externals:$PRODUCTS
 setup git, upd
 git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc/ifdhc.git
 git clone ssh://p-ifdh-art@cdcvs.fnal.gov/cvs/projects/ifdh-art/ifdh_art.git
-export VERSION=v1_2_1a
+export VERSION=v1_2_5
 . ifdh_art/ups/build_node_setup.sh
 (cd ifdhc && sh  buildifdhc.sh $buildargs)
 (cd ifdhc && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m ifdhc.table ifdhc $VERSION $DECLAREBITS)
