@@ -93,7 +93,7 @@ IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition
 	"skipped",
     };
 
-    mf::LogVerbatim("test") << "IFCatalogInterface doUpdateStatus " << uri << "status:" << int(status) << "\n";
+    mf::LogVerbatim("test") << "IFCatalogInterface doUpdateStatus " << uri << " status: " << int(status) << "\n";
 
     if( _proj_uri.length()) {
         _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,statusmap[int(status)]);
