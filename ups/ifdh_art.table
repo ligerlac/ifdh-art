@@ -193,7 +193,7 @@ Action=build
      Execute(source ${UPS_PROD_DIR}/ups/setup_for_development ${UPS_OPTIONS}, NO_UPS_ENV)
      Execute(cmake -DCMAKE_BUILD_TYPE=$CETPKG_TYPE $CETPKG_SOURCE ,NO_UPS_ENV)
      Execute(make                                             , NO_UPS_ENV)
-     Execute(mv lib $${IFDH_PROD_NAME_UC}_FQ_DIR              , NO_UPS_ENV)
+     Execute(mv lib $${UPS_PROD_NAME_UC}_FQ_DIR              , NO_UPS_ENV)
      Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)
      #Execute(rm -rf build                                    , NO_UPS_ENV)
 
