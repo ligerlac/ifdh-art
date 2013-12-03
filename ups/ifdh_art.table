@@ -185,7 +185,7 @@ Common:
 Action=setup
      SetupEnv()
      ProdDir()
-     SetupRequired(ifdhc v1_2_7 -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(ifdhc v1_2_9 -q ${UPS_PROD_QUALIFIERS})
      SetupRequired(art v1_08_04 -q ${UPS_PROD_QUALIFIERS})
      EnvSet(${UPS_PROD_NAME_UC}_FQ_DIR, ${UPS_PROD_DIR}${_fq_subdir} )
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
