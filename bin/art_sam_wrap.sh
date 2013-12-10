@@ -17,8 +17,8 @@ ls /lib*/libc-*.so
 dest=""
 conf=/dev/null
 exe=$EXPERIMENT
-quals=nu:e2:debug
-vers=v1_2_7
+quals=nu:e4:debug
+vers=v1_2_9
 renam=""
 limit=""
 getconfig=false
@@ -126,19 +126,34 @@ eval "confbase=$confbase"
 #
 # make sure we have ifdh_art
 #
-. `UPS_OVERRIDE= ups setup ifdh_art $vers -q $quals:`
+if [ x$IFDH_ART_DIR = x ]
+then
+    . `UPS_OVERRIDE= ups setup ifdh_art $vers -q $quals:`
+fi
 
-# should not need this, but seem to..
+# should not need this, but seem to for older releases -- SL5 setup on SL6 bug
 PATH=/bin:/usr/bin:`echo $IFDHC_DIR/Linux*/bin`:$PATH
-ups flavor
-ups list -a nova_compat_libs
+LD_LIBRARY_PATH=`echo $IFDHC_DIR/Linux*/lib`:`echo $IFDH_ART_DIR/Linux*/lib`:$LD_LIBRARY_PATH
 setup nova_compat_libs v1_0 -q e2:debug
+
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NOVA_COMPAT_LIBS_FQ_DIR
 
 hostname=`hostname --fqdn`
-projurl=`ifdh findProject $SAM_PROJECT_NAME $EXPERIMENT`
-sleep 5
-consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
+projurl=`ifdh findProject $SAM_PROJECT_NAME`
+consumer_id=''
+count=0
+while [ "$consumer_id" = "" ]
+do
+    sleep 5
+    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
+    count=$((count + 1))
+    if [ $count -gt 10 ]
+    then
+        echo "Unable to establish consumer id!"
+        echo "Unable to establish consumer id!" >&2 
+        exit 
+    fi
+done
 
 echo project url: $projurl
 echo consumer id: $consumer_id
@@ -429,6 +444,9 @@ EOF
 
 do_copyback
 
+echo "Active ups products:"
+ups active
+
 if $getconfig
 then
 
@@ -473,7 +491,7 @@ then
 else
     echo "Not Getconfig case:"
 
-    update_via_fcl=true
+    update_via_fcl=false
 
     : $update_via_fcl
 
@@ -492,7 +510,7 @@ else
 EOF
 
     else
-	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
+	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer_id\""
     fi
 
     #
