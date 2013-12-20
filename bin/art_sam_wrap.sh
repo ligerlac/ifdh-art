@@ -41,11 +41,12 @@ do
     x-c|x--config)  conf="$2";  shift; shift; continue;;
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
     x-R|x--rename)  renam="$2";   shift; shift; continue;;
+    x--rename2)     renam2="$2";   shift; shift; continue;;
+    x--rename3)     renam3="$2";   shift; shift; continue;;
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-g|x--getconfig)getconfig=true; shift; continue;;
     x-G|x--with-gdb)use_gdb=true; shift; continue;;
-    x-R|x--rename)  renam="$2"; shift; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
     x--addoutput)   addoutput="$2"; shift; shift; continue;;
     x--confbase)    confbase="$2"; shift; shift; continue;;
@@ -292,6 +293,16 @@ fi
 if [ "x$renam" != "x" -a "$res" = "0" ]
 then
     ifdh renameOutput $renam
+fi
+
+if [ "x$renam2" != "x" -a "$res" = "0" ]
+then
+    ifdh renameOutput $renam2
+fi
+
+if [ "x$renam3" != "x" -a "$res" = "0" ]
+then
+    ifdh renameOutput $renam3
 fi
 
 if [ "x$dest" != "x" -a "$res" = "0" ]
