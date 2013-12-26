@@ -91,6 +91,7 @@ IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition
 	"transferred",
 	"consumed",
 	"skipped",
+	"consumed",  /* INCOMPLETE */
     };
 
     mf::LogVerbatim("test") << "IFCatalogInterface doUpdateStatus " << uri << " status: " << int(status) << "\n";
