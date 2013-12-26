@@ -186,6 +186,17 @@ echo project url: $projurl
 echo consumer id: $consumer_id
 
 #
+# override flags based on NAT IP addresses.
+# this should be in ifdh_cp, but until it is...
+#
+case `hostname -i` in
+10.*|192.168.*|172.1[6-9].*|172.2*|179.3[01].*) 
+           export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
+           echo "turning on gridftp -dp flags due to NAT..."
+           ;;
+esac
+
+#
 # Joe says not to do this...
 #
 #cd $TMPDIR
@@ -254,7 +265,7 @@ else
 EOF
 
     else
-	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer-id\""
+	args="$args \"--sam-web-uri=$projurl\" \"--sam-process-id=$consumer_id\""
     fi
 
     #
@@ -305,6 +316,11 @@ then
     ifdh renameOutput $renam3
 fi
 
+case `hostname` in
+*.smu.edu) export IFDH_STAGE_VIA='srm://smuosgse.hpc.smu.edu:8443/srm/v2/server?SFN=/data/srm'
+           echo "turning on staging and for SMU..."
+           ;;
+esac
 if [ "x$dest" != "x" -a "$res" = "0" ]
 then
     voms-proxy-info -all
