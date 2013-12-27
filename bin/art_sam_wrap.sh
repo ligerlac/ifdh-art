@@ -339,8 +339,12 @@ case `hostname` in
            echo "turning on staging and for SMU..."
            ;;
 esac
+
 if [ "x$dest" != "x" -a "$res" = "0" ]
 then
+    # workaround for srmls hangs
+    export SRM_JAVA_OPTIONS=-Xmx2048m
+
     voms-proxy-info -all
 
     ifdh copyBackOutput "$dest"
