@@ -59,7 +59,7 @@ do
 done
 
 find_ups() {
-    for path in /cvmfs/oasis.opensciencegrid.org/$EXPERIMENT/externals /cvmfs/novacvs.fnal.gov/externals /nusoft/app/externals
+    for path in /cvmfs/oasis.opensciencegrid.org/$EXPERIMENT/externals /cvmfs/oasis.opensciencegrid.org/fermilab/products/larsoft /cvmfs/novacvs.fnal.gov/externals /nusoft/app/externals
     do
        if [ -r $path/setup ] 
        then 
@@ -69,6 +69,7 @@ find_ups() {
     done
     return 1
 }
+
 check_space() {
    set : `df -P . | tail -1`
    avail_blocks=$5
@@ -82,42 +83,47 @@ check_space() {
 }
 
 kill_proc_kids_after_n() {
-    pid=$1
+    watchpid=$1
     after_secs=$2
     rate=10
     sofar=0
 
-    while kill -0 $pid 2> /dev/null && [ $sofar -lt $after_secs ]
+    start=`date +%s`
+    echo "Starting self-destruct timer of $after_secs at $start"
+
+    while kill -0 $watchpid 2> /dev/null && [ $sofar -lt $after_secs ]
     do
         sleep $rate
-        sofar=$(($sofar + $rate))
+        now=`date +%s`
+        sofar=$((now - start))
         printf "."
     done
     printf "\n"
     
-    if [ $sofar -ge $after_secs ]
+    if kill -0 $watchpid
     then
-       pslist=`ps -ef | grep $pid | grep -v grep`
-       pidlist=`echo "$pslist" | awk '{print $2}'`
-       printf "Timed out after $sofar seconds, killing:\n %s\n" "$pslist"
+       pslist=`ps -ef | grep " $watchpid " | grep -v grep`
+       printf "Timed out after $sofar seconds...\n"
        for signal in 15 9
        do
-	   for kidpid in $pidlist
-	   do
-	       # don't shoot self in foot
-	       if [ $kidpid != $BASHPID ]
-	       then
-		   echo "killing $kidpid"
-		   kill -$signal $kidpid
-	       fi
-	   done
+           echo "$pslist" | 
+              while read uid pid ppid rest
+              do
+                 if [ $ppid = $watchpid ]
+                 then
+                     echo "killing -$signal $uid $pid $ppid $rest"
+                     kill -$signal $pid
+                 fi
+              done
+           echo "killing -$signal $watchpid"
+           kill -$signal $watchpid
        done
     fi
 }
 
 if [ x"$self_destruct_timeout" != x ]
 then
-   kill_proc_kids_after_n $$ $self_destruct_timeout
+   kill_proc_kids_after_n $$ $self_destruct_timeout &
 fi
 
 #
@@ -203,14 +209,20 @@ echo consumer id: $consumer_id
 #
 # override flags based on NAT IP addresses.
 # this should be in ifdh_cp, but until it is...
-#
 case `hostname -i` in
 10.*|192.168.*|172.1[6-9].*|172.2*|179.3[01].*) 
            export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
            echo "turning on gridftp -dp flags due to NAT..."
            ;;
 esac
+case `hostname` in
+*.wisc.edu) 
+           export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
+           echo "turning on gridftp -dp flags due to Wisconsin firewall..."
+           ;;
+esac
 
+#
 #
 # Joe says not to do this...
 #
@@ -311,8 +323,30 @@ EOF
 
 fi
 
+get_last_input() {
+    curl -o - "$projurl/summary?format=json" 2>/dev/null  | (
+        nextone=false
+        while read tag val
+        do
+           if [ "$tag" = '"process_id":' -a "$val" = "$consumer_id," ]
+           then
+               nextone=true
+           fi
+           if $nextone && [ "$tag" = '"last_file":' ] 
+           then
+               echo $val | sed -e 's/",*//g'
+               break
+           fi
+        done
+        )
+}
+
 if [ "x$addoutput" != "x" -a "$res" = "0" ]
 then
+    if [ -z "$IFDH_INPUT_FILE" ]
+    then
+        export IFDH_INPUT_FILE=`get_last_input`
+    fi
     for f in $addoutput
     do
         ifdh addOutputFile $f 
