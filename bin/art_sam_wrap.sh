@@ -26,6 +26,7 @@ use_gdb=false
 exports=""
 sources=""
 self_destruct_timeout=""
+input_files=""
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -48,6 +49,7 @@ do
     x-g|x--getconfig)getconfig=true; shift; continue;;
     x-G|x--with-gdb)use_gdb=true; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
+    x--inputfile)   input_files="$input_files $2"; shift; shift; continue;;
     x--addoutput)   addoutput="$2"; shift; shift; continue;;
     x--confbase)    confbase="$2"; shift; shift; continue;;
     x--export)      exports="$exports \"$2\"" shift; shift; continue;;
@@ -59,7 +61,15 @@ do
 done
 
 find_ups() {
-    for path in /cvmfs/oasis.opensciencegrid.org/$EXPERIMENT/externals /cvmfs/oasis.opensciencegrid.org/fermilab/products/larsoft /cvmfs/novacvs.fnal.gov/externals /nusoft/app/externals
+
+    #
+    # use our slf6 stuff for systems with 3.x kernels (i.e. MTW2)
+    #
+    case `uname -r` in
+    3.*) export UPS_OVERRIDE="-h Linux64bit+2.6-2.12";;
+    esac
+    
+    for path in /cvmfs/oasis.opensciencegrid.org/$EXPERIMENT/externals /cvmfs/novacvs.fnal.gov/externals /nusoft/app/externals
     do
        if [ -r $path/setup ] 
        then 
@@ -69,7 +79,6 @@ find_ups() {
     done
     return 1
 }
-
 check_space() {
    set : `df -P . | tail -1`
    avail_blocks=$5
@@ -176,7 +185,7 @@ eval "confbase=$confbase"
 #
 if [ x$IFDH_ART_DIR = x ]
 then
-    . `UPS_OVERRIDE= ups setup ifdh_art $vers -q $quals:`
+    . `ups setup ifdh_art $vers -q $quals:`
 fi
 
 # should not need this, but seem to for older releases -- SL5 setup on SL6 bug
@@ -207,22 +216,11 @@ echo project url: $projurl
 echo consumer id: $consumer_id
 
 #
-# override flags based on NAT IP addresses.
+# override flags for grid copies..
 # this should be in ifdh_cp, but until it is...
-case `hostname -i` in
-10.*|192.168.*|172.1[6-9].*|172.2*|179.3[01].*) 
-           export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
-           echo "turning on gridftp -dp flags due to NAT..."
-           ;;
-esac
-case `hostname` in
-*.wisc.edu) 
-           export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
-           echo "turning on gridftp -dp flags due to Wisconsin firewall..."
-           ;;
-esac
-
 #
+export IFDH_GRIDFTP_EXTRA="-p 0 -dp"
+
 #
 # Joe says not to do this...
 #
@@ -231,6 +229,11 @@ check_space
 
 echo "Active ups products:"
 ups active
+
+if [ -n "$input_files" ]
+then
+    ifdh cp -D $input_files .
+fi
 
 if $getconfig
 then
@@ -323,30 +326,8 @@ EOF
 
 fi
 
-get_last_input() {
-    curl -o - "$projurl/summary?format=json" 2>/dev/null  | (
-        nextone=false
-        while read tag val
-        do
-           if [ "$tag" = '"process_id":' -a "$val" = "$consumer_id," ]
-           then
-               nextone=true
-           fi
-           if $nextone && [ "$tag" = '"last_file":' ] 
-           then
-               echo $val | sed -e 's/",*//g'
-               break
-           fi
-        done
-        )
-}
-
 if [ "x$addoutput" != "x" -a "$res" = "0" ]
 then
-    if [ -z "$IFDH_INPUT_FILE" ]
-    then
-        export IFDH_INPUT_FILE=`get_last_input`
-    fi
     for f in $addoutput
     do
         ifdh addOutputFile $f 
