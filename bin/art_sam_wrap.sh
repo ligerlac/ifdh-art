@@ -25,6 +25,8 @@ getconfig=false
 use_gdb=false
 exports=""
 sources=""
+prescripts=""
+postscripts=""
 self_destruct_timeout=""
 input_files=""
 
@@ -55,6 +57,8 @@ do
     x--export)      exports="$exports \"$2\"" shift; shift; continue;;
     x--source)      sources="$sources \"$2\"" shift; shift; continue;;
     x--self-destruct-timer) self_destruct_timeout=$2; shift; shift; continue;;
+    x--prescript)  prescripts="$prescripts \"$2\"":; shift; shift; continue;;
+    x--postscript) postscripts="$postscripts \"$2\"":; shift; shift; continue;;
     *)              args="$args \"$1\""; shift; continue;;
     esac
     break
@@ -176,6 +180,14 @@ do
    eval blat=$blat
    echo "doing: source $blat"
    eval "source $blat"
+done
+
+for blat in $prescripts 
+do
+   blat=`echo $blat | sed -e 's/:/ /g'`
+   eval blat=$blat
+   echo "doing: $blat"
+   eval "$blat"
 done
 
 eval "confbase=$confbase"
@@ -332,6 +344,14 @@ EOF
     fi
 
 fi
+
+for blat in $postscripts 
+do
+   blat=`echo $blat | sed -e 's/:/ /g'`
+   eval blat=$blat
+   echo "doing: $blat"
+   eval "$blat"
+done
 
 if [ "x$addoutput" != "x" -a "$res" = "0" ]
 then
