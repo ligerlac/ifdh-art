@@ -195,6 +195,13 @@ setup nova_compat_libs v1_0 -q e2:debug
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NOVA_COMPAT_LIBS_FQ_DIR
 
+if [ -n "$CLUSTER" ]
+then
+   description="$CLUSTER.$PROCESS"
+else
+   description=""
+fi
+
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME`
 consumer_id=''
@@ -202,7 +209,7 @@ count=0
 while [ "$consumer_id" = "" ]
 do
     sleep 5
-    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "" "$limit"`
+    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "$description" "$limit"`
     count=$((count + 1))
     if [ $count -gt 10 ]
     then
