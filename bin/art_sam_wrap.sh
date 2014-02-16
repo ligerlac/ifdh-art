@@ -36,10 +36,87 @@ datadir=$TMPDIR/ifdh_$$
 #
 # parse options we know, collect rest in $args
 #
+usage() {
+cat <<EOF
+Usage:
+    $0 [Options] [cmd_options]
+
+       find ifdh_art and dependencies in CVMFS or in /nusoft/app/externals,
+       register a consumer process, and run an ART executable, 
+       fetching input from a SAM Project specified by $SAM_PROJECT
+       in the environment.
+
+    Options are:
+
+    -h|--help
+        Print this message and exit
+
+    -q|--quals  str
+    -v|--vers   version
+	Set qualifiers and version of ifdh_art to setup if
+        it isn't setup by any --source parameters.
+
+    -X|--exe    executable
+    -c|--config file
+        executable (defaults to experiment name) and config file to
+        run as executable -c config [cmd_options]
+
+    -D|--dest   url
+        specify destination path or url for copying back output
+        default is to not copy back files
+
+    -R|--rename how
+    --rename2    how
+    --rename3    how
+        call "ifdh rename" to rename output files
+        ...possibly 2 or three times
+
+    -g|--getconfig
+        get the config file as an input file from SAM
+        (i.e. for MonteCarlo simulation) 
+        conflicts with --conf.
+
+    --confbase
+        for --getconfig, prepend this file to the fetched
+        config file before running the executable
+
+    -G|--with-gdb
+        Run the executable under the debugger, and print a
+        stack trace if it dies
+
+    -L|--limit
+        Pass a number of files limit to establishProcess.
+
+    --inputfile
+        Copy this extra input file into the job area before
+        running the executable
+
+    --addoutput pattern
+        call "ifdh addOutputFile" with files that match this 
+        glob pattern (i.e. --addoutput *out.root)
+
+    --export VAR=value
+        export the following VAR=value before running the
+        executable
+
+    --self-destruct-timer seconds
+        suicide if the executable runs more than seconds seconds;
+        usually only use this if you have jobs that hang and you
+        get no output back
+
+    --source file:arg:arg:...
+    --prescript file:arg:arg:...
+    --postscript file:arg:arg:...
+        source/execute the file before/after the main executable
+        is run.
+EOF
+}
+
 while [ $# -gt 0 ]
 do
     echo "debug: \$1 '$1' \$2 '$2'"
     case "x$1" in
+    x-h|x--help)    usage; exit 0;;
     x-q|x--quals)   quals="$2"; shift; shift; continue;;
     x-c|x--config)  conf="$2";  shift; shift; continue;;
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
