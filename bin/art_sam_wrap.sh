@@ -292,7 +292,7 @@ else
 fi
 
 hostname=`hostname --fqdn`
-projurl=`ifdh findProject $SAM_PROJECT_NAME`
+projurl=`ifdh findProject $SAM_PROJECT_NAME ${SAM_STATION:-$EXPERIMENT}`
 consumer_id=''
 count=0
 while [ "$consumer_id" = "" ]
@@ -407,12 +407,8 @@ EOF
 
     if $use_gdb
     then
-<<<<<<< HEAD
-         command="printf 'run\nwhere\nquit\n' | gdb --args $command"
-=======
          printf 'run\nwhere\nquit\n'  > gdbcmds
 	 command="gdb -x gdbcmds --args $command"
->>>>>>> c571857375fd9cbff36f706552e5076a1d85aa58
     fi
 
     echo "Running: $command"
@@ -483,16 +479,12 @@ fi
 
 ifdh endProcess "$projurl" "$consumer_id"
 
-<<<<<<< HEAD
 ifdh cleanup -x
-=======
-ifdh cleanup -
 
 # cleanup temporary script dir
 rm -rf $dp
 
 # clean up usual detritus
 rm -f *.fcl *.raw *.root t_* stage_*
->>>>>>> c571857375fd9cbff36f706552e5076a1d85aa58
 
 exit $res
