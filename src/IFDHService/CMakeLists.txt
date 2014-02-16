@@ -5,6 +5,7 @@ simple_plugin(IFDH service
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
+                           ${CETLIBX}
              )
 
 install_headers()

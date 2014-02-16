@@ -48,7 +48,7 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
             _ifdh_handle->addOutputFile(_output_files[i]);
         }
     }
-    if( _proj_uri.length()) {
+    if( _proj_uri.length() &&  _process_id.length() ) {
        _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
     }
 }
@@ -91,9 +91,10 @@ IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition
 	"transferred",
 	"consumed",
 	"skipped",
+	"consumed",  /* INCOMPLETE */
     };
 
-    mf::LogVerbatim("test") << "IFCatalogInterface doUpdateStatus " << uri << "status:" << int(status) << "\n";
+    mf::LogVerbatim("test") << "IFCatalogInterface doUpdateStatus " << uri << " status: " << int(status) << "\n";
 
     if( _proj_uri.length()) {
         _ifdh_handle->updateFileStatus(_proj_uri,_process_id,uri,statusmap[int(status)]);
