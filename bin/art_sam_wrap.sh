@@ -23,6 +23,7 @@ renam=""
 limit=""
 getconfig=false
 use_gdb=false
+multifile=false
 exports=""
 sources=""
 prescripts=""
@@ -76,6 +77,11 @@ Usage:
         (i.e. for MonteCarlo simulation) 
         conflicts with --conf.
 
+    --multifile
+        Fetches multiple files per job and runs the executable 
+        once per file.
+        conflicts with --getconfig
+
     --confbase
         for --getconfig, prepend this file to the fetched
         config file before running the executable
@@ -126,6 +132,7 @@ do
     x-X|x--exe)     cmd="$2";   shift; shift; continue;;
     x-v|x--vers)    vers="$2";  shift; shift; continue;;
     x-g|x--getconfig)getconfig=true; shift; continue;;
+    x--multifile)   multifile=true; shift; continue;;
     x-G|x--with-gdb)use_gdb=true; shift; continue;;
     x-L|x--limit)   limit="$2"; shift; shift; continue;;
     x--inputfile)   input_files="$input_files $2"; shift; shift; continue;;
@@ -371,16 +378,38 @@ then
         fi
         uri=`ifdh getNextFile $projurl $consumer_id`
     done
-
+elif $multifile
+then
+    echo "Multi-file case:"
+    uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
+    res=0
+    while [ -n "$uri" -a "$res" = 0 ]
+      do
+      fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
+      echo "got file: $fname"
+      ifdh updateFileStatus $projurl  $consumer_id $fname transferred
+      
+      command="\"${cmd}\" -c \"$conf\" $args $fname"
+      
+      echo "Running: $command"
+      if eval "$command"
+	  then 
+	  ifdh updateFileStatus $projurl  $consumer_id $fname consumed
+      else
+	  res=$?
+	  ifdh updateFileStatus $projurl  $consumer_id $fname skipped
+      fi
+      uri=`ifdh getNextFile $projurl $consumer_id`
+    done
 else
     echo "Not Getconfig case:"
-
+    
     update_via_fcl=false
 
     : $update_via_fcl
 
     if $update_via_fcl
-    then
+	then
 
 	cp $conf ${TMPDIR:=/var/tmp}/conf.$$
 	conf=$TMPDIR/conf.$$
