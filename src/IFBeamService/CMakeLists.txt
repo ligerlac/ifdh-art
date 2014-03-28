@@ -3,6 +3,8 @@
 
 simple_plugin(IFBeam "service" 
 			   ${IFBEAM} 
+                           ${WDA}
+                           ${IFDHC}
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
                            ${CETLIBX}

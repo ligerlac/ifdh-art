@@ -58,6 +58,9 @@ cet_check_gcc()
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
 include_directories($ENV{IFDHC_DIR}/inc)
+include_directories($ENV{LIBWDA_DIR}/include)
+include_directories($ENV{IFBEAM_DIR}/include)
+include_directories($ENV{NUCONDB_DIR}/inc)
 #include_directories($ENV{ART_DIR}/include)
 include_directories($ENV{BOOST_INC})
 include_directories($ENV{CETLIB_INC})
@@ -82,8 +85,9 @@ cet_find_library( CPPUNIT NAMES cppunit   PATHS ENV CPPUNIT_LIB   NO_DEFAULT_PAT
 
 #ifdhc
 cet_find_library( IFDH NAMES ifdh PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
-cet_find_library( IFBEAM NAMES ifbeam PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
-cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
+cet_find_library( IFBEAM NAMES ifbeam PATHS $ENV{IFBEAM_LIB} NO_DEFAULT_PATH )
+cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{NUCONDB_LIB} NO_DEFAULT_PATH )
+cet_find_library( WDA NAMES wda PATHS $ENV{LIBWDA_DIR}/lib NO_DEFAULT_PATH )
 
 # SQLite
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
