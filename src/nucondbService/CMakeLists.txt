@@ -3,7 +3,7 @@
 simple_plugin(nucondb "service" 
 			   ${NUCONDB} 
                            ${WDA}
-                           ${IFDHC}
+                           ${IFDH}
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
                            ${CETLIBX}
