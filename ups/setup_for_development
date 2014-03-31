@@ -39,13 +39,12 @@ test -z "$db" && tnotnull BASH_SOURCE && set_ me=`dirname $BASH_SOURCE` && set_ 
 
 # history is applicable only for interactive t/csh
 test -z "$db" -a "$ss" = csh && test $?history = 0 && set history=5  # make sure history 1 works
-test -z "$db" -a "$ss" = csh && set me=`history 1|sed -e 's/^[ 	0-9:]*//'` && test -n "$me" && set me=`dirname $me[2]` \
+test -z "$db" -a "$ss" = csh && set me=`history 1|sed 's/^[ 	0-9:]*//'` && test -n "$me" && set me=`dirname $me[2]` \
     && set db=`sh -c "cd $me >/dev/null 2>&1 && pwd"` && vecho_ 'setting db via interactive history'
 #echo This script lives in $db
 
 test -z "$db" && echo "$msg2" || vecho_ "db=$db"
-test -n "$db" && setenv CETPKG_TOP `dirname $db`
-test -n "$db" && setenv CETPKG_SOURCE $CETPKG_TOP/src
+test -n "$db" && setenv CETPKG_SOURCE `dirname $db`
 
 # make sure we know the current directory
 setenv CETPKG_BUILD `pwd`
@@ -58,14 +57,14 @@ set_ msg5='ERROR: setup of required products has failed'
 
 echo ----------- check this block for errors -----------------------
 set_ setup_fail="false"
-set_ cetb=` grep only_for_build $CETPKG_TOP/ups/product_deps | grep cetbuildtools | awk '{ print $2 }' `
-set_ cetv=` grep only_for_build $CETPKG_TOP/ups/product_deps | grep cetbuildtools | awk '{ print $3 }' `
+set_ cetb=` grep only_for_build $CETPKG_SOURCE/ups/product_deps | grep cetbuildtools | awk '{ print $2 }' `
+set_ cetv=` grep only_for_build $CETPKG_SOURCE/ups/product_deps | grep cetbuildtools | awk '{ print $3 }' `
 #echo Found $cetb $cetv
 setup -B $cetb $cetv
 test "$?" = 0 || set_ setup_fail="true"
-setenv UPS_OPTIONS -B
+setenv UPS_OVERRIDE -B
 # now get the rest of the products
-set_ cmd="$CETBUILDTOOLS_DIR/bin/set_dev_products $CETPKG_TOP $CETPKG_BUILD $*"
+set_ cmd="$CETBUILDTOOLS_DIR/bin/set_dev_products $CETPKG_SOURCE $CETPKG_BUILD $*"
 #echo Ready to run $cmd
 source `$cmd`
 #echo "$cmd returned $setup_fail"

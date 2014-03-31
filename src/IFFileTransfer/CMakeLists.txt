@@ -3,14 +3,15 @@ include_directories(../IFDHService)
 
 simple_plugin(IFFileTransfer "service" 
 			   ${IFDH} 
-                           ${ARTFRAMEWORKCORE}
-                           ${ARTUTILITIES}
+                           ${ART_FRAMEWORK_CORE}
+                           ${ART_UTILITIES}
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIBX}
+                           ${CETLIB}
+              BASENAME_ONLY
            )
 
-install_headers()
+install_ifdh_headers()
 install_source()
 
