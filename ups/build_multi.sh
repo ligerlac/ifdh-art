@@ -13,11 +13,17 @@ mkdir p
 PRODUCTS=`pwd`/p:$PRODUCTS
 setup git, upd
 git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc/ifdhc.git
+git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc-ifbeam
+git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc-nucondb
 git clone ssh://p-ifdh-art@cdcvs.fnal.gov/cvs/projects/ifdh-art/ifdh_art.git
 export VERSION=`cd ifdhc &&  git describe --tags --match 'v*' `
 . ifdh_art/ups/build_node_setup.sh
 (cd ifdhc && sh  buildifdhc.sh $buildargs)
+(cd ifdhc-ifbeam && sh  buildifdhc.sh $buildargs)
+(cd ifdhc-nucondb && sh  buildifdhc.sh $buildargs)
 (cd ifdhc && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m ifdhc.table ifdhc $VERSION $DECLAREBITS)
+(cd ifdhc-ifbeam && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m ifbeam.table ifbeam $VERSION $DECLAREBITS)
+(cd ifdhc-nucondb && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m nucondb.table nucondb $VERSION $DECLAREBITS)
 (cd ifdh_art && sh  buildifdh_art.sh $buildargs)
 mv ifdh_art/Lin*/lib/*Beam* ifdhc/Lin*/lib
 mv ifdh_art/Lin*/inc/*Beam* ifdhc/inc

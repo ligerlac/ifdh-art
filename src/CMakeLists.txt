@@ -49,7 +49,7 @@ cet_report_compiler_flags()
 # these are minimum required versions, not the actual product versions
  find_ups_product( art v1_06_00 )
  find_ups_product( ifdhc v1_1_3 )
-
+ find_ups_product( ifbeam v1_1_3 )
 
 cet_check_gcc()
 
@@ -82,8 +82,8 @@ cet_find_library( CPPUNIT NAMES cppunit   PATHS ENV CPPUNIT_LIB   NO_DEFAULT_PAT
 
 #ifdhc
 cet_find_library( IFDH NAMES ifdh PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
-cet_find_library( IFBEAM NAMES ifbeam PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
-cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{IFDHC_LIB} NO_DEFAULT_PATH )
+cet_find_library( IFBEAM NAMES ifbeam PATHS $ENV{IFBEAM_LIB} NO_DEFAULT_PATH )
+cet_find_library( NUCONDB NAMES nucondb PATHS $ENV{NUCONDB_LIB} NO_DEFAULT_PATH )
 
 # SQLite
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
