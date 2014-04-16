@@ -18,9 +18,11 @@ git clone ssh://p-ifdhc@cdcvs.fnal.gov/cvs/projects/ifdhc-nucondb
 git clone ssh://p-ifdh-art@cdcvs.fnal.gov/cvs/projects/ifdh-art/ifdh_art.git
 export VERSION=`cd ifdhc &&  git describe --tags --match 'v*' `
 . ifdh_art/ups/build_node_setup.sh
-(cd ifdhc && sh  buildifdhc.sh $buildargs)
-(cd ifdhc-ifbeam && sh  buildifdhc.sh $buildargs)
-(cd ifdhc-nucondb && sh  buildifdhc.sh $buildargs)
+(cd ifdhc-libwda/src && make all install)
+(cd ifdhc-libwda && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m libwda.table libwda v2_9_5 -4 )
+(cd ifdhc && sh buildifdhc.sh $buildargs)
+(cd ifdhc-ifbeam && sh  buildifbeam.sh $buildargs)
+(cd ifdhc-nucondb && sh  buildnucondb.sh $buildargs)
 (cd ifdhc && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m ifdhc.table ifdhc $VERSION $DECLAREBITS)
 (cd ifdhc-ifbeam && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m ifbeam.table ifbeam $VERSION $DECLAREBITS)
 (cd ifdhc-nucondb && ups declare -z /tmp/$USER$$/p -r `pwd` -M ups -m nucondb.table nucondb $VERSION $DECLAREBITS)
