@@ -2,11 +2,14 @@
 
 simple_plugin(nucondb "service" 
 			   ${NUCONDB} 
+                           ${WDA}
+                           ${IFDH}
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
-                           ${CETLIBX}
+                           ${CETLIB}
+              BASENAME_ONLY
         )
 
-install_headers()
+install_ifdh_headers()
 install_source()
 

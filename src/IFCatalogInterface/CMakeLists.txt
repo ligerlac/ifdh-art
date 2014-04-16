@@ -1,15 +1,16 @@
 
 simple_plugin(IFCatalogInterface "service" 
 			   ${IFDH} 
-                           ${ARTFRAMEWORKCORE}
-                           ${ARTUTILITIES}
+                           ${ART_FRAMEWORK_CORE}
+                           ${ART_UTILITIES}
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIBX}
+                           ${CETLIB}
+              BASENAME_ONLY
 		)
 include_directories(../IFDHService)
 
-install_headers()
+install_ifdh_headers()
 install_source()
 
