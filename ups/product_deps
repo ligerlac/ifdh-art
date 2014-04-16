@@ -19,8 +19,8 @@ incdir      fq_dir	inc
 #
 product		version
 art		v1_09_02
-ifbeam		v1_4_0
-nucondb		v1_4_0
+ifbeam		v1_4_1
+nucondb		v1_4_1
 gcc		v4_8_2
 
 # list products required ONLY for the build

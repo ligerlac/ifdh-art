@@ -1,0 +1,214 @@
+File=Table
+Product=ifdh_art
+
+Group:
+
+Flavor=ANY
+Qualifiers=""
+_qualbits=
+
+  # ===================
+  # make upd addproduct happy -- should fix in upd
+  Flavor=ANY
+  Qualifiers=e2:debug
+  Flavor=ANY
+  Qualifiers=e4:debug
+  Flavor=ANY
+  Qualifiers=e2:prof
+  Flavor=ANY
+  Qualifiers=e4:prof
+  # ===================
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e2:debug
+    _fq_subdir=/Linux-2-6-2-12-e2-debug
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e2:debug
+    _fq_subdir=/Linux-2-6-2-5-e2-debug
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e2:debug
+    _fq_subdir=/Linux64bit-2-6-2-12-e2-debug
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e2:debug
+    _fq_subdir=/Linux64bit-2-6-2-5-e2-debug
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e2:prof
+    _fq_subdir=/Linux-2-6-2-12-e2-prof
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e2:prof
+    _fq_subdir=/Linux-2-6-2-5-e2-prof
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e2:prof
+    _fq_subdir=/Linux64bit-2-6-2-12-e2-prof
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e2:prof
+    _fq_subdir=/Linux64bit-2-6-2-5-e2-prof
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e2:debug:nu
+    _fq_subdir=/Linux-2-6-2-12-e2-debug
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e2:debug:nu
+    _fq_subdir=/Linux-2-6-2-5-e2-debug
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e2:debug:nu
+    _fq_subdir=/Linux64bit-2-6-2-12-e2-debug
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e2:debug:nu
+    _fq_subdir=/Linux64bit-2-6-2-5-e2-debug
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e2:prof:nu
+    _fq_subdir=/Linux-2-6-2-12-e2-prof
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e2:prof:nu
+    _fq_subdir=/Linux-2-6-2-5-e2-prof
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e2:prof:nu
+    _fq_subdir=/Linux64bit-2-6-2-12-e2-prof
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e2:prof:nu
+    _fq_subdir=/Linux64bit-2-6-2-5-e2-prof
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e4:debug
+    _fq_subdir=/Linux-2-6-2-12-e4-debug
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e4:debug
+    _fq_subdir=/Linux-2-6-2-5-e4-debug
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e4:debug
+    _fq_subdir=/Linux64bit-2-6-2-12-e4-debug
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e4:debug
+    _fq_subdir=/Linux64bit-2-6-2-5-e4-debug
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e4:prof
+    _fq_subdir=/Linux-2-6-2-12-e4-prof
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e4:prof
+    _fq_subdir=/Linux-2-6-2-5-e4-prof
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e4:prof
+    _fq_subdir=/Linux64bit-2-6-2-12-e4-prof
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e4:prof
+    _fq_subdir=/Linux64bit-2-6-2-5-e4-prof
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e4:debug:nu
+    _fq_subdir=/Linux-2-6-2-12-e4-debug
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e4:debug:nu
+    _fq_subdir=/Linux-2-6-2-5-e4-debug
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e4:debug:nu
+    _fq_subdir=/Linux64bit-2-6-2-12-e4-debug
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e4:debug:nu
+    _fq_subdir=/Linux64bit-2-6-2-5-e4-debug
+
+
+  Flavor=Linux+2.6-2.12
+  Qualifiers=e4:prof:nu
+    _fq_subdir=/Linux-2-6-2-12-e4-prof
+
+
+  Flavor=Linux+2.6-2.5
+  Qualifiers=e4:prof:nu
+    _fq_subdir=/Linux-2-6-2-5-e4-prof
+
+
+  Flavor=Linux64bit+2.6-2.12
+  Qualifiers=e4:prof:nu
+    _fq_subdir=/Linux64bit-2-6-2-12-e4-prof
+
+
+  Flavor=Linux64bit+2.6-2.5
+  Qualifiers=e4:prof:nu
+    _fq_subdir=/Linux64bit-2-6-2-5-e4-prof
+
+Common:
+
+
+Action=setup
+     SetupEnv()
+     ProdDir()
+     SetupRequired(ifdhc   ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(ifbeam  ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(nucondb ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(art v1_08_10 -q ${UPS_PROD_QUALIFIERS})
+     EnvSet(${UPS_PROD_NAME_UC}_FQ_DIR, ${UPS_PROD_DIR}${_fq_subdir} )
+     PathPrepend(PATH,${UPS_PROD_DIR}/bin)
+     PathPrepend(LD_LIBRARY_PATH, $${UPS_PROD_NAME_UC}_FQ_DIR/lib)
+
+Action=build
+     SetupEnv()
+     ProdDir()
+     EnvSet(ARCH,"$ART_CXXFLAGS")
+     EnvSet(${UPS_PROD_NAME_UC}_FQ_DIR, ${UPS_PROD_DIR}${_fq_subdir} )
+     Execute(rm -rf $${UPS_PROD_NAME_UC}_FQ_DIR/lib $${UPS_PROD_NAME_UC}_FQ_DIR/inc   , NO_UPS_ENV)
+     Execute(mkdir -p $${UPS_PROD_NAME_UC}_FQ_DIR/inc                     , NO_UPS_ENV)
+     Execute(cp ${UPS_PROD_DIR}/src/*/*.h $IFDH_ART_FQ_DIR/inc , NO_UPS_ENV)
+     Execute(mkdir -p ${UPS_PROD_DIR}/build                   , NO_UPS_ENV)
+     Execute(cd ${UPS_PROD_DIR}/build                         , NO_UPS_ENV)
+     Execute(. `ups setup ups`, NO_UPS_ENV)
+     Execute(source ${UPS_PROD_DIR}/ups/setup_for_development ${UPS_OPTIONS}, NO_UPS_ENV)
+     Execute(cmake -DCMAKE_BUILD_TYPE=$CETPKG_TYPE $CETPKG_SOURCE ,NO_UPS_ENV)
+     Execute(make                                             , NO_UPS_ENV)
+     Execute(mv lib $${UPS_PROD_NAME_UC}_FQ_DIR              , NO_UPS_ENV)
+     Execute(cd ${UPS_PROD_DIR}                               , NO_UPS_ENV)
+     #Execute(rm -rf build                                    , NO_UPS_ENV)
+
+end:
