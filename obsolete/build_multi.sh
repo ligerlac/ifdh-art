@@ -1,5 +1,5 @@
 
-hostlist="novagpvm02 novagpvm03 novasoft@novadaq-far-datamon novasoft@novadaq-far-datamon"
+hostlist="novagpvm02.fnal.gov novagpvm03.fnal.gov novasoft@novadaq-far-datamon.fnal.gov novasoft@novadaq-far-datamon.fnal.gov"
 
 cat <<'EOF'
 Build bits:

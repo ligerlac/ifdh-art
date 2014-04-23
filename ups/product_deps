@@ -2,6 +2,7 @@
 # This line defines the product name and version
 parent ifdh_art	v1_4_1
 defaultqual	e5
+#defaultqual	e4
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -19,9 +20,11 @@ incdir      fq_dir	inc
 #
 product		version
 art		v1_09_02
+#art		v1_08_10
 ifbeam		v1_4_1
 nucondb		v1_4_1
 gcc		v4_8_2
+#gcc		v4_8_1
 
 # list products required ONLY for the build
 # any products here must NOT have qualifiers
