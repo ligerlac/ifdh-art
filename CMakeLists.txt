@@ -43,7 +43,7 @@ cet_report_compiler_flags()
  find_ups_product( ifdhc v1_4_0 )
  find_ups_product( ifbeam v1_4_0 )
  find_ups_product( nucondb v1_4_0 )
- find_ups_product( libwda v1_4_0 )
+ find_ups_product( libwda v2_9_0 )
 
 
 cet_check_gcc()
@@ -52,20 +52,20 @@ cet_check_gcc()
 # notice use of ENV to invoke an external variable
 include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
 include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
-include_directories($ENV{IFDHC_DIR}/inc)
-include_directories($ENV{LIBWDA_DIR}/include)
-include_directories($ENV{IFBEAM_DIR}/include)
-include_directories($ENV{NUCONDB_DIR}/include)
-
-##include_directories($ENV{BOOST_INC})
-##include_directories($ENV{CETLIB_INC})
-##include_directories($ENV{CPP0X_INC})
-##include_directories($ENV{CPPUNIT_INC})
-##include_directories($ENV{FHICLCPP_INC})
-##include_directories($ENV{MESSAGEFACILITY_INC})
-
-##link_directories($ENV{ART_LIB})
-##link_directories($ENV{BOOST_LIB})
+# decide if we have IFDHC_FQ_DIR or IFDHC_DIR
+if ( $ENV{IFDHC_FQ_DIR} MATCHES "ifdhc" )
+  message(STATUS "using FQ_DIR")
+  include_directories($ENV{IFDHC_FQ_DIR}/inc)
+  include_directories($ENV{LIBWDA_FQ_DIR}/include)
+  include_directories($ENV{IFBEAM_FQ_DIR}/include)
+  include_directories($ENV{NUCONDB_FQ_DIR}/include)
+else()
+  message(STATUS "using DIR")
+  include_directories($ENV{IFDHC_DIR}/inc)
+  include_directories($ENV{LIBWDA_DIR}/include)
+  include_directories($ENV{IFBEAM_DIR}/include)
+  include_directories($ENV{NUCONDB_DIR}/include)
+endif()
 
 
 # have to make sure cmake doesn't select the system libraries
