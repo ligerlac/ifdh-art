@@ -383,7 +383,7 @@ then
     echo "Multi-file case:"
     uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
     res=0
-    while [ -n "$uri" -a "$res" = 0 ]
+    while [ -n "$uri" ]
       do
       fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
       echo "got file: $fname"

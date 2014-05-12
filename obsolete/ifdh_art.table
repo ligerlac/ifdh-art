@@ -185,9 +185,9 @@ Common:
 Action=setup
      SetupEnv()
      ProdDir()
-     SetupRequired(ifdhc  ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
-     SetupRequired(ifbeam ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
-     SetupRequired(ifbeam ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(ifdhc   ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(ifbeam  ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
+     SetupRequired(nucondb ${UPS_PROD_VERSION} -q ${UPS_PROD_QUALIFIERS})
      SetupRequired(art v1_08_10 -q ${UPS_PROD_QUALIFIERS})
      EnvSet(${UPS_PROD_NAME_UC}_FQ_DIR, ${UPS_PROD_DIR}${_fq_subdir} )
      PathPrepend(PATH,${UPS_PROD_DIR}/bin)
