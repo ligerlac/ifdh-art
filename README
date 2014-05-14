@@ -1,10 +1,10 @@
 Convention: 
 ifdh_art v1_4_0 built with art v1_08_10 and gcc v4_8_1
-ifdh_art v1_4_0a built with art v1_09_02 and gcc v4_8_2
+ifdh_art v1_4_0a built with art v1_09_XX and gcc v4_8_2
 
 Building ifdh_art
 
-When building for art v1_09_02, QUAL is e5
+When building for art v1_09_XX, QUAL is e5
 When building for art v1_08_10, QUAL is e4
 
 ifdh_art/ups/product_deps will need to be edited to have either e4 or e5 throughout
@@ -12,9 +12,7 @@ ifdh_art/ups/product_deps will need to be edited to have either e4 or e5 through
 make sure that ups is setup
 mkdir working_dir
 cd working_dir
-# note: usage on setup_for_development says you can do -p e4 without -d,
-#       ...but it does not work
-source /your/source/ifdh_art/ups/setup_for_development -d [-p] {e4|e5|...}
+source /your/source/ifdh_art/ups/setup_for_development [-d|-p]
 env CC=gcc CXX=g++ FC=gfortran cmake -DCMAKE_INSTALL_PREFIX=/your/local/product_directory -DCMAKE_BUILD_TYPE=$CETPKG_TYPE $CETPKG_SOURCE
 make [-jN]  
 make install (optional)
