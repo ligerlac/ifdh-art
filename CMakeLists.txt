@@ -39,14 +39,11 @@ cet_set_compiler_flags(DIAGS VIGILANT
 cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
- find_ups_product( art v1_08_00 )
+ find_ups_product( art v1_09_00 )
  find_ups_product( ifdhc v1_4_0 )
  find_ups_product( ifbeam v1_4_0 )
  find_ups_product( nucondb v1_4_0 )
  find_ups_product( libwda v2_9_0 )
-
-
-cet_check_gcc()
 
 # include search path
 # notice use of ENV to invoke an external variable
