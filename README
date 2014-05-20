@@ -1,13 +1,13 @@
-Convention: 
-ifdh_art v1_4_0 built with art v1_08_10 and gcc v4_8_1
-ifdh_art v1_4_0a built with art v1_09_XX and gcc v4_8_2
-
 Building ifdh_art
 
 When building for art v1_09_XX, QUAL is e5
 When building for art v1_08_10, QUAL is e4
 
-ifdh_art/ups/product_deps will need to be edited to have either e4 or e5 throughout
+After checking out ifdh_art:
+When building for art v1_09_03:
+cp ups/product_deps.e5 ups/product_deps
+When building for art v1_08_10: 
+cp ups/product_deps.e4 ups/product_deps
 
 make sure that ups is setup
 mkdir working_dir
