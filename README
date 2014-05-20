@@ -8,6 +8,7 @@ When building for art v1_09_03:
 cp ups/product_deps.e5 ups/product_deps
 When building for art v1_08_10: 
 cp ups/product_deps.e4 ups/product_deps
+cp CMakeLists.txt.e4 CMakeLists.txt
 
 make sure that ups is setup
 mkdir working_dir
