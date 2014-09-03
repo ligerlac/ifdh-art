@@ -21,29 +21,22 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art		v1_09_03	s1
-art		v1_09_04	s2
-art		v1_10_00b	s3
+art		v1_11_02	s4
 ifbeam		v1_4_4
 nucondb		v1_4_4
-gcc		v4_8_2
-cetbuildtools   v4_00_00       -       only_for_build
+cetbuildtools   v4_01_03       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
-qualifier	art		ifbeam		nucondb		gcc
-s1:e5:debug	e5:debug	e5:debug	e5:debug	-nq-
-s1:e5:prof	e5:prof		e5:prof		e5:prof		-nq-
-s1:nu:e5:debug	e5:debug:nu	e5:debug	e5:debug	-nq-
-s1:nu:e5:prof	e5:prof:nu	e5:prof		e5:prof		-nq-
-s2:e5:debug	e5:debug	e5:debug	e5:debug	-nq-
-s2:e5:prof	e5:prof		e5:prof		e5:prof		-nq-
-s2:nu:e5:debug	e5:debug:nu	e5:debug	e5:debug	-nq-
-s2:nu:e5:prof	e5:prof:nu	e5:prof		e5:prof		-nq-
-s3:e5:debug	e5:debug	e5:debug	e5:debug	-nq-
-s3:e5:prof	e5:prof		e5:prof		e5:prof		-nq-
-s3:nu:e5:debug	e5:debug:nu	e5:debug	e5:debug	-nq-
-s3:nu:e5:prof	e5:prof:nu	e5:prof		e5:prof		-nq-
+qualifier	art		ifbeam		nucondb		compiler
+s4:e5:debug	e5:debug	e5:debug	e5:debug	gcc
+s4:e5:prof	e5:prof		e5:prof		e5:prof		gcc
+s4:nu:e5:debug	e5:debug:nu	e5:debug	e5:debug	gcc
+s4:nu:e5:prof	e5:prof:nu	e5:prof		e5:prof		gcc
+s4:e6:debug	e6:debug	e6:debug	e6:debug	gcc
+s4:e6:prof	e6:prof		e6:prof		e6:prof		gcc
+s4:nu:e6:debug	e6:debug:nu	e6:debug	e6:debug	gcc
+s4:nu:e6:prof	e6:prof:nu	e6:prof		e6:prof		gcc
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
