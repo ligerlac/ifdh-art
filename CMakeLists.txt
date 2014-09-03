@@ -33,7 +33,6 @@ cet_set_compiler_flags(DIAGS VIGILANT
   WERROR
   NO_UNDEFINED
   EXTRA_FLAGS -pedantic
-  EXTRA_CXX_FLAGS -std=c++11
 )
 
 cet_report_compiler_flags()
@@ -44,11 +43,9 @@ cet_report_compiler_flags()
  find_ups_product( ifbeam v1_4_0 )
  find_ups_product( nucondb v1_4_0 )
  find_ups_product( libwda v2_9_0 )
+find_ups_product( cetbuildtools v4_01_02 )
 
 # include search path
-# notice use of ENV to invoke an external variable
-include_directories ( $ENV{LIBSIGCPP_INC}/sigc++-2.0 )
-include_directories ( $ENV{LIBSIGCPP_LIB}/sigc++-2.0/include )
 # decide if we have IFDHC_FQ_DIR or IFDHC_DIR
 if ( $ENV{IFDHC_FQ_DIR} MATCHES "ifdhc" )
   message(STATUS "using FQ_DIR")
@@ -63,13 +60,6 @@ else()
   include_directories($ENV{IFBEAM_DIR}/include)
   include_directories($ENV{NUCONDB_DIR}/include)
 endif()
-
-
-# have to make sure cmake doesn't select the system libraries
-# define libsigc
-cet_find_library( SIGC    NAMES sigc-2.0  PATHS ENV LIBSIGCPP_LIB NO_DEFAULT_PATH )
-# define cppunit
-cet_find_library( CPPUNIT NAMES cppunit   PATHS ENV CPPUNIT_LIB   NO_DEFAULT_PATH )
 
 #ifdhc
 cet_find_library( IFDH    NAMES ifdh    PATHS ENV IFDHC_LIB   NO_DEFAULT_PATH )
