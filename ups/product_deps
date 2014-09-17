@@ -21,6 +21,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v1_12_00	s5
 art		v1_11_03	s4
 art		v1_10_00b	s3
 ifbeam		v1_4_4a
@@ -42,6 +43,14 @@ s4:e6:debug	e6:debug	s4:e6:debug	s4:e6:debug	gcc
 s4:e6:prof	e6:prof		s4:e6:prof	s4:e6:prof	gcc
 s4:nu:e6:debug	e6:debug:nu	s4:e6:debug	s4:e6:debug	gcc
 s4:nu:e6:prof	e6:prof:nu	s4:e6:prof	s4:e6:prof	gcc
+s5:e5:debug	e5:debug	s4:e5:debug	s4:e5:debug	gcc
+s5:e5:prof	e5:prof		s4:e5:prof	s4:e5:prof	gcc
+s5:nu:e5:debug	e5:debug:nu	s4:e5:debug	s4:e5:debug	gcc
+s5:nu:e5:prof	e5:prof:nu	s4:e5:prof	s4:e5:prof	gcc
+s5:e6:debug	e6:debug	s4:e6:debug	s4:e6:debug	gcc
+s5:e6:prof	e6:prof		s4:e6:prof	s4:e6:prof	gcc
+s5:nu:e6:debug	e6:debug:nu	s4:e6:debug	s4:e6:debug	gcc
+s5:nu:e6:prof	e6:prof:nu	s4:e6:prof	s4:e6:prof	gcc
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
