@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_5_3
+parent ifdh_art	v1_5_4
 defaultqual	s5:e6
 
 # These optional lines define the installed directories where headers,
@@ -21,7 +21,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art		v1_12_01	s5
+art		v1_12_02	s5
 art		v1_11_03	s4
 art		v1_10_00b	s3
 ifbeam		v1_4_4a
