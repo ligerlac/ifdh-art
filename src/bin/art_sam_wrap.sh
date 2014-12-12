@@ -399,8 +399,16 @@ then
 	  res=$?
 	  ifdh updateFileStatus $projurl  $consumer_id $fname skipped
       fi
+      # rename after each pass; note that if we're doing uniq, this
+      # may make Really Long Filenames on the early outputs
+      if [ "x$renam" != "x" -a "$res" = "0" ]
+      then
+          ifdh renameOutput $renam
+      fi 
       uri=`ifdh getNextFile $projurl $consumer_id`
     done
+    # stop later script from renaming yet again..
+    renam=""
 else
     echo "Not Getconfig case:"
     
