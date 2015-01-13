@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_6_1
+parent ifdh_art	v1_7_0
 defaultqual	s6:e6
 
 # These optional lines define the installed directories where headers,
@@ -24,8 +24,8 @@ product		version		distinguishing-qualifier
 art		v1_12_05	s6
 art		v1_12_04	s5
 art		v1_10_00b	s3
-ifbeam		v1_4_5
-nucondb		v1_4_5
+ifbeam		v1_4_6
+nucondb		v1_4_6
 cetbuildtools   v4_03_03       -       only_for_build
 end_product_list
 
