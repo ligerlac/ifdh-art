@@ -24,8 +24,8 @@ product		version		distinguishing-qualifier
 art		v1_13_01	s7
 art		v1_12_05	s6
 art		v1_12_04	s5
-ifbeam		v1_4_7
-nucondb		v1_4_7
+ifbeam		v1_4_8
+nucondb		v1_4_8
 cetbuildtools   v4_07_03       -       only_for_build
 end_product_list
 
