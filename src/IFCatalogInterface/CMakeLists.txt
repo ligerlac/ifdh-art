@@ -7,6 +7,7 @@ simple_plugin(IFCatalogInterface "service"
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
                            ${CETLIB}
+                           ${ROOT_BASIC_LIB_LIST}
               BASENAME_ONLY
 		)
 include_directories(../IFDHService)
