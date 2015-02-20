@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_7_1
-defaultqual	s6:e6
+parent ifdh_art	v1_08_00
+defaultqual	s7:e7
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,36 +21,32 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v1_13_01	s7
 art		v1_12_05	s6
 art		v1_12_04	s5
-art		v1_10_00b	s3
 ifbeam		v1_4_7
 nucondb		v1_4_7
-cetbuildtools   v4_03_03       -       only_for_build
+cetbuildtools   v4_07_03       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
-s3:e5:debug	e5:debug	p276:e5:debug	p276:e5:debug	gcc
-s3:e5:prof	e5:prof		p276:e5:prof	p276:e5:prof	gcc
-s3:nu:e5:debug	nu:e5:debug	p276:e5:debug	p276:e5:debug	gcc
-s3:nu:e5:prof	nu:e5:prof	p276:e5:prof	p276:e5:prof	gcc
-s5:e5:debug	e5:debug	p278:e5:debug	p278:e5:debug	gcc
-s5:e5:prof	e5:prof		p278:e5:prof	p278:e5:prof	gcc
-s5:nu:e5:debug	nu:e5:debug	p278:e5:debug	p278:e5:debug	gcc
-s5:nu:e5:prof	nu:e5:prof	p278:e5:prof	p278:e5:prof	gcc
 s5:e6:debug	e6:debug	p278:e6:debug	p278:e6:debug	gcc
 s5:e6:prof	e6:prof		p278:e6:prof	p278:e6:prof	gcc
 s5:nu:e6:debug	nu:e6:debug	p278:e6:debug	p278:e6:debug	gcc
 s5:nu:e6:prof	nu:e6:prof	p278:e6:prof	p278:e6:prof	gcc
-s6:e5:debug	e5:debug	p278:e5:debug	p278:e5:debug	gcc
-s6:e5:prof	e5:prof		p278:e5:prof	p278:e5:prof	gcc
-s6:nu:e5:debug	nu:e5:debug	p278:e5:debug	p278:e5:debug	gcc
-s6:nu:e5:prof	nu:e5:prof	p278:e5:prof	p278:e5:prof	gcc
 s6:e6:debug	e6:debug	p278:e6:debug	p278:e6:debug	gcc
 s6:e6:prof	e6:prof		p278:e6:prof	p278:e6:prof	gcc
 s6:nu:e6:debug	nu:e6:debug	p278:e6:debug	p278:e6:debug	gcc
 s6:nu:e6:prof	nu:e6:prof	p278:e6:prof	p278:e6:prof	gcc
+s7:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
+s7:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
+s7:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
+s7:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
+s7:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
+s7:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
+s7:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
+s7:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
