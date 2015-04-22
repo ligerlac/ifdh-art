@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_08_00
-defaultqual	s7:e7
+parent ifdh_art	v1_09_00
+defaultqual	s8:e7
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,20 +21,16 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v1_13_02	s8
 art		v1_13_01	s7
 art		v1_12_05	s6
-art		v1_12_04	s5
-ifbeam		v1_4_8
-nucondb		v1_4_8
-cetbuildtools   v4_07_03       -       only_for_build
+ifbeam		v1_4_9
+nucondb		v1_4_9
+cetbuildtools   v4_09_02       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
-s5:e6:debug	e6:debug	p278:e6:debug	p278:e6:debug	gcc
-s5:e6:prof	e6:prof		p278:e6:prof	p278:e6:prof	gcc
-s5:nu:e6:debug	nu:e6:debug	p278:e6:debug	p278:e6:debug	gcc
-s5:nu:e6:prof	nu:e6:prof	p278:e6:prof	p278:e6:prof	gcc
 s6:e6:debug	e6:debug	p278:e6:debug	p278:e6:debug	gcc
 s6:e6:prof	e6:prof		p278:e6:prof	p278:e6:prof	gcc
 s6:nu:e6:debug	nu:e6:debug	p278:e6:debug	p278:e6:debug	gcc
@@ -47,6 +43,14 @@ s7:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
 s7:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
 s7:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
 s7:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
+s8:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
+s8:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
+s8:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
+s8:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
+s8:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
+s8:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
+s8:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
+s8:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
