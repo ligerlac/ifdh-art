@@ -7,6 +7,8 @@ simple_plugin(IFCatalogInterface "service"
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
                            ${CETLIB}
+                           ${Boost_FILESYSTEM_LIBRARY}
+                           ${Boost_SYSTEM_LIBRARY}
                            ${ROOT_BASIC_LIB_LIST}
               BASENAME_ONLY
 		)
