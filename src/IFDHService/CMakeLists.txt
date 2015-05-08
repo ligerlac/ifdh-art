@@ -6,6 +6,8 @@ simple_plugin(IFDH service
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
                            ${CETLIB}
+                           ${Boost_FILESYSTEM_LIBRARY}
+                           ${Boost_SYSTEM_LIBRARY}
               BASENAME_ONLY
              )
 

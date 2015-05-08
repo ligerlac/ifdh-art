@@ -10,6 +10,8 @@ simple_plugin(IFFileTransfer "service"
 			   ${FHICLCPP}
                            ${CETLIB}
                            ${ROOT_BASIC_LIB_LIST}
+                           ${Boost_FILESYSTEM_LIBRARY}
+                           ${Boost_SYSTEM_LIBRARY}
               BASENAME_ONLY
            )
 
