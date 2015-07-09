@@ -291,7 +291,10 @@ setup nova_compat_libs v1_0 -q e2:debug
 
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NOVA_COMPAT_LIBS_FQ_DIR
 
-if [ -n "$CLUSTER" ]
+if [ -n "$JOBSUBJOBID" ]
+then
+   description="$JOBSUBJOBID"
+elif [ -n "$CLUSTER" ]
 then
    description="$CLUSTER.$PROCESS"
 else
