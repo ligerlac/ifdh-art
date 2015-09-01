@@ -45,7 +45,9 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
     //
     for (size_t i = 0; i < _output_files.size(); i++) {
         if ( ! _output_ignore[i] ) {
-            _ifdh_handle->addOutputFile(_output_files[i]);
+	    if (_output_files[i].find('%') == std::string::npos) {
+                _ifdh_handle->addOutputFile(_output_files[i]);
+            }
         }
     }
     if( _proj_uri.length() &&  _process_id.length() ) {
@@ -142,7 +144,9 @@ IFCatalogInterface::doOutputFileClosed(std::string const & module_label,
         if ( fileFQname == _output_files[i] ) {
             // if we aren't ignoring it, add it to our ifdh output list
             if (!_output_ignore[i] ) {
-		_ifdh_handle->addOutputFile(_output_files[i]);
+                if (_output_files[i].find('%') == std::string::npos) {
+		    _ifdh_handle->addOutputFile(_output_files[i]);
+                }
 		_output_files.erase(_output_files.begin()+i);
 		_output_ignore.erase(_output_ignore.begin()+i);
             }
