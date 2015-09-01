@@ -151,7 +151,10 @@ IFCatalogInterface::doOutputFileClosed(std::string const & module_label,
     }
     // if we never saw it initialized, just add it
     mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: unregistered, adding anyway\n";
-    _ifdh_handle->addOutputFile(fileFQname);
+    // don't try to add filenames with % in them, they aren't real names.
+    if (fileFQname.find('%') == std::string::npos) {
+       _ifdh_handle->addOutputFile(fileFQname);
+    }
     return;
 }
 
