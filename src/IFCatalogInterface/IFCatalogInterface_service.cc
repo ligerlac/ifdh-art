@@ -17,7 +17,7 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, __attribu
     _sam_station(""), 
     _last_file_uri("")
 { 
-    std::vector<std::string> cfgkeys = cfg.get_keys();
+    std::vector<std::string> cfgkeys = cfg.get_names();
     std::string s;
 
     mf::LogVerbatim("test") << "IFCatalogInterface constructor, got keys:";
@@ -119,7 +119,7 @@ IFCatalogInterface::doOutputModuleInitiated(__attribute__((unused)) std::string 
 			       fhicl::ParameterSet const & pset) {
     std::string s;
     bool ignore = false;
-    std::vector<std::string> cfgkeys = pset.get_keys();
+    std::vector<std::string> cfgkeys = pset.get_names();
     mf::LogVerbatim("test") << "IFCatalogInterface doOutputModuleInitiated, got keys:";
     for (std::vector<std::string>::iterator p = cfgkeys.begin(); p != cfgkeys.end(
   ); p++ ) {

@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_12_05
-defaultqual	s15:e7
+parent ifdh_art	v1_13_00
+defaultqual	s16:e7
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,67 +21,22 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art		v1_15_02	s15
-art		v1_15_01	s14
-art		v1_15_00	s13
-art		v1_14_03	s12
-art		v1_14_02	s11
-art		v1_14_01	s10
-ifbeam		v1_4_13
-nucondb		v1_4_13
-cetbuildtools   v4_13_00       -       only_for_build
+art		v1_16_00	s16
+ifbeam		v1_4_14
+nucondb		v1_4_14
+cetbuildtools   v4_14_01       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
-s15:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s15:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s15:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s15:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s15:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s15:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s15:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s15:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
-s14:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s14:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s14:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s14:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s14:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s14:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s14:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s14:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
-s13:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s13:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s13:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s13:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s13:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s13:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s13:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s13:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
-s12:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s12:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s12:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s12:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s12:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s12:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s12:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s12:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
-s11:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s11:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s11:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s11:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s11:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s11:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s11:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s11:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
-s10:e6:debug	e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s10:e6:prof	e6:prof		p279:e6:prof	p279:e6:prof	gcc
-s10:nu:e6:debug	nu:e6:debug	p279:e6:debug	p279:e6:debug	gcc
-s10:nu:e6:prof	nu:e6:prof	p279:e6:prof	p279:e6:prof	gcc
-s10:e7:debug	e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s10:e7:prof	e7:prof		p279:e7:prof	p279:e7:prof	gcc
-s10:nu:e7:debug	nu:e7:debug	p279:e7:debug	p279:e7:debug	gcc
-s10:nu:e7:prof	nu:e7:prof	p279:e7:prof	p279:e7:prof	gcc
+s16:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s16:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
+s16:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s16:e9:nu:prof	e9:nu:prof	e9:p2710:prof	e9:p2710:prof	gcc
+s16:e7:debug	e7:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s16:e7:prof	e7:prof		e7:p2710:prof	e7:p2710:prof	gcc
+s16:e7:nu:debug	e7:nu:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s16:e7:nu:prof	e7:nu:prof	e7:p2710:prof	e7:p2710:prof	gcc
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:

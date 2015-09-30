@@ -9,7 +9,7 @@ namespace ifdh_ns {
 //
 //
 IFDH::IFDH( fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {
-  std::vector<std::string> cfgkeys = cfg.get_keys();
+  std::vector<std::string> cfgkeys = cfg.get_names();
   std::string s;
 
   mf::LogVerbatim("test") << "IFDH constructor, got keys:";
