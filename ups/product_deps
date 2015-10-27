@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_13_03
-defaultqual	s20:e9
+parent ifdh_art	v1_13_04
+defaultqual	s21:e9
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,16 +21,25 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v1_17_03	s21
 art		v1_17_02	s20
 art		v1_16_02	s18
 art		v1_16_00	s16
 ifbeam		v1_4_15
 nucondb		v1_4_15
-cetbuildtools   v4_16_00       -       only_for_build
+cetbuildtools   v4_17_00       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s21:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s21:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
+s21:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s21:e9:nu:prof	e9:nu:prof	e9:p2710:prof	e9:p2710:prof	gcc
+s21:e7:debug	e7:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s21:e7:prof	e7:prof		e7:p2710:prof	e7:p2710:prof	gcc
+s21:e7:nu:debug	e7:nu:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s21:e7:nu:prof	e7:nu:prof	e7:p2710:prof	e7:p2710:prof	gcc
 s20:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
 s20:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
 s20:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
