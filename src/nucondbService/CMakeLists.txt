@@ -4,6 +4,7 @@ simple_plugin(nucondb "service"
 			   ${NUCONDB} 
                            ${WDA}
                            ${IFDH}
+			   ${ART_UTILITIES}
                            ${MF_MESSAGELOGGER}
 			   ${FHICLCPP}
                            ${CETLIB}

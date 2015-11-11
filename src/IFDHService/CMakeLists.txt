@@ -2,6 +2,7 @@
 
 simple_plugin(IFDH service 
 			   ${IFDH} 
+			   ${ART_UTILITIES}
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
