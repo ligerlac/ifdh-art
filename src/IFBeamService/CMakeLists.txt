@@ -6,6 +6,7 @@ simple_plugin(IFBeam "service"
                            ${WDA}
                            ${IFDH}
                            ${MF_MESSAGELOGGER}
+			   ${ART_UTILITIES}
 			   ${FHICLCPP}
                            ${CETLIB}
                            ${Boost_FILESYSTEM_LIBRARY}
