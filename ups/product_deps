@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_14_00
-defaultqual	s23:e9
+parent ifdh_art	v1_14_01
+defaultqual	s21:e9
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -27,9 +27,9 @@ art		v1_17_03	s21
 art		v1_17_02	s20
 art		v1_16_02	s18
 art		v1_16_00	s16
-ifbeam		v1_4_15
-nucondb		v1_4_15
-cetbuildtools   v4_17_00       -       only_for_build
+ifbeam		v1_4_16
+nucondb		v1_4_16
+cetbuildtools   v4_17_02       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
