@@ -30,7 +30,7 @@ art		v1_16_02	s18
 art		v1_16_00	s16
 ifbeam		v1_4_16
 nucondb		v1_4_16
-cetbuildtools   v4_17_02       -       only_for_build
+cetbuildtools   v4_17_03       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
