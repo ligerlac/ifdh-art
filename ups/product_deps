@@ -21,6 +21,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v1_18_05	s31
 art		v1_18_04	s29
 art		v1_18_03	s27
 art		v1_18_02	s25
@@ -40,6 +41,14 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s31:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s31:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
+s31:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s31:e9:nu:prof	e9:nu:prof	e9:p2710:prof	e9:p2710:prof	gcc
+s31:e7:debug	e7:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s31:e7:prof	e7:prof		e7:p2710:prof	e7:p2710:prof	gcc
+s31:e7:nu:debug	e7:nu:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s31:e7:nu:prof	e7:nu:prof	e7:p2710:prof	e7:p2710:prof	gcc
 s30:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
 s30:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
 s30:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
