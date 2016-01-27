@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v1_14_06
-defaultqual	s28:e9
+parent ifdh_art	v1_14_07
+defaultqual	s30:e9
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -25,6 +25,7 @@ art		v1_18_04	s29
 art		v1_18_03	s27
 art		v1_18_02	s25
 art		v1_18_01	s23
+art		v1_17_07	s30
 art		v1_17_06	s28
 art		v1_17_05	s26
 art		v1_17_04	s24
@@ -39,6 +40,14 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s30:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s30:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
+s30:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
+s30:e9:nu:prof	e9:nu:prof	e9:p2710:prof	e9:p2710:prof	gcc
+s30:e7:debug	e7:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s30:e7:prof	e7:prof		e7:p2710:prof	e7:p2710:prof	gcc
+s30:e7:nu:debug	e7:nu:debug	e7:p2710:debug	e7:p2710:debug	gcc
+s30:e7:nu:prof	e7:nu:prof	e7:p2710:prof	e7:p2710:prof	gcc
 s29:e9:debug	e9:debug	e9:p2710:debug	e9:p2710:debug	gcc
 s29:e9:prof	e9:prof		e9:p2710:prof	e9:p2710:prof	gcc
 s29:e9:nu:debug	e9:nu:debug	e9:p2710:debug	e9:p2710:debug	gcc
