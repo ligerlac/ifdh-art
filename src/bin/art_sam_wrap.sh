@@ -6,7 +6,10 @@
 #  $EXPERIMENT
 #  $GRID_USER
 
-set -x
+if [ "x$ART_SAM_DEBUG" = "xtrue" ]
+then  
+    set -x
+fi
 
 hostname
 uname -a 
@@ -20,6 +23,7 @@ exe=$EXPERIMENT
 quals=nu:e4:debug
 vers=v1_2_10
 renam=""
+prename=false
 limit=""
 getconfig=false
 use_gdb=false
@@ -30,6 +34,9 @@ prescripts=""
 postscripts=""
 self_destruct_timeout=""
 input_files=""
+hash=""
+hashdir=""
+export conf
 
 datadir=$TMPDIR/ifdh_$$
 
@@ -65,6 +72,11 @@ Usage:
     -D|--dest   url
         specify destination path or url for copying back output
         default is to not copy back files
+
+    -H|--dest
+        copy out put to a hashed directory structure.  This is used 
+        for production copy backs to prevent to many files in one fts 
+        directory.
 
     -R|--rename how
     --rename2    how
@@ -126,6 +138,8 @@ do
     x-q|x--quals)   quals="$2"; shift; shift; continue;;
     x-c|x--config)  conf="$2";  shift; shift; continue;;
     x-D|x--dest)    dest="$2";  shift; shift; continue;;
+    x-H|x--hash)    hash=true; shift; continue;;
+    x--prename)     prename=true; shift; continue;;
     x-R|x--rename)  renam="$2";   shift; shift; continue;;
     x--rename2)     renam2="$2";   shift; shift; continue;;
     x--rename3)     renam3="$2";   shift; shift; continue;;
@@ -286,21 +300,21 @@ then
 fi
 
 # should not need this, but seem to for older releases -- SL5 setup on SL6 bug
-PATH=/bin:/usr/bin:`echo $IFDHC_DIR/Linux*/bin`:$PATH
+#PATH=/bin:/usr/bin:`echo $IFDHC_DIR/Linux*/bin`:$PATH
+PATH=`echo $IFDHC_DIR/Linux*/bin`:$PATH:/bin:/usr/bin
 LD_LIBRARY_PATH=`echo $IFDHC_DIR/Linux*/lib`:`echo $IFDH_ART_DIR/Linux*/lib`:$LD_LIBRARY_PATH
-setup nova_compat_libs v1_0 -q e2:debug
 
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$NOVA_COMPAT_LIBS_FQ_DIR
-
-if [ -n "$JOBSUBJOBID" ]
+if [ -n "${JOBSUBJOBID}" ]
 then
-   description="$JOBSUBJOBID"
-elif [ -n "$CLUSTER" ]
+   description="${JOBSUBJOBID}"
+elif [ -n "${CLUSTER}"]
 then
-   description="$CLUSTER.$PROCESS"
+   description="${CLUSTER}.${PROCESS}"
 else
    description=""
 fi
+
+appname=$(basename $cmd)
 
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME ${SAM_STATION:-$EXPERIMENT}`
@@ -309,7 +323,7 @@ count=0
 while [ "$consumer_id" = "" ]
 do
     sleep 5
-    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$cmd" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "$description" "$limit"`
+    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$appname" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "$description" "$limit"`
     count=$((count + 1))
     if [ $count -gt 10 ]
     then
@@ -342,53 +356,86 @@ then
     ifdh cp -D $input_files .
 fi
 
+if [ ! -z "${TARFILE}" ] ; then
+    if [ ! -f "${TARFILE}" ] ; then
+	echo "ERROR Tar file ${TARFILE} doesn't exist"
+	exit -1
+    fi
+    tar xzf $TARFILE
+    srt_setup -a
+
+fi
+
 if $getconfig
 then
 
     echo "Getconfig case:"
 
-    uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
     res=0
-    while [ -n "$uri" -a "$res" = 0 ]
+    while [ "$res" = 0 ]
     do
-	fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
-        if [ x$confbase != x ]
-        then
-             cat $confbase $fname > $fname.new
-             mv $fname.new $fname
-        fi
-        
-        echo "config is now:"
-        echo "=============="
-        cat $fname
-        echo "=============="
-        conf=$fname
-        datestamp=`date +%F-%H-%M-%S`
-	echo conf is $conf
-	ifdh updateFileStatus $projurl  $consumer_id $fname transferred
-
+      uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
+      if [ x"$uri" == x ]
+	  then
+	  break
+      fi
+      
+      fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
+      if [ x$confbase != x ]
+	  then
+	  cat $confbase $fname > $fname.new
+	  mv $fname.new $fname
+      fi
+      
+      echo "config is now:"
+      echo "=============="
+      cat $fname
+      echo "=============="
+      conf=$fname
+      datestamp=`date +%F-%H-%M-%S`
+      echo conf is $conf
+      ifdh updateFileStatus $projurl  $consumer_id $fname transferred
+      
         #out=`basename $fname | sed -e "s/.fcl$/$datestamp.root/"`
         #command="\"${cmd}\" -c \"$conf\" $args -o $out --process-name test"
-        command="\"${cmd}\" -c \"$conf\" $args --process-name test"
-
-	echo "Running: $command"
-
-	if eval "$command"
-        then 
-	   ifdh updateFileStatus $projurl  $consumer_id $fname consumed
-        else
-	   res=$?
-	   ifdh updateFileStatus $projurl  $consumer_id $fname skipped
-        fi
-        uri=`ifdh getNextFile $projurl $consumer_id`
+      command="\"${cmd}\" -c \"$conf\" $args "
+      
+      echo "Running: $command"
+      
+      if eval "$command"
+	  then 
+	  ifdh updateFileStatus $projurl  $consumer_id $fname consumed
+      else
+	  res=$?
+	  ifdh updateFileStatus $projurl  $consumer_id $fname skipped
+      fi
+      #uri=`ifdh getNextFile $projurl $consumer_id`
     done
 elif $multifile
 then
     echo "Multi-file case:"
-    uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
+    
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "PATH:"
+    echo $PATH
+    echo ""
+    echo "Python environment variables:"
+    env | grep PYTHON
+    echo ""
+    echo "Path to python executable"
+    which python
+    echo "--------------------------------------------------------"
+    echo ""
+
     res=0
-    while [ -n "$uri" ]
-      do
+    while [ "$res" = 0 ]
+    do
+      uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
+      if [ x"$uri" == x ]
+	  then
+	  break
+      fi
       fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
       echo "got file: $fname"
       ifdh updateFileStatus $projurl  $consumer_id $fname transferred
@@ -403,16 +450,7 @@ then
 	  res=$?
 	  ifdh updateFileStatus $projurl  $consumer_id $fname skipped
       fi
-      # rename after each pass; note that if we're doing uniq, this
-      # may make Really Long Filenames on the early outputs
-      if [ "x$renam" != "x" -a "$res" = "0" ]
-      then
-          ifdh renameOutput $renam
-      fi 
-      uri=`ifdh getNextFile $projurl $consumer_id`
     done
-    # stop later script from renaming yet again..
-    renam=""
 else
     echo "Not Getconfig case:"
     
@@ -471,6 +509,24 @@ do
    eval "$blat"
 done
 
+if [ "$prename" = "true" -a  "$res" = "0" ]
+then
+    for f in $addoutput
+    do
+      newname=`$SRT_PUBLIC_CONTEXT/Metadata/samUtils/get_new_file_name $f`
+      fpath=`dirname $f`
+      mv $f $fpath/$newname
+    done
+fi
+
+if [ "$hash" = "true" -a "$res" = "0" ]
+then
+    for f in $addoutput
+    do
+      hashdir=`python -c 'import hashlib, sys;print "/".join(hashlib.md5(sys.argv[1]).hexdigest()[:3])' $f`
+    done
+fi
+
 if [ "x$addoutput" != "x" -a "$res" = "0" ]
 then
     for f in $addoutput
@@ -507,7 +563,7 @@ then
 
     voms-proxy-info -all
 
-    ifdh copyBackOutput "$dest"
+    ifdh copyBackOutput "$dest/$hashdir/"
 fi
 
 
