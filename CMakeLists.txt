@@ -38,7 +38,8 @@ cet_set_compiler_flags(DIAGS VIGILANT
 cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
- find_ups_product( art v2_00_00 )
+# find_ups_product( art v2_00_00 )
+ find_ups_product( art )
  find_ups_product( ifdhc  )
  find_ups_product( ifbeam  )
  find_ups_product( nucondb  )
