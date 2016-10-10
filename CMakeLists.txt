@@ -38,12 +38,13 @@ cet_set_compiler_flags(DIAGS VIGILANT
 cet_report_compiler_flags()
 
 # these are minimum required versions, not the actual product versions
- find_ups_product( art v1_09_00 )
- find_ups_product( ifdhc v1_4_0 )
- find_ups_product( ifbeam v1_4_0 )
- find_ups_product( nucondb v1_4_0 )
- find_ups_product( libwda v2_9_0 )
-find_ups_product( cetbuildtools v4_01_02 )
+# find_ups_product( art v2_00_00 )
+ find_ups_product( art )
+ find_ups_product( ifdhc  )
+ find_ups_product( ifbeam  )
+ find_ups_product( nucondb  )
+ find_ups_product( libwda  )
+find_ups_product( cetbuildtools  )
 
 # include search path
 # decide if we have IFDHC_FQ_DIR or IFDHC_DIR
