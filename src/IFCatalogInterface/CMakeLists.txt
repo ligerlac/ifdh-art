@@ -6,7 +6,7 @@ simple_plugin(IFCatalogInterface "service"
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIB} ${CETLIB_EXCEPT}
                            ${Boost_FILESYSTEM_LIBRARY}
                            ${Boost_SYSTEM_LIBRARY}
                            ${ROOT_BASIC_LIB_LIST}

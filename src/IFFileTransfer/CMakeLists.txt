@@ -8,7 +8,7 @@ simple_plugin(IFFileTransfer "service"
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIB} ${CETLIB_EXCEPT}
                            ${ROOT_BASIC_LIB_LIST}
                            ${Boost_FILESYSTEM_LIBRARY}
                            ${Boost_SYSTEM_LIBRARY}
