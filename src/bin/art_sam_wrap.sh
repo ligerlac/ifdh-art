@@ -381,6 +381,12 @@ then
       fi
       
       fname=`IFDH_DEBUG= ifdh fetchInput "$uri" | tail -1 `
+      if [ $? != 0 ]
+      then
+          echo "Error: unable to fetch input file $uri" >&2
+          continue
+      fi
+
       if [ x$confbase != x ]
 	  then
 	  cat $confbase $fname > $fname.new
@@ -429,7 +435,7 @@ then
     echo ""
 
     res=0
-    while [ "$res" = 0 ]
+    while :
     do
       uri=`IFDH_DEBUG= ifdh getNextFile $projurl $consumer_id | tail -1`
       if [ x"$uri" == x ]
