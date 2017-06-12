@@ -6,7 +6,7 @@ simple_plugin(IFDH service
                            ${MF_MESSAGELOGGER}
                            ${MF_UTILITIES}
 			   ${FHICLCPP}
-                           ${CETLIB}
+                           ${CETLIB} ${CETLIB_EXCEPT}
                            ${Boost_FILESYSTEM_LIBRARY}
                            ${Boost_SYSTEM_LIBRARY}
               BASENAME_ONLY
