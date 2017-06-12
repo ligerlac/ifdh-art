@@ -172,7 +172,7 @@ find_ups() {
     4.*) export UPS_OVERRIDE="-H Linux64bit+2.6-2.12";;
     esac
     
-    for path in /cvmvs/${EXPERIMENT}.opensciencegrid.org/products /cvmvs/${EXPERIMENT}.opensciencegrid.org/externals /cvmfs/oasis.opensciencegrid.org/${EXPERIMENT}/externals /cvmfs/${EXPERIMENT}cfs.fnal.gov/externals /nusoft/app/externals /grid/fermiapp/products/${EXPERIMENT}
+    for path in /cvmfs/${EXPERIMENT}.opensciencegrid.org/products /cvmfs/${EXPERIMENT}.opensciencegrid.org/externals /cvmfs/oasis.opensciencegrid.org/${EXPERIMENT}/externals /cvmfs/${EXPERIMENT}cfs.fnal.gov/externals /nusoft/app/externals /grid/fermiapp/products/${EXPERIMENT}
     do
        if [ -r $path/setup ] 
        then 
