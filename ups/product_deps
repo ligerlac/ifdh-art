@@ -37,8 +37,8 @@ art		v2_00_03	s36
 art		v2_00_02	s33
 art		v2_00_01	s32
 art		v1_17_06	s28
-ifbeam		v2_0_6
-nucondb		v2_0_6
+ifbeam		v2_0_7
+nucondb		v2_0_7
 cetbuildtools   v5_09_01       -       only_for_build
 end_product_list
 
