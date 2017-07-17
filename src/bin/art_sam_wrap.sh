@@ -275,7 +275,9 @@ done
 
 for blat in $sources 
 do
+   base=`echo $blat | sed -e 's/:.*//'`
    blat=`echo $blat | sed -e 's/:/ /g'`
+   [ -x base ] || chmod +x $base
    eval blat=$blat
    echo "doing: source $blat"
    eval "source $blat"
@@ -283,7 +285,9 @@ done
 
 for blat in $prescripts 
 do
+   base=`echo $blat | sed -e 's/:.*//'`
    blat=`echo $blat | sed -e 's/:/ /g'`
+   [ -x base ] || chmod +x $base
    eval blat=$blat
    echo "doing: $blat"
    eval "$blat"
@@ -509,7 +513,9 @@ fi
 
 for blat in $postscripts 
 do
+   base=`echo $blat | sed -e 's/:.*//'`
    blat=`echo $blat | sed -e 's/:/ /g'`
+   [ -x base ] || chmod +x $base
    eval blat=$blat
    echo "doing: $blat"
    eval "$blat"
