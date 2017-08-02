@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v2_02_01
-defaultqual	s50:e14
+parent ifdh_art	v2_02_02
+defaultqual	s51:e14
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,6 +21,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v2_08_00	s51
 art		v2_07_03	s50
 art		v2_06_03	s48
 art		v2_06_02	s47
@@ -39,11 +40,15 @@ art		v2_00_01	s32
 art		v1_17_06	s28
 ifbeam		v2_0_8
 nucondb		v2_0_8
-cetbuildtools   v5_09_01       -       only_for_build
+cetbuildtools   v5_13_01       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s51:e14:debug	e14:debug	e14:p2713d:debug e14:p2713d:debug	gcc
+s51:e14:prof	e14:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
+s51:e14:nu:debug e14:nu:debug	e14:p2713d:debug e14:p2713d:debug	gcc
+s51:e14:nu:prof	e14:nu:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
 s50:e14:debug	e14:debug	e14:p2713d:debug e14:p2713d:debug	gcc
 s50:e14:prof	e14:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
 s50:e14:nu:debug e14:nu:debug	e14:p2713d:debug e14:p2713d:debug	gcc
