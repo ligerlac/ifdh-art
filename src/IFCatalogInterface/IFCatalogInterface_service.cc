@@ -33,12 +33,12 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, __attribu
 }
 
 IFCatalogInterface::~IFCatalogInterface() throw () { 
+    std::string process_status("completed");
     mf::LogVerbatim("test") << "IFCatalogInterface destructor:";
     if( _last_file_uri.length() ) {
         mf::LogVerbatim("test") << "IFCatalogInterface: updating file status in destructor";
-        // XXX should this be  art::FileDisposition::SKIPPED ???
-        // shouldn't we have updated the status already?
-        doUpdateStatus(_last_file_uri, art::FileDisposition::CONSUMED);
+        doUpdateStatus(_last_file_uri, art::FileDisposition::SKIPPED);
+        process_status = "bad";
     }
     // 
     // add any ouput files we didn't see in outputFileClosed()
@@ -51,7 +51,7 @@ IFCatalogInterface::~IFCatalogInterface() throw () {
         }
     }
     if( _proj_uri.length() &&  _process_id.length() ) {
-       _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
+       _ifdh_handle->setStatus(_proj_uri, _process_id, process_status);
     }
 }
 
