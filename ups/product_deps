@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v2_03_05
-defaultqual	s56:e14
+parent ifdh_art	v2_03_06
+defaultqual	s58:e14
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -11,6 +11,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v2_09_02	s58
 art		v2_08_04	s56
 art		v2_08_03	s54
 art		v2_08_02	s53
@@ -30,13 +31,21 @@ art		v2_00_03	s36
 art		v2_00_02	s33
 art		v2_00_01	s32
 art		v1_17_06	s28
-ifbeam		v2_0_9
-nucondb		v2_0_9
-cetbuildtools   v5_14_03       -       only_for_build
+ifbeam		v2_1_0
+nucondb		v2_1_0
+cetbuildtools   v6_01_00       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s58:e15:debug	e15:debug	e15:p2714:debug e15:p2714:debug	gcc
+s58:e15:prof	e15:prof	e15:p2714:prof  e15:p2714:prof	gcc
+s58:e15:nu:debug e15:nu:debug	e15:p2714:debug e15:p2714:debug	gcc
+s58:e15:nu:prof	e15:nu:prof	e15:p2714:prof  e15:p2714:prof	gcc
+s58:e14:debug	e14:debug	e14:p2714:debug e14:p2714:debug	gcc
+s58:e14:prof	e14:prof	e14:p2714:prof  e14:p2714:prof	gcc
+s58:e14:nu:debug e14:nu:debug	e14:p2714:debug e14:p2714:debug	gcc
+s58:e14:nu:prof	e14:nu:prof	e14:p2714:prof  e14:p2714:prof	gcc
 s56:e14:debug	e14:debug	e14:p2713d:debug e14:p2713d:debug	gcc
 s56:e14:prof	e14:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
 s56:e14:nu:debug e14:nu:debug	e14:p2713d:debug e14:p2713d:debug	gcc
