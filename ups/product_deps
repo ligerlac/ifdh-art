@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v2_00_02
-defaultqual	s43:e10
+parent ifdh_art	v2_00_03
+defaultqual	s59:e10
 
 # These optional lines define the installed directories where headers,
 # libraries, and executables will be found.
@@ -21,6 +21,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v2_05_01	s59
 art		v2_05_00	s43
 art		v2_04_01	s44
 art		v2_04_00	s42
@@ -40,6 +41,10 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s59:e10:debug	e10:debug	e10:p2711:debug	e10:p2711:debug	gcc
+s59:e10:prof	e10:prof	e10:p2711:prof	e10:p2711:prof	gcc
+s59:e10:nu:debug e10:nu:debug	e10:p2711:debug	e10:p2711:debug	gcc
+s59:e10:nu:prof	e10:nu:prof	e10:p2711:prof	e10:p2711:prof	gcc
 s44:e10:debug	e10:debug	e10:p2711:debug	e10:p2711:debug	gcc
 s44:e10:prof	e10:prof	e10:p2711:prof	e10:p2711:prof	gcc
 s44:e10:nu:debug e10:nu:debug	e10:p2711:debug	e10:p2711:debug	gcc
