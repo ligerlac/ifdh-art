@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v2_04_02
+parent ifdh_art	v2_04_03
 defaultqual	s60:e14
 
 # Format: directory_type directory_path directory_name
@@ -39,6 +39,14 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier	art		ifbeam		nucondb		compiler
+s60:e15:debug	e15:debug	e15:p2714:debug e15:p2714:debug	gcc
+s60:e15:prof	e15:prof	e15:p2714:prof  e15:p2714:prof	gcc
+s60:e15:nu:debug e15:nu:debug	e15:p2714:debug e15:p2714:debug	gcc
+s60:e15:nu:prof	e15:nu:prof	e15:p2714:prof  e15:p2714:prof	gcc
+s60:e14:debug	e14:debug	e14:p2714:debug e14:p2714:debug	gcc
+s60:e14:prof	e14:prof	e14:p2714:prof  e14:p2714:prof	gcc
+s60:e14:nu:debug e14:nu:debug	e14:p2714:debug e14:p2714:debug	gcc
+s60:e14:nu:prof	e14:nu:prof	e14:p2714:prof  e14:p2714:prof	gcc
 s58:e15:debug	e15:debug	e15:p2714:debug e15:p2714:debug	gcc
 s58:e15:prof	e15:prof	e15:p2714:prof  e15:p2714:prof	gcc
 s58:e15:nu:debug e15:nu:debug	e15:p2714:debug e15:p2714:debug	gcc
