@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art	v2_05_00
-defaultqual	s63:e15
+parent ifdh_art v2_05_01
+defaultqual s63:e15
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -15,31 +15,33 @@ art		v2_10_01	s63
 art		v2_09_06	s62
 art		v2_08_04	s56
 art		v2_07_03	s50
-ifbeam          v2_1_4
-nucondb         v2_1_4
+ifbeam          v2_2_0
+nucondb         v2_2_0
 cetbuildtools   v7_00_02       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
-qualifier	art		ifbeam		nucondb		compiler
-s63:e15:debug	e15:debug	e15:p2714b:debug e15:p2714b:debug	gcc
-s63:e15:prof	e15:prof	e15:p2714b:prof  e15:p2714b:prof	gcc
-s62:e15:debug	e15:debug	e15:p2714:debug e15:p2714:debug	gcc
-s62:e15:prof	e15:prof	e15:p2714:prof  e15:p2714:prof	gcc
-s62:e15:nu:debug e15:nu:debug	e15:p2714:debug e15:p2714:debug	gcc
-s62:e15:nu:prof	e15:nu:prof	e15:p2714:prof  e15:p2714:prof	gcc
-s62:e14:debug	e14:debug	e14:p2714:debug e14:p2714:debug	gcc
-s62:e14:prof	e14:prof	e14:p2714:prof  e14:p2714:prof	gcc
-s62:e14:nu:debug e14:nu:debug	e14:p2714:debug e14:p2714:debug	gcc
-s62:e14:nu:prof	e14:nu:prof	e14:p2714:prof  e14:p2714:prof	gcc
-s56:e14:debug	e14:debug	e14:p2713d:debug e14:p2713d:debug	gcc
-s56:e14:prof	e14:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
-s56:e14:nu:debug e14:nu:debug	e14:p2713d:debug e14:p2713d:debug	gcc
-s56:e14:nu:prof	e14:nu:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
-s50:e14:debug	e14:debug	e14:p2713d:debug e14:p2713d:debug	gcc
-s50:e14:prof	e14:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
-s50:e14:nu:debug e14:nu:debug	e14:p2713d:debug e14:p2713d:debug	gcc
-s50:e14:nu:prof	e14:nu:prof	e14:p2713d:prof	 e14:p2713d:prof	gcc
+qualifier        art           ifbeam           nucondb
+s63:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
+s63:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
+s63:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
+s63:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
+s62:e15:debug    e15:debug     e15:p2714:debug  e15:p2714:debug
+s62:e15:prof     e15:prof      e15:p2714:prof   e15:p2714:prof
+s62:e15:nu:debug e15:nu:debug  e15:p2714:debug  e15:p2714:debug
+s62:e15:nu:prof  e15:nu:prof   e15:p2714:prof   e15:p2714:prof
+s62:e14:debug    e14:debug     e14:p2714:debug  e14:p2714:debug
+s62:e14:prof     e14:prof      e14:p2714:prof   e14:p2714:prof
+s62:e14:nu:debug e14:nu:debug  e14:p2714:debug  e14:p2714:debug
+s62:e14:nu:prof  e14:nu:prof   e14:p2714:prof   e14:p2714:prof
+s56:e14:debug    e14:debug     e14:p2713d:debug e14:p2713d:debug
+s56:e14:prof     e14:prof      e14:p2713d:prof  e14:p2713d:prof
+s56:e14:nu:debug e14:nu:debug  e14:p2713d:debug e14:p2713d:debug
+s56:e14:nu:prof  e14:nu:prof   e14:p2713d:prof  e14:p2713d:prof
+s50:e14:debug    e14:debug     e14:p2713d:debug e14:p2713d:debug
+s50:e14:prof     e14:prof      e14:p2713d:prof  e14:p2713d:prof
+s50:e14:nu:debug e14:nu:debug  e14:p2713d:debug e14:p2713d:debug
+s50:e14:nu:prof  e14:nu:prof   e14:p2713d:prof  e14:p2713d:prof
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
