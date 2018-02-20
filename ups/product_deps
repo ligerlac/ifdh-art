@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_05_04
-defaultqual s64:e15
+parent ifdh_art v2_05_05
+defaultqual s65:e15
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -11,6 +11,7 @@ fcldir      -
 # against different versions of some dependent product IFF 
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v2_10_03	s65
 art		v2_10_02	s64
 art		v2_10_01	s63
 art		v2_09_06	s62
@@ -23,6 +24,10 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier        art           ifbeam           nucondb
+s65:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
+s65:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
+s65:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
+s65:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s64:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s64:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s64:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
