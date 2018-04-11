@@ -323,19 +323,14 @@ appname=$(basename $cmd)
 hostname=`hostname --fqdn`
 projurl=`ifdh findProject $SAM_PROJECT_NAME ${SAM_STATION:-$EXPERIMENT}`
 consumer_id=''
-count=0
-while [ "$consumer_id" = "" ]
-do
-    sleep 5
-    consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$appname" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "$description" "$limit"`
-    count=$((count + 1))
-    if [ $count -gt 10 ]
-    then
-        echo "Unable to establish consumer id!"
-        echo "Unable to establish consumer id!" >&2 
-        exit 
-    fi
-done
+
+consumer_id=`IFDH_DEBUG= ifdh establishProcess "$projurl" "$appname" "$ART_VERSION" "$hostname" "$GRID_USER" "art" "$description" "$limit"`
+if [ "$consumer_id" = '' ]
+then
+    echo "Unable to establish consumer id!"
+    echo "Unable to establish consumer id!" >&2 
+    exit 
+fi
 
 echo project url: $projurl
 echo consumer id: $consumer_id
