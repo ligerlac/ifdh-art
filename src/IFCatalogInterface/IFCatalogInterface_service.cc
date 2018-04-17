@@ -33,25 +33,15 @@ IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet &cfg, __attribu
 }
 
 IFCatalogInterface::~IFCatalogInterface() throw () { 
+    std::string process_status("completed");
     mf::LogVerbatim("test") << "IFCatalogInterface destructor:";
     if( _last_file_uri.length() ) {
         mf::LogVerbatim("test") << "IFCatalogInterface: updating file status in destructor";
-        // XXX should this be  art::FileDisposition::SKIPPED ???
-        // shouldn't we have updated the status already?
-        doUpdateStatus(_last_file_uri, art::FileDisposition::CONSUMED);
-    }
-    // 
-    // add any ouput files we didn't see in outputFileClosed()
-    //
-    for (size_t i = 0; i < _output_files.size(); i++) {
-        if ( ! _output_ignore[i] ) {
-	    if (_output_files[i].find('%') == std::string::npos) {
-                _ifdh_handle->addOutputFile(_output_files[i]);
-            }
-        }
+        doUpdateStatus(_last_file_uri, art::FileDisposition::SKIPPED);
+        process_status = "bad";
     }
     if( _proj_uri.length() &&  _process_id.length() ) {
-       _ifdh_handle->setStatus(_proj_uri, _process_id, "completed");
+       _ifdh_handle->setStatus(_proj_uri, _process_id, process_status);
     }
 }
 
@@ -110,8 +100,7 @@ IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition
 
 void 
 IFCatalogInterface::doOutputFileOpened(std::string const & module_label) {
-   mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileOpened: " << module_label << "\n";
-   ;
+   return;
 }
 
 void 
@@ -140,25 +129,6 @@ void
 IFCatalogInterface::doOutputFileClosed(std::string const & module_label,
 			  std::string const & fileFQname) {
      mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: " << module_label << ", " << fileFQname << "\n";
-    for (size_t i = 0; i < _output_files.size(); i++) {
-        if ( fileFQname == _output_files[i] ) {
-            // if we aren't ignoring it, add it to our ifdh output list
-            if (!_output_ignore[i] ) {
-                if (_output_files[i].find('%') == std::string::npos) {
-		    _ifdh_handle->addOutputFile(_output_files[i]);
-                }
-		_output_files.erase(_output_files.begin()+i);
-		_output_ignore.erase(_output_ignore.begin()+i);
-            }
- 	    return;
-        }
-    }
-    // if we never saw it initialized, just add it
-    mf::LogVerbatim("test")  << "IFCatalogInteface doOutputFileClosed: unregistered, adding anyway\n";
-    // don't try to add filenames with % in them, they aren't real names.
-    if (fileFQname.find('%') == std::string::npos) {
-       _ifdh_handle->addOutputFile(fileFQname);
-    }
     return;
 }
 
