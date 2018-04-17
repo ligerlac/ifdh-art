@@ -99,7 +99,7 @@ IFCatalogInterface::doUpdateStatus(std::string const & uri, art::FileDisposition
 }
 
 void 
-IFCatalogInterface::doOutputFileOpened(std::string const & module_label) {
+IFCatalogInterface::doOutputFileOpened(std::string const & ) {
    return;
 }
 
