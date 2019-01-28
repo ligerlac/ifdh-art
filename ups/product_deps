@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_06_13
-defaultqual s70:e17
+parent ifdh_art v2_07_00
+defaultqual s71:e17
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -13,6 +13,7 @@ fcldir      -
 product		version		distinguishing-qualifier
 art		v3_01_00	s71
 art		v3_00_00	s69
+art		v2_12_00	s74
 art		v2_11_05	s73
 art		v2_11_04	s72
 art		v2_11_03	s70
@@ -22,13 +23,19 @@ art		v2_10_04	s66
 art		v2_10_03	s65
 art		v2_10_02	s64
 art		v2_10_01	s63
-ifbeam          v2_2_12
-nucondb         v2_2_9
+ifbeam          v2_2_13
+nucondb         v2_2_10
 cetbuildtools   v7_04_00       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
 qualifier        art           ifbeam           nucondb
+s74:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
+s74:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
+s74:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
+s74:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
+s74:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
+s74:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s73:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s73:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s73:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
