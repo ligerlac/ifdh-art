@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_07_01
-defaultqual s75:e17
+parent ifdh_art v2_07_02
+defaultqual s78:e17
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -11,9 +11,11 @@ fcldir      -
 # against different versions of some dependent product IFF
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art		v3_01_02	s78
 art		v3_01_01	s75
 art		v3_01_00	s71
 art		v3_00_00	s69
+art		v2_12_01	s79
 art		v2_12_00	s74
 art		v2_11_05	s73
 art		v2_11_04	s72
@@ -30,13 +32,22 @@ cetbuildtools   v7_06_04       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
+# note that e15 support was dropped as of art v3_01_00
 qualifier        art           ifbeam           nucondb
+s79:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
+s79:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
+s79:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
+s79:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
+s79:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
+s79:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
+s78:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
+s78:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
+s78:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
+s78:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
 s75:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s75:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s75:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
 s75:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s75:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s75:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s74:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s74:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s74:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
@@ -59,8 +70,6 @@ s71:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s71:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s71:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
 s71:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s71:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s71:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s70:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s70:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s70:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
