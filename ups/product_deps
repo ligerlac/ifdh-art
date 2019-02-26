@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_07_02
+parent ifdh_art v2_07_03
 defaultqual s78:e17
 
 # Format: directory_type directory_path directory_name
@@ -17,18 +17,9 @@ art		v3_01_00	s71
 art		v3_00_00	s69
 art		v2_12_01	s79
 art		v2_12_00	s74
-art		v2_11_05	s73
-art		v2_11_04	s72
-art		v2_11_03	s70
-art		v2_11_02	s68
-art		v2_11_01	s67
-art		v2_10_04	s66
-art		v2_10_03	s65
-art		v2_10_02	s64
-art		v2_10_01	s63
-ifbeam          v2_2_13
-nucondb         v2_2_10
-cetbuildtools   v7_06_04       -       only_for_build
+ifbeam          v2_3_0
+nucondb         v2_3_0
+cetbuildtools   v7_11_00       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
@@ -54,62 +45,16 @@ s74:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
 s74:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
 s74:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
 s74:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s73:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s73:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s73:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
-s73:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s73:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s73:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s72:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s72:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s72:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
-s72:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s72:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s72:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s71:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s71:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s71:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
 s71:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s70:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s70:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s70:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
-s70:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s70:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s70:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 s69:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
 s69:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
 s69:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
 s69:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
 s69:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
 s69:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s68:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s68:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s68:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
-s68:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s68:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s68:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s67:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s67:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s67:e17:debug    e17:debug     e17:p2714b:debug e17:p2714b:debug
-s67:e17:prof     e17:prof      e17:p2714b:prof  e17:p2714b:prof
-s67:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s67:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s66:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s66:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s66:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s66:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s65:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s65:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s65:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s65:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s64:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s64:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s64:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s64:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
-s63:c2:debug     c2:debug      c2:p2714b:debug  c2:p2714b:debug
-s63:c2:prof      c2:prof       c2:p2714b:prof   c2:p2714b:prof
-s63:e15:debug    e15:debug     e15:p2714b:debug e15:p2714b:debug
-s63:e15:prof     e15:prof      e15:p2714b:prof  e15:p2714b:prof
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
