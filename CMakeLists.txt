@@ -38,6 +38,7 @@ cet_set_compiler_flags(DIAGS VIGILANT
 cet_report_compiler_flags()
 
 find_ups_product( art )
+find_ups_product(art_root_io)
 find_ups_product( ifdhc  )
 find_ups_product( ifbeam  )
 find_ups_product( nucondb  )
