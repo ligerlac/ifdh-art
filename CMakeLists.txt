@@ -43,7 +43,7 @@ find_ups_product( ifbeam  )
 find_ups_product( nucondb  )
 find_ups_product( libwda  )
 find_ups_product( cetbuildtools  )
-  find_ups_product( cetlib_except )
+find_ups_product( cetlib_except )
 
 # include search path
 # decide if we have IFDHC_FQ_DIR or IFDHC_DIR
@@ -70,7 +70,7 @@ cet_find_library( WDA     NAMES wda     PATHS ENV LIBWDA_LIB  NO_DEFAULT_PATH )
 # SQLite
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
 
-# macros for art_dictionary and simple_plugin
+# macros
 include(ArtMake)
 include(BuildPlugins)
 
