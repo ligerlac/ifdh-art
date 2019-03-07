@@ -18,15 +18,23 @@ cetbuildtools   v7_12_01       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
-qualifier        art           ifbeam           nucondb
-s81:c7:debug     c7:debug      c7:p2715a:debug  c7:p2715a:debug
-s81:c7:prof      c7:prof       c7:p2715a:prof   c7:p2715a:prof
-s81:c2:debug     c2:debug      c2:p2715a:debug  c2:p2715a:debug
-s81:c2:prof      c2:prof       c2:p2715a:prof   c2:p2715a:prof
-s81:e19:debug    e19:debug     e19:p2715a:debug e19:p2715a:debug
-s81:e19:prof     e19:prof      e19:p2715a:prof  e19:p2715a:prof
-s81:e17:debug    e17:debug     e17:p2715a:debug e17:p2715a:debug
-s81:e17:prof     e17:prof      e17:p2715a:prof  e17:p2715a:prof
+qualifier         art            ifbeam           nucondb
+s81:py3:c7:debug  c7:py3:debug   c7:p372:debug    c7:p372:debug
+s81:py3:c7:prof   c7:py3:prof    c7:p372:prof     c7:p372:prof
+s81:py3:c2:debug  c2:py3:debug   c2:p372:debug    c2:p372:debug
+s81:py3:c2:prof   c2:py3:prof    c2:p372:prof     c2:p372:prof
+s81:py3:e19:debug e19:py3:debug  e19:p372:debug   e19:p372:debug
+s81:py3:e19:prof  e19:py3:prof   e19:p372:prof    e19:p372:prof
+s81:py3:e17:debug e17:py3:debug  e17:p372:debug   e17:p372:debug
+s81:py3:e17:prof  e17:py3:prof   e17:p372:prof    e17:p372:prof
+s81:c7:debug      c7:debug       c7:p2715a:debug  c7:p2715a:debug
+s81:c7:prof       c7:prof        c7:p2715a:prof   c7:p2715a:prof
+s81:c2:debug      c2:debug       c2:p2715a:debug  c2:p2715a:debug
+s81:c2:prof       c2:prof        c2:p2715a:prof   c2:p2715a:prof
+s81:e19:debug     e19:debug      e19:p2715a:debug e19:p2715a:debug
+s81:e19:prof      e19:prof       e19:p2715a:prof  e19:p2715a:prof
+s81:e17:debug     e17:debug      e17:p2715a:debug e17:p2715a:debug
+s81:e17:prof      e17:prof       e17:p2715a:prof  e17:p2715a:prof
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
