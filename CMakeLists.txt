@@ -38,16 +38,12 @@ cet_set_compiler_flags(DIAGS VIGILANT
 cet_report_compiler_flags()
 
 find_ups_product( art )
-find_ups_product(art_root_io)
 find_ups_product( ifdhc  )
 find_ups_product( ifbeam  )
 find_ups_product( nucondb  )
 find_ups_product( libwda  )
 find_ups_product( cetbuildtools  )
-
-if(DEFINED ENV{CETLIB_EXCEPT_DIR})
   find_ups_product( cetlib_except )
-endif()
 
 # include search path
 # decide if we have IFDHC_FQ_DIR or IFDHC_DIR
@@ -75,7 +71,6 @@ cet_find_library( WDA     NAMES wda     PATHS ENV LIBWDA_LIB  NO_DEFAULT_PATH )
 cet_find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB NO_DEFAULT_PATH)
 
 # macros for art_dictionary and simple_plugin
-include(ArtDictionary)
 include(ArtMake)
 include(BuildPlugins)
 

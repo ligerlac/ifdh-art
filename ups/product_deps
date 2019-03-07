@@ -11,14 +11,14 @@ fcldir      -
 # against different versions of some dependent product IFF
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art_root_io	v1_00_02	s80
+art             v3_02_02	s80
 ifbeam          v2_3_0
 nucondb         v2_3_0
 cetbuildtools   v7_12_01       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
-qualifier        art_root_io   ifbeam           nucondb
+qualifier        art           ifbeam           nucondb
 s80:c2:debug     c2:debug      c2:p2715a:debug  c2:p2715a:debug
 s80:c2:prof      c2:prof       c2:p2715a:prof   c2:p2715a:prof
 s80:e17:debug    e17:debug     e17:p2715a:debug e17:p2715a:debug
