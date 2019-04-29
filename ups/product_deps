@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_08_01
+parent ifdh_art v2_08_02
 defaultqual s83:e17
 
 # Format: directory_type directory_path directory_name
