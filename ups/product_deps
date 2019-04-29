@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
 parent ifdh_art v2_08_01
-defaultqual s82:e17
+defaultqual s83:e17
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -11,6 +11,7 @@ fcldir      -
 # against different versions of some dependent product IFF
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
+art             v3_02_05	s83
 art             v3_02_04	s82
 art             v3_02_03	s81
 ifbeam          v2_3_0
@@ -20,6 +21,22 @@ end_product_list
 
 # -nq- here means there is no qualifier
 qualifier         art            ifbeam           nucondb
+s83:py3:c7:debug  c7:py3:debug   c7:p372:debug    c7:p372:debug
+s83:py3:c7:prof   c7:py3:prof    c7:p372:prof     c7:p372:prof
+s83:py3:c2:debug  c2:py3:debug   c2:p372:debug    c2:p372:debug
+s83:py3:c2:prof   c2:py3:prof    c2:p372:prof     c2:p372:prof
+s83:py3:e19:debug e19:py3:debug  e19:p372:debug   e19:p372:debug
+s83:py3:e19:prof  e19:py3:prof   e19:p372:prof    e19:p372:prof
+s83:py3:e17:debug e17:py3:debug  e17:p372:debug   e17:p372:debug
+s83:py3:e17:prof  e17:py3:prof   e17:p372:prof    e17:p372:prof
+s83:c7:debug      c7:debug       c7:p2715a:debug  c7:p2715a:debug
+s83:c7:prof       c7:prof        c7:p2715a:prof   c7:p2715a:prof
+s83:c2:debug      c2:debug       c2:p2715a:debug  c2:p2715a:debug
+s83:c2:prof       c2:prof        c2:p2715a:prof   c2:p2715a:prof
+s83:e19:debug     e19:debug      e19:p2715a:debug e19:p2715a:debug
+s83:e19:prof      e19:prof       e19:p2715a:prof  e19:p2715a:prof
+s83:e17:debug     e17:debug      e17:p2715a:debug e17:p2715a:debug
+s83:e17:prof      e17:prof       e17:p2715a:prof  e17:p2715a:prof
 s82:py3:c7:debug  c7:py3:debug   c7:p372:debug    c7:p372:debug
 s82:py3:c7:prof   c7:py3:prof    c7:p372:prof     c7:p372:prof
 s82:py3:c2:debug  c2:py3:debug   c2:p372:debug    c2:p372:debug
