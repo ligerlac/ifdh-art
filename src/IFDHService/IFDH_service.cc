@@ -5,16 +5,14 @@
 
 namespace ifdh_ns {
 
-// ART Service constructor -- currently does nothing.
-//
-//
-IFDH::IFDH( fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {
-  std::vector<std::string> cfgkeys = cfg.get_names();
+IFDH::IFDH( fhicl::ParameterSet const & cfg )
+{
+  std::vector<std::string> const cfgkeys = cfg.get_names();
   std::string s;
 
   mf::LogVerbatim("test") << "IFDH constructor, got keys:";
-  for (std::vector<std::string>::iterator p = cfgkeys.begin(); p != cfgkeys.end(); p++ ) {
-       mf::LogVerbatim("test")<< *p << ", ";
+  for (auto const& key : cfgkeys) {
+       mf::LogVerbatim("test")<< key << ", ";
   }
 
   if ( cfg.get_if_present("IFDH_BASE_URI", s) ) {
@@ -27,9 +25,8 @@ IFDH::IFDH( fhicl::ParameterSet const & cfg, __attribute__((unused)) art::Activi
       mf::LogVerbatim("test") << "IFDH: turning on debug\n";
       this->set_debug(s);
   }
-}      
+}
 
 }
 
-//DEFINE_ART_SERVICE(ifdh_ns::IFDH)
 DEFINE_ART_SERVICE(ifdh_ns::IFDH)
