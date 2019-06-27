@@ -18,6 +18,6 @@ public:
 
 }
 
-DECLARE_ART_SERVICE(ifdh_ns::IFDH, GLOBAL)
+DECLARE_ART_SERVICE(ifdh_ns::IFDH, SHARED)
 
 #endif // IFDHSERVICE_H

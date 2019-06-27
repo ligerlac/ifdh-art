@@ -44,6 +44,6 @@ private:
 };
 
 }
-DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFCatalogInterface, art::CatalogInterface, GLOBAL)
+DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFCatalogInterface, art::CatalogInterface, SHARED)
 
 #endif // IFCATALOGINTERFACE

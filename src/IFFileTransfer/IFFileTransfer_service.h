@@ -23,6 +23,6 @@ private:
 };
 
 }
-DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFFileTransfer, art::FileTransfer, GLOBAL)
+DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFFileTransfer, art::FileTransfer, SHARED)
 
 #endif //IFFILETRANSFER_H
