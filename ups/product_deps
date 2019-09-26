@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_07_04
+parent ifdh_art v2_07_05
 defaultqual s85:e17
 
 # Format: directory_type directory_path directory_name
@@ -18,8 +18,8 @@ art		v3_00_00	s69
 art		v2_13_00	s85
 art		v2_12_01	s79
 art		v2_12_00	s74
-ifbeam          v2_3_2
-nucondb         v2_3_2
+ifbeam          v2_4_0
+nucondb         v2_4_0
 cetbuildtools   v7_12_01       -       only_for_build
 end_product_list
 
