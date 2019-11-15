@@ -1,7 +1,7 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
 parent ifdh_art v2_09_02
-defaultqual e17
+defaultqual e19
 
 # Format: directory_type directory_path directory_name
 incdir      fq_dir	inc
@@ -21,20 +21,12 @@ end_product_list
 qualifier         art            ifbeam           nucondb
 py3:c7:debug  c7:py3:debug   c7:p372:debug    c7:p372:debug
 py3:c7:prof   c7:py3:prof    c7:p372:prof     c7:p372:prof
-py3:c2:debug  c2:py3:debug   c2:p372:debug    c2:p372:debug
-py3:c2:prof   c2:py3:prof    c2:p372:prof     c2:p372:prof
 py3:e19:debug e19:py3:debug  e19:p372:debug   e19:p372:debug
 py3:e19:prof  e19:py3:prof   e19:p372:prof    e19:p372:prof
-py3:e17:debug e17:py3:debug  e17:p372:debug   e17:p372:debug
-py3:e17:prof  e17:py3:prof   e17:p372:prof    e17:p372:prof
 c7:debug      c7:debug       c7:p2715a:debug  c7:p2715a:debug
 c7:prof       c7:prof        c7:p2715a:prof   c7:p2715a:prof
-c2:debug      c2:debug       c2:p2715a:debug  c2:p2715a:debug
-c2:prof       c2:prof        c2:p2715a:prof   c2:p2715a:prof
 e19:debug     e19:debug      e19:p2715a:debug e19:p2715a:debug
 e19:prof      e19:prof       e19:p2715a:prof  e19:p2715a:prof
-e17:debug     e17:debug      e17:p2715a:debug e17:p2715a:debug
-e17:prof      e17:prof       e17:p2715a:prof  e17:p2715a:prof
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
