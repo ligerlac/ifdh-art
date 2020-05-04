@@ -12,10 +12,11 @@
 #  make package (builds distribution tarfile)
 # ======================================================================
 
-# use cmake 2.8 or later
-cmake_minimum_required (VERSION 2.8)
+# use cmake 3.12 or later
+cmake_minimum_required (VERSION 3.12)
 
-##SET ( CMAKE_VERBOSE_MAKEFILE true )
+project(ifdh_art LANGUAGES CXX)
+
 # cetbuildtools contains our cmake modules
 SET ( CETBUILDTOOLS_VERSION $ENV{CETBUILDTOOLS_VERSION} )
 IF (NOT CETBUILDTOOLS_VERSION)
