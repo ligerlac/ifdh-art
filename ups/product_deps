@@ -1,6 +1,6 @@
 # The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_10_05
+parent ifdh_art v2_10_06
 defaultqual e19
 
 # Format: directory_type directory_path directory_name
@@ -12,8 +12,8 @@ fcldir      -
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
 art             v3_05_01
-ifbeam          v2_4_3
-nucondb         v2_4_3
+ifbeam          v2_4_4
+nucondb         v2_4_4
 cetbuildtools   v7_15_01       -       only_for_build
 end_product_list
 
