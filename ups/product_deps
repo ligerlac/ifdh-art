@@ -1,6 +1,6 @@
-# The parent line must be the first non-comment line in the file
+: The parent line must be the first non-comment line in the file
 # This line defines the product name and version
-parent ifdh_art v2_10_07
+parent ifdh_art v2_11_00
 defaultqual e19
 
 # Format: directory_type directory_path directory_name
@@ -11,22 +11,20 @@ fcldir      -
 # against different versions of some dependent product IFF
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art             v3_05_01
-ifbeam          v2_4_5
-nucondb         v2_4_5
-cetbuildtools   v7_15_01       -       only_for_build
+art             v3_06_00
+ifbeam          v2_4_6
+nucondb         v2_4_6
+cetbuildtools   v7_17_01       -       only_for_build
 end_product_list
 
 # -nq- here means there is no qualifier
-qualifier      art            ifbeam           nucondb
-c7:debug       c7:debug       c7:p372:debug    c7:p372:debug
-c7:prof        c7:prof        c7:p372:prof     c7:p372:prof
-e19:debug      e19:debug      e19:p372:debug   e19:p372:debug
-e19:prof       e19:prof       e19:p372:prof    e19:p372:prof
-py2:c7:debug   py2:c7:debug   c7:p2715a:debug  c7:p2715a:debug
-py2:c7:prof    py2:c7:prof    c7:p2715a:prof   c7:p2715a:prof
-py2:e19:debug  py2:e19:debug  e19:p2715a:debug e19:p2715a:debug
-py2:e19:prof   py2:e19:prof   e19:p2715a:prof  e19:p2715a:prof
+qualifier      art            ifbeam            nucondb
+c7:debug       c7:debug       c7:p383b:debug    c7:p383b:debug
+c7:prof        c7:prof        c7:p383b:prof     c7:p383b:prof
+e20:debug      e20:debug      e20:p383b:debug   e20:p383b:debug
+e20:prof       e20:prof       e20:p383b:prof    e20:p383b:prof
+e19:debug      e19:debug      e19:p383b:debug   e19:p383b:debug
+e19:prof       e19:prof       e19:p383b:prof    e19:p383b:prof
 end_qualifier_list
 
 # Preserve tabs and formatting in emacs and vi / vim:
