@@ -15,7 +15,7 @@
 # use cmake 3.12 or later
 cmake_minimum_required (VERSION 3.12)
 
-project(ifdh_art LANGUAGES CXX)
+project(ifdh_art VERSION 2.11.05 LANGUAGES CXX)
 
 # cetbuildtools contains our cmake modules
 SET ( CETBUILDTOOLS_VERSION $ENV{CETBUILDTOOLS_VERSION} )
