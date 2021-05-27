@@ -11,7 +11,7 @@ fcldir      -
 # against different versions of some dependent product IFF
 # there are no changes required in the code for the different dependencies
 product		version		distinguishing-qualifier
-art             v3_09_00
+art             v3_09_01
 ifbeam          v2_4_9
 nucondb         v2_4_9
 cetbuildtools   v8_07_01       -       only_for_build
