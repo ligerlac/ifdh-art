@@ -3,8 +3,8 @@ simple_plugin(IFCatalogInterface "service"
 			   ${IFDH} 
                            ${ART_FRAMEWORK_CORE}
                            ${ART_UTILITIES}
-                           ${MF_MESSAGELOGGER}
-                           ${MF_UTILITIES}
+                           messagefacility::MF_MessageLogger
+                           messagefacility::headers
 			   ${FHICLCPP}
                            ${CETLIB} ${CETLIB_EXCEPT}
                            ${Boost_FILESYSTEM_LIBRARY}

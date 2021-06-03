@@ -5,7 +5,7 @@ simple_plugin(nucondb "service"
                            ${WDA}
                            ${IFDH}
 			   ${ART_UTILITIES}
-                           ${MF_MESSAGELOGGER}
+                           messagefacility::MF_MessageLogger
 			   ${FHICLCPP}
                            ${CETLIB}
                            ${Boost_FILESYSTEM_LIBRARY}

@@ -3,8 +3,8 @@
 simple_plugin(IFDH service 
 			   ${IFDH} 
 			   ${ART_UTILITIES}
-                           ${MF_MESSAGELOGGER}
-                           ${MF_UTILITIES}
+                           messagefacility::MF_MessageLogger
+                           messagefacility::headers
 			   ${FHICLCPP}
                            ${CETLIB} ${CETLIB_EXCEPT}
                            ${Boost_FILESYSTEM_LIBRARY}

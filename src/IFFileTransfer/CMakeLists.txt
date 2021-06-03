@@ -5,8 +5,8 @@ simple_plugin(IFFileTransfer "service"
 			   ${IFDH} 
                            ${ART_FRAMEWORK_CORE}
                            ${ART_UTILITIES}
-                           ${MF_MESSAGELOGGER}
-                           ${MF_UTILITIES}
+                           messagefacility::MF_MessageLogger
+                           messagefacility::headers
 			   ${FHICLCPP}
                            ${CETLIB} ${CETLIB_EXCEPT}
                            ${ROOT_LIBRARIES}

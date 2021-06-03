@@ -17,13 +17,31 @@ cmake_minimum_required (VERSION 3.19)
 
 project(ifdh_art VERSION 2.12.02 LANGUAGES CXX)
 
+set(${product}_inc_dir ${CMAKE_INSTALL_PREFIX}/include)
+
 find_package(cetmodules REQUIRED)
 find_package(art REQUIRED)
-cet_find_simple_package(ifbeam)
-cet_find_simple_package(ifdh INCPATH_SUFFIXES inc)
-cet_find_simple_package(nucondb)
-cet_find_simple_package(wda)
-cet_find_simple_package(sqlite3)
+find_package(messagefacility REQUIRED)
+#ifdhc
+find_library( IFDH    NAMES ifdh    PATHS ENV IFDHC_LIB )
+find_library( IFBEAM  NAMES ifbeam  PATHS ENV IFBEAM_LIB)
+find_library( NUCONDB NAMES nucondb PATHS ENV NUCONDB_LIB)
+find_library( WDA     NAMES wda     PATHS ENV LIBWDA_LIB)
+# SQLite
+find_library(SQLITE3 NAMES sqlite3 PATHS ENV SQLITE_LIB)
+
+get_filename_component(IFDH_LIB    ${IFDH}    DIRECTORY)
+get_filename_component(IFBEAM_LIB  ${IFBEAM}  DIRECTORY)
+get_filename_component(NUCONDB_LIB ${NUCONDB} DIRECTORY)
+get_filename_component(WDA_LIB     ${WDA}     DIRECTORY)
+
+message("IFDH is ${IFDH}, IFDH_LIB is ${IFDH_LIB}")
+
+include_directories("${IFDH_LIB}/../inc")
+include_directories("${IFBEAM_LIB}/../include")
+include_directories("${NUCONDB_LIB}/../include")
+include_directories("${WDA_LIB}/../include")
+
 find_package(cetlib_except REQUIRED)
 
 include(CetCMakeEnv)
@@ -41,9 +59,8 @@ include(ArtMake)
 include(BuildPlugins)
 
 add_subdirectory (src)
-add_subdirectory (tests)
-add_subdirectory(cmakeConfig)
-if ($ENV{UPS_DIR})
+
+if ($WANT_UPS)
 add_subdirectory (ups)
 endif()
 

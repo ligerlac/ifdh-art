@@ -5,7 +5,7 @@ simple_plugin(IFBeam "service"
 			   ${IFBEAM} 
                            ${WDA}
                            ${IFDH}
-                           ${MF_MESSAGELOGGER}
+                           messagefacility::MF_MessageLogger
 			   ${ART_UTILITIES}
 			   ${FHICLCPP}
                            ${CETLIB}
