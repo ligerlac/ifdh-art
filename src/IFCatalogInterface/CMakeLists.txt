@@ -1,17 +1,14 @@
 
 simple_plugin(IFCatalogInterface "service" 
-			   ${IFDH} 
-                           ${ART_FRAMEWORK_CORE}
-                           ${ART_UTILITIES}
-                           ${MF_MESSAGELOGGER}
-                           ${MF_UTILITIES}
-			   ${FHICLCPP}
-                           ${CETLIB} ${CETLIB_EXCEPT}
-                           ${Boost_FILESYSTEM_LIBRARY}
-                           ${Boost_SYSTEM_LIBRARY}
-                           ${ROOT_BASIC_LIB_LIST}
-              BASENAME_ONLY
-		)
+  IFDH
+  ART_FRAMEWORK_CORE
+  ART_UTILITIES
+  MF_MESSAGELOGGER
+  FHICLCPP
+  CETLIB CETLIB_EXCEPT
+  BASENAME_ONLY
+	)
+
 include_directories(../IFDHService)
 
 install_ifdh_headers()
