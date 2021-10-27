@@ -1,9 +1,10 @@
 simple_plugin(IFDH service
-  IFDH
-  ART_UTILITIES
-  MF_MESSAGELOGGER
-  FHICLCPP
-  CETLIB CETLIB_EXCEPT
+  ifdh::ifdh
+  art::Utilities
+  messagefacility::MF_MessageLogger
+  fhiclcpp::fhiclcpp
+  cetlib::cetlib
+  cetlib_except::cetlib_except
   BASENAME_ONLY
   )
 

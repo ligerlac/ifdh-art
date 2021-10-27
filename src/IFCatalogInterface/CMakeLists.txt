@@ -1,11 +1,12 @@
 
 simple_plugin(IFCatalogInterface "service" 
-  IFDH
-  ART_FRAMEWORK_CORE
-  ART_UTILITIES
-  MF_MESSAGELOGGER
-  FHICLCPP
-  CETLIB CETLIB_EXCEPT
+  ifdh::ifdh
+  art::Framework_Core
+  art::Utilities
+  messagefacility::MF_MessageLogger
+  fhiclcpp::fhiclcpp
+  cetlib::cetlib
+  cetlib_except::cetlib_except
   BASENAME_ONLY
 	)
 

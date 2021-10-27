@@ -1,11 +1,11 @@
 simple_plugin(IFBeam "service"
   IFBEAM
-  WDA
-  IFDH
-  MF_MESSAGELOGGER
-  ART_UTILITIES
-  FHICLCPP
-  CETLIB
+  wda::wda
+  ifdh::ifdh
+  messagefacility::MF_MessageLogger
+  art::Utilities
+  fhiclcpp::fhiclcpp
+  cetlib::cetlib
   BASENAME_ONLY
   )
 
