@@ -9,5 +9,5 @@ simple_plugin(IFBeam "service"
   BASENAME_ONLY
   )
 
-install_ifdh_headers()
+install_headers()
 install_source()

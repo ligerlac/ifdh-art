@@ -7,7 +7,7 @@
 #include "art/Framework/Services/Registry/ServiceMacros.h"
 #include "art/Framework/Services/FileServiceInterfaces/FileTransfer.h"
 
-#include "IFDH_service.h"
+#include "ifdh_art/IFDHService/IFDH_service.h"
 
 namespace ifdh_ns {
 

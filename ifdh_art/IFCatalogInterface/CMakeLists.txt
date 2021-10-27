@@ -10,8 +10,6 @@ simple_plugin(IFCatalogInterface "service"
   BASENAME_ONLY
 	)
 
-include_directories(../IFDHService) ### MIGRATE-ACTION-RECOMMENDED: use target_link_directories() with target semantics
-
-install_ifdh_headers()
+install_headers()
 install_source()
 

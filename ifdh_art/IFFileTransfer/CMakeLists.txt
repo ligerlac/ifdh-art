@@ -1,4 +1,3 @@
-include_directories(../IFDHService) ### MIGRATE-ACTION-RECOMMENDED: use target_link_directories() with target semantics
 
 simple_plugin(IFFileTransfer "service" 
   ifdh::ifdh
@@ -11,6 +10,6 @@ simple_plugin(IFFileTransfer "service"
   BASENAME_ONLY
   )
 
-install_ifdh_headers()
+install_headers()
 install_source()
 
