@@ -1,5 +1,5 @@
 simple_plugin(IFBeam "service"
-  IFBEAM
+  ifbeam::ifbeam
   wda::wda
   ifdh::ifdh
   messagefacility::MF_MessageLogger

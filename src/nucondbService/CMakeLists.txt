@@ -1,5 +1,5 @@
 simple_plugin(nucondb "service" 
-  NUCONDB
+  nucondb::nucondb
   wda::wda
   ifdh::ifdh
   art::Utilities
