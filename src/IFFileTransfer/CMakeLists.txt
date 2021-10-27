@@ -1,4 +1,4 @@
-include_directories(../IFDHService)
+include_directories(../IFDHService) ### MIGRATE-ACTION-RECOMMENDED: use target_link_directories() with target semantics
 
 simple_plugin(IFFileTransfer "service" 
   IFDH

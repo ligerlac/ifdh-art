@@ -1,6 +1,6 @@
 
 macro( install_ifdh_headers   )
-  set(header_install_dir ${${product}_inc_dir} )
+  set(header_install_dir ${${CETMODULES_CURRENT_PROJECT_NAME}_INCLUDE_DIR} )
   message( STATUS "install_ifdh_headers: headers will be installed in ${header_install_dir}" )
   FILE(GLOB headers [^.]*.h [^.]*.hh [^.]*.icc )
   if( headers )
