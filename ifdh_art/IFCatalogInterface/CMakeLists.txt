@@ -1,5 +1,6 @@
 
-simple_plugin(IFCatalogInterface "service" 
+cet_build_plugin(IFCatalogInterface art::service
+  LIBRARIES
   ifdh::ifdh
   art::Framework_Core
   art::Utilities

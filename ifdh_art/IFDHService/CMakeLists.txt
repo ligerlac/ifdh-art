@@ -1,4 +1,5 @@
-simple_plugin(IFDH service
+cet_build_plugin(IFDH art::service
+  LIBRARIES
   ifdh::ifdh
   art::Utilities
   messagefacility::MF_MessageLogger

@@ -1,4 +1,5 @@
-simple_plugin(nucondb "service" 
+cet_build_plugin(nucondb art::service
+  LIBRARIES
   nucondb::nucondb
   wda::wda
   ifdh::ifdh

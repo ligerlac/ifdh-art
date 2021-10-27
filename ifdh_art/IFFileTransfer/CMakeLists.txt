@@ -1,5 +1,6 @@
 
-simple_plugin(IFFileTransfer "service" 
+cet_build_plugin(IFFileTransfer art::service
+  LIBRARIES
   ifdh::ifdh
   art::Framework_Core
   art::Utilities

@@ -1,4 +1,5 @@
-simple_plugin(IFBeam "service"
+cet_build_plugin(IFBeam art::service
+  LIBRARIES
   ifbeam::ifbeam
   wda::wda
   ifdh::ifdh
