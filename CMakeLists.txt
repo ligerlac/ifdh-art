@@ -32,7 +32,8 @@ find_package(cetlib_except REQUIRED)
 include(ArtMake)
 include(BuildPlugins)
 
-add_subdirectory (src)
+add_subdirectory (ifdh_art)
+add_subdirectory (Modules)
 #add_subdirectory (tests)
 
 # packaging utility
