@@ -1,4 +1,4 @@
-cet_build_plugin(nucondb art::service
+cet_build_plugin(NUconDB art::service
   LIBRARIES
   nucondb::nucondb
   wda::wda
