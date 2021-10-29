@@ -23,9 +23,9 @@ cet_report_compiler_flags(REPORT_THRESHOLD VERBOSE)
 
 find_package(art REQUIRED)
 find_package(libwda REQUIRED)
-find_package(ifdhc REQUIRED)
-find_package(ifbeam REQUIRED)
-find_package(nucondb REQUIRED)
+find_package(ifdhc REQUIRED PUBLIC)
+find_package(ifbeam REQUIRED PUBLIC)
+find_package(nucondb REQUIRED PUBLIC)
 find_package(cetlib_except REQUIRED)
 
 # macros
