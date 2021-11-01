@@ -10,9 +10,6 @@ project(ifdh_art VERSION 2.12.05 LANGUAGES CXX)
 include(CetCMakeEnv)
 cet_cmake_env()
 
-# Find our own CMake modules, and tell everyone else where to find them.
-cet_cmake_module_directories(Modules)
-
 cet_set_compiler_flags(DIAGS VIGILANT
   WERROR
   NO_UNDEFINED
@@ -33,7 +30,6 @@ include(ArtMake)
 include(BuildPlugins)
 
 add_subdirectory (ifdh_art)
-add_subdirectory (Modules)
 #add_subdirectory (tests)
 
 # packaging utility
