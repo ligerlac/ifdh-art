@@ -1,4 +1,4 @@
-#include "IFDH_service.h"
+#include "ifdh_art/IFDHService/IFDH_service.h"
 #include "messagefacility/MessageLogger/MessageLogger.h"
 #include <iostream>
 #include <vector>
@@ -29,4 +29,3 @@ IFDH::IFDH( fhicl::ParameterSet const & cfg )
 
 }
 
-DEFINE_ART_SERVICE(ifdh_ns::IFDH)

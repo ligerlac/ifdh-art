@@ -8,7 +8,7 @@
 #include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
 #include <vector>
 
-#include "IFDH_service.h"
+#include "ifdh_art/IFDHService/IFDH_service.h"
 
 namespace ifdh_ns {
 
