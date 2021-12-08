@@ -249,8 +249,8 @@ incdir	fq_dir	inc
 ####################################
 product		version		qual	flags		<table_format=2>
 art		v3_09_03	-
-ifbeam		v2_5_2		-
-nucondb		v2_5_2		-
+ifbeam		v2_5_4		-
+nucondb		v2_5_4		-
 cetmodules	v2_29_09	-	only_for_build
 end_product_list
 ####################################
