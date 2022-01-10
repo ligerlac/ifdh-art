@@ -247,11 +247,11 @@ incdir	fq_dir	inc
 #   entry to match for a given product.
 #
 ####################################
-product		version		qual	flags		<table_format=2>
-art		v3_10_00	-
-ifbeam		v2_5_5		-
-nucondb		v2_5_5		-
-cetmodules	v2_29_14	-	only_for_build
+product         version     qual  flags          <table_format=2>
+art             v3_10_00    -
+ifbeam          v2_5_6	    -
+nucondb         v2_5_6	    -
+cetmodules      v2_29_14    -     only_for_build
 end_product_list
 ####################################
 
