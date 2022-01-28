@@ -1,5 +1,5 @@
-#ifndef IFFILETRANSFER_H
-#define IFFILETRANSFER_H
+#ifndef ifdh_art_IFFileTransfer_IFFileTransfer_service_h
+#define ifdh_art_IFFileTransfer_IFFileTransfer_service_h
 
 #include "art/Framework/Services/FileServiceInterfaces/FileTransfer.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
@@ -27,4 +27,8 @@ DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFFileTransfer,
                                    art::FileTransfer,
                                    SHARED)
 
-#endif // IFFILETRANSFER_H
+#endif /* ifdh_art_IFFileTransfer_IFFileTransfer_service_h */
+
+// Local Variables:
+// mode: c++
+// End:

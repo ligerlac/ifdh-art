@@ -1,5 +1,5 @@
-#ifndef IFDHSERVICE_H
-#define IFDHSERVICE_H
+#ifndef ifdh_art_IFDHService_IFDH_service_h
+#define ifdh_art_IFDHService_IFDH_service_h
 #include "ifdh.h"
 
 // art bits...
@@ -18,4 +18,8 @@ namespace ifdh_ns {
 
 DECLARE_ART_SERVICE(ifdh_ns::IFDH, SHARED)
 
-#endif // IFDHSERVICE_H
+#endif /* ifdh_art_IFDHService_IFDH_service_h */
+
+// Local Variables:
+// mode: c++
+// End:

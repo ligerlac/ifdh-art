@@ -1,5 +1,5 @@
-#ifndef NUCONDBSERVICE_H
-#define NUCONDBSERVICE_H
+#ifndef ifdh_art_NUconDBService_NUconDB_service_h
+#define ifdh_art_NUconDBService_NUconDB_service_h
 #include "nucondb.h"
 
 // ART bits...
@@ -28,4 +28,8 @@ DECLARE_ART_SERVICE(nucondb_ns::NUconDBService, LEGACY)
 // this is redundant, given the include,  but just to be clear
 
 using namespace nucondb_ns;
-#endif // NUCONDBSERVICE_H
+#endif /* ifdh_art_NUconDBService_NUconDB_service_h */
+
+// Local Variables:
+// mode: c++
+// End:

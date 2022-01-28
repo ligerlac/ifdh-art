@@ -1,5 +1,5 @@
-#ifndef IFBEAMSERVICE_H
-#define IFBEAMSERVICE_H
+#ifndef ifdh_art_IFBeamService_IFBeam_service_h
+#define ifdh_art_IFBeamService_IFBeam_service_h
 #include "ifbeam.h"
 #include <memory>
 
@@ -26,4 +26,8 @@ DECLARE_ART_SERVICE(ifbeam_ns::IFBeam, LEGACY)
 // this is redundant, given the ifbeam include,  but just to be clear
 
 using namespace ifbeam_ns;
-#endif // IFBEAMSERVICE_H
+#endif /* ifdh_art_IFBeamService_IFBeam_service_h */
+
+// Local Variables:
+// mode: c++
+// End:

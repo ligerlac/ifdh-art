@@ -1,5 +1,5 @@
-#ifndef IFCATALOGINTERFACE
-#define IFCATALOGINTERFACE
+#ifndef ifdh_art_IFCatalogInterface_IFCatalogInterface_service_h
+#define ifdh_art_IFCatalogInterface_IFCatalogInterface_service_h
 
 #include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
@@ -49,4 +49,8 @@ DECLARE_ART_SERVICE_INTERFACE_IMPL(ifdh_ns::IFCatalogInterface,
                                    art::CatalogInterface,
                                    SHARED)
 
-#endif // IFCATALOGINTERFACE
+#endif /* ifdh_art_IFCatalogInterface_IFCatalogInterface_service_h */
+
+// Local Variables:
+// mode: c++
+// End:
