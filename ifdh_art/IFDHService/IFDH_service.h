@@ -3,18 +3,16 @@
 #include "ifdh.h"
 
 // art bits...
-#include "fhiclcpp/ParameterSet.h"
 #include "art/Framework/Services/Registry/ServiceDeclarationMacros.h"
+#include "fhiclcpp/ParameterSet.h"
 
 namespace ifdh_ns {
 
-class IFDH : public ifdh {
-public:
-
-  // art constructor...
-  IFDH( fhicl::ParameterSet const & cfg);
-
-};
+  class IFDH : public ifdh {
+  public:
+    // art constructor...
+    IFDH(fhicl::ParameterSet const& cfg);
+  };
 
 }
 
