@@ -1,4 +1,3 @@
-
 cet_build_plugin(IFCatalogInterface art::service
   LIBRARIES
   ifdh::ifdh
@@ -9,8 +8,7 @@ cet_build_plugin(IFCatalogInterface art::service
   cetlib::cetlib
   cetlib_except::cetlib_except
   BASENAME_ONLY
-	)
+        )
 
 install_headers()
 install_source()
-

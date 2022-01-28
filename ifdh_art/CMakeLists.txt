@@ -1,9 +1,6 @@
-
-# source
-subdirs (IFDHService)
-subdirs (IFBeamService)
-subdirs (NUconDBService)
-subdirs (IFFileTransfer)
-subdirs (IFCatalogInterface)
-subdirs (bin)
-
+add_subdirectory(IFDHService)
+add_subdirectory(IFBeamService)
+add_subdirectory(NUconDBService)
+add_subdirectory(IFFileTransfer)
+add_subdirectory(IFCatalogInterface)
+add_subdirectory(bin)

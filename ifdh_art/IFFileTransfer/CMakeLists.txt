@@ -1,4 +1,3 @@
-
 cet_build_plugin(IFFileTransfer art::service
   LIBRARIES
   ifdh::ifdh
@@ -13,4 +12,3 @@ cet_build_plugin(IFFileTransfer art::service
 
 install_headers()
 install_source()
-
