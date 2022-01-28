@@ -1,21 +1,19 @@
 #ifndef ifdh_art_NUconDBService_NUconDB_service_h
 #define ifdh_art_NUconDBService_NUconDB_service_h
+
 #include "nucondb.h"
 
-// ART bits...
-#include "art/Framework/Services/Registry/ActivityRegistry.h"
-#include "art/Framework/Services/Registry/ServiceHandle.h"
 #include "art/Framework/Services/Registry/ServiceDeclarationMacros.h"
-#include "cetlib_except/exception.h"
-#include "fhiclcpp/ParameterSet.h"
+#include "fhiclcpp/fwd.h"
+
+#include <memory>
+#include <string>
 
 namespace nucondb_ns {
 
   class NUconDBService {
-
   public:
-    // ART constructor...
-    NUconDBService(fhicl::ParameterSet const& cfg, art::ActivityRegistry& r);
+    explicit NUconDBService(fhicl::ParameterSet const& cfg);
     std::unique_ptr<Folder> getFolder(std::string name,
                                       std::string url,
                                       std::string tag = "");
@@ -25,9 +23,6 @@ namespace nucondb_ns {
 
 DECLARE_ART_SERVICE(nucondb_ns::NUconDBService, LEGACY)
 
-// this is redundant, given the include,  but just to be clear
-
-using namespace nucondb_ns;
 #endif /* ifdh_art_NUconDBService_NUconDB_service_h */
 
 // Local Variables:

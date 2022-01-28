@@ -1,17 +1,16 @@
 #ifndef ifdh_art_IFDHService_IFDH_service_h
 #define ifdh_art_IFDHService_IFDH_service_h
+
 #include "ifdh.h"
 
-// art bits...
 #include "art/Framework/Services/Registry/ServiceDeclarationMacros.h"
-#include "fhiclcpp/ParameterSet.h"
+#include "fhiclcpp/fwd.h"
 
 namespace ifdh_ns {
 
   class IFDH : public ifdh {
   public:
-    // art constructor...
-    IFDH(fhicl::ParameterSet const& cfg);
+    explicit IFDH(fhicl::ParameterSet const& cfg);
   };
 
 }

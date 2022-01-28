@@ -4,9 +4,7 @@
 
 namespace ifdh_ns {
 
-  IFFileTransfer::IFFileTransfer(const fhicl::ParameterSet&,
-                                 art::ActivityRegistry&)
-  {}
+  IFFileTransfer::IFFileTransfer(fhicl::ParameterSet const&) {}
 
   int
   IFFileTransfer::doTranslateToLocalFilename(std::string const& uri,

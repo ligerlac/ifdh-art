@@ -1,36 +1,21 @@
 #include "IFCatalogInterface_service.h"
-#include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
 #include "art/Framework/Services/FileServiceInterfaces/FileDeliveryStatus.h"
-#include "art/Framework/Services/Registry/ActivityRegistry.h"
-#include "art/Framework/Services/Registry/ServiceDefinitionMacros.h"
-#include "art/Framework/Services/Registry/detail/ServiceHelper.h"
+#include "fhiclcpp/ParameterSet.h"
 
 #include "messagefacility/MessageLogger/MessageLogger.h"
 
 namespace ifdh_ns {
 
-  IFCatalogInterface::IFCatalogInterface(const fhicl::ParameterSet& cfg,
-                                         art::ActivityRegistry&)
-    : _process_id("")
-    , _proj_uri("")
-    , _project_name("")
-    , _sam_station("")
-    , _last_file_uri("")
+  IFCatalogInterface::IFCatalogInterface(fhicl::ParameterSet const& cfg)
   {
-    std::vector<std::string> cfgkeys = cfg.get_names();
-    std::string s;
-
     mf::LogVerbatim("test") << "IFCatalogInterface constructor, got keys:";
-    for (std::vector<std::string>::iterator p = cfgkeys.begin();
-         p != cfgkeys.end();
-         p++) {
-      mf::LogVerbatim("test") << *p << ", ";
+    for (auto const& key : cfg.get_names()) {
+      mf::LogVerbatim("test") << key << ", ";
     }
 
-    if (cfg.get_if_present("webURI", s)) {
+    if (cfg.get_if_present("webURI", _proj_uri)) {
       mf::LogVerbatim("test")
-        << "IFCatalogInterface: setting _proj_uri to:" << s << "\n";
-      _proj_uri = s;
+        << "IFCatalogInterface: set _proj_uri to:" << _proj_uri << "\n";
     }
   }
 
@@ -60,8 +45,7 @@ namespace ifdh_ns {
   }
 
   int
-  IFCatalogInterface::doGetNextFileURI(std::string& uri,
-                                       double& waitTime [[maybe_unused]])
+  IFCatalogInterface::doGetNextFileURI(std::string& uri, double& /*waitTime*/)
   {
     mf::LogVerbatim("test") << "IFCatalogInterface entering doGetNextFile\n";
     if (_last_file_uri.length()) {
@@ -76,10 +60,9 @@ namespace ifdh_ns {
       if (uri.length()) {
         mf::LogVerbatim("test") << "doGetNextFile success\n";
         return art::FileDeliveryStatus::SUCCESS;
-      } else {
-        mf::LogVerbatim("test") << "doGetNextFile no_more_files\n";
-        return art::FileDeliveryStatus::NO_MORE_FILES;
       }
+      mf::LogVerbatim("test") << "doGetNextFile no_more_files\n";
+      return art::FileDeliveryStatus::NO_MORE_FILES;
     }
     return art::FileDeliveryStatus::BAD_REQUEST;
   }
@@ -88,7 +71,7 @@ namespace ifdh_ns {
   IFCatalogInterface::doUpdateStatus(std::string const& uri,
                                      art::FileDisposition status)
   {
-    static const char* statusmap[] = {
+    constexpr const char* statusmap[] = {
       "transferred", "consumed", "skipped", "consumed", /* INCOMPLETE */
     };
 
@@ -108,33 +91,23 @@ namespace ifdh_ns {
 
   void
   IFCatalogInterface::doOutputFileOpened(std::string const&)
-  {
-    return;
-  }
+  {}
 
   void
-  IFCatalogInterface::doOutputModuleInitiated(std::string const& module_label
-                                              [[maybe_unused]],
-                                              fhicl::ParameterSet const& pset)
+  IFCatalogInterface::doOutputModuleInitiated(
+    std::string const& /*module_label*/,
+    fhicl::ParameterSet const& pset)
   {
-    std::string s;
-    bool ignore = false;
-    std::vector<std::string> cfgkeys = pset.get_names();
     mf::LogVerbatim("test")
       << "IFCatalogInterface doOutputModuleInitiated, got keys:";
-    for (std::vector<std::string>::iterator p = cfgkeys.begin();
-         p != cfgkeys.end();
-         p++) {
-      mf::LogVerbatim("test") << *p << ", ";
+    for (auto const& key : pset.get_names()) {
+      mf::LogVerbatim("test") << key << ", ";
     }
 
-    if (pset.get_if_present("fileName", s)) {
-      _output_files.push_back(s);
+    if (auto fileName = pset.get_if_present<std::string>("fileName")) {
+      _output_files.push_back(*fileName);
     }
-    if (pset.get_if_present("sam_ignore", ignore)) {
-      ;
-    }
-    _output_ignore.push_back(ignore);
+    _output_ignore.push_back(pset.get<bool>("sam_ignore", false));
   }
 
   void
@@ -144,28 +117,22 @@ namespace ifdh_ns {
     mf::LogVerbatim("test")
       << "IFCatalogInteface doOutputFileClosed: " << module_label << ", "
       << fileFQname << "\n";
-    return;
   }
 
   void
   IFCatalogInterface::doEventSelected(std::string const&,
                                       art::EventID const&,
                                       art::HLTGlobalStatus const&)
-  {
-    ;
-  }
+  {}
 
   bool
   IFCatalogInterface::doIsSearchable()
   {
-    return 0;
+    return false;
   }
 
   void
   IFCatalogInterface::doRewind()
-  {
-    // throw NotImplemented;
-    ;
-  }
+  {}
 
 }
