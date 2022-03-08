@@ -2,7 +2,7 @@
 #include "art/Framework/Services/FileServiceInterfaces/FileDeliveryStatus.h"
 #include "art/Framework/Services/FileServiceInterfaces/CatalogInterface.h"
 #include "art/Framework/Services/Registry/ActivityRegistry.h"
-#include "art/Framework/Services/Registry/ServiceMacros.h"
+#include "art/Framework/Services/Registry/ServiceDefinitionMacros.h"
 #include "art/Framework/Services/Registry/detail/ServiceHelper.h"
 
 #include "messagefacility/MessageLogger/MessageLogger.h"

@@ -4,7 +4,7 @@
 
 // art bits...
 #include "fhiclcpp/ParameterSet.h"
-#include "art/Framework/Services/Registry/ServiceMacros.h"
+#include "art/Framework/Services/Registry/ServiceDeclarationMacros.h"
 
 namespace ifdh_ns {
 
