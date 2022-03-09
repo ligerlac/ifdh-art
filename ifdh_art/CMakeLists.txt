@@ -1,0 +1,6 @@
+add_subdirectory(IFDHService)
+add_subdirectory(IFBeamService)
+add_subdirectory(NUconDBService)
+add_subdirectory(IFFileTransfer)
+add_subdirectory(IFCatalogInterface)
+add_subdirectory(bin)
