@@ -25,6 +25,21 @@ find_package(ifbeam REQUIRED PUBLIC)
 find_package(nucondb REQUIRED PUBLIC)
 find_package(cetlib_except REQUIRED)
 
+### STUFF FROM LINO
+message(STATUS "ENV{NPC_INSTALL_DIR}: [$ENV{NPC_INSTALL_DIR}]")
+if (DEFINED ENV{NPC_INSTALL_DIR})
+    message(STATUS "Detected user defined NPC_INSTALL_DIR...")
+    set(CMAKE_INSTALL_PREFIX "$ENV{NPC_INSTALL_DIR}")
+    set(CMAKE_PREFIX_PATH "$ENV{NPC_INSTALL_DIR}")
+else()
+    message(STATUS "NPC_INSTALL_DIR not set. Using default...")
+endif()
+message(STATUS "CMAKE_INSTALL_PREFIX: [${CMAKE_INSTALL_PREFIX}]")
+message(STATUS "CMAKE_PREFIX_PATH: [${CMAKE_PREFIX_PATH}]")
+find_library(npc_lib NAMES nopayloadclient)
+find_path(npc_include NAMES nopayloadclient)
+#####################
+
 # macros
 include(ArtMake)
 include(BuildPlugins)
