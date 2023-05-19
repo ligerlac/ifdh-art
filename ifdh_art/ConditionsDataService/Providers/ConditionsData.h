@@ -2,26 +2,44 @@
 #include "fhiclcpp/types/Atom.h"
 #include "fhiclcpp/types/Name.h"
 #include "fhiclcpp/types/Comment.h"
+#include "fhiclcpp/types/OptionalSequence.h"
+#include "fhiclcpp/types/Sequence.h"
+#include "fhiclcpp/types/Tuple.h"
+#include "fhiclcpp/types/DelegatedParameter.h"
 
 //#include <nopayloadclient/nopayloadclient.hpp>
+//#include <nopayloadclient/dunenpc.hpp>
 
 
 class ConditionsData  {
        
 public:
-    struct Config {
-      using Name = fhicl::Name;
-      using Comment = fhicl::Comment;
+  struct Config {
+    using Name = fhicl::Name;
+    using Comment = fhicl::Comment;
 
-      fhicl::Atom<unsigned int> AtomicNumber{
-	Name("AtomicNumber"),
-	  Comment("atomic number of the active material in the TPC"),
-	  18U // default value
-      };
+    fhicl::Atom<std::string> global_tag {
+      Name("global_tag"),
+      Comment("global configuration parameter for all conditions data")
     };
+    //    fhicl::DelegatedParameter delegated_parameter {
+    //      Name("override_dict"),
+    //      Comment("override payloads urls for specified condition types like"
+    //	      "{type_1: url_1, type_2: url_2, ...}")
+    //    };
+    fhicl::OptionalSequence<fhicl::Tuple<std::string, std::string>> override_dict {
+      Name("override_dict"),
+      Comment("override url's for given condition types [[type1, url1], ...]")
+    };
+  };
 
 
-  ConditionsData(Config const& config) : Z_(config.AtomicNumber()) {}
+  ConditionsData(Config const& config) {
+    std::cout << "config.global_tag() = " << config.global_tag() << std::endl;
+    //    std::cout << "config.override_dict() = " << config.override_dict() << std::endl;
+    global_tag_ = config.global_tag();
+    //    override_dict_ = config.override_dict();
+  }
 
   // ART constructor...
   ConditionsData( __attribute__((unused)) fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {}
@@ -29,6 +47,8 @@ public:
   //ConditionsData( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r) {};
   void sayHello() const {
     std::cout << "ConditionsData::sayHello()" << std::endl;
+    std::cout << "global_tag = " << global_tag_ << std::endl;
+    //    std::cout << "override_dict = " << override_dict_ << std::endl;
   }
 
   void printDBSize() const {
@@ -49,6 +69,6 @@ public:
   ConditionsData& operator=(ConditionsData&& pset) = delete;
 
 private:
-  int Z_;
-
+  std::string global_tag_;
+  //  nlohmann::json override_dict_;
 };
