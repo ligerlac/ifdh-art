@@ -7,7 +7,6 @@
 #include "fhiclcpp/types/Tuple.h"
 #include "fhiclcpp/types/DelegatedParameter.h"
 
-//#include <nopayloadclient/nopayloadclient.hpp>
 //#include <nopayloadclient/dunenpc.hpp>
 
 
@@ -23,12 +22,12 @@ public:
       Comment("global configuration parameter for all conditions data")
     };
     //    fhicl::DelegatedParameter delegated_parameter {
-    //      Name("override_dict"),
+    //      Name("override_dicts"),
     //      Comment("override payloads urls for specified condition types like"
     //	      "{type_1: url_1, type_2: url_2, ...}")
     //    };
-    fhicl::OptionalSequence<fhicl::Tuple<std::string, std::string>> override_dict {
-      Name("override_dict"),
+    fhicl::OptionalSequence<fhicl::Tuple<std::string, std::string>> override_pairs {
+      Name("override_pairs"),
       Comment("override url's for given condition types [[type1, url1], ...]")
     };
   };
@@ -36,30 +35,21 @@ public:
 
   ConditionsData(Config const& config) {
     std::cout << "config.global_tag() = " << config.global_tag() << std::endl;
-    //    std::cout << "config.override_dict() = " << config.override_dict() << std::endl;
-    global_tag_ = config.global_tag();
-    //    override_dict_ = config.override_dict();
-  }
-
-  // ART constructor...
-  ConditionsData( __attribute__((unused)) fhicl::ParameterSet const & cfg, __attribute__((unused)) art::ActivityRegistry &r) {}
-
-  //ConditionsData( fhicl::ParameterSet const & cfg, art::ActivityRegistry &r) {};
-  void sayHello() const {
-    std::cout << "ConditionsData::sayHello()" << std::endl;
-    std::cout << "global_tag = " << global_tag_ << std::endl;
-    //    std::cout << "override_dict = " << override_dict_ << std::endl;
-  }
-
-  void printDBSize() const {
-    std::cout << "ConditionsData::printDBSize()" << std::endl;
+    std::vector<std::tuple<std::string, std::string>> override_pairs;
+    if ( !config.override_pairs(override_pairs) ) return;
+    for (const auto& pair : override_pairs) {
+      std::cout << "std::get<0>(pair) = " << std::get<0>(pair) << std::endl;
+      std::cout << "std::get<1>(pair) = " << std::get<1>(pair) << std::endl;
+      //      client_.override(std::get<0>(pair), std::get<1>(pair));
+    }
   }
 
   std::string getUrl(int run_number, const std::string& type) const {
-    std::cout << "ConditionsData::getUrl()" << std::endl;
+    std::cout << "getUrl()" << std::endl;
     std::cout << "run_number = " << run_number << std::endl;
     std::cout << "type = " << type << std::endl;
-    return "example_url";
+    return "url";
+    //    return client_.getUrl(run_number, type);
   }
 
   // copy and moving of service providers is "forbidden":
@@ -69,6 +59,5 @@ public:
   ConditionsData& operator=(ConditionsData&& pset) = delete;
 
 private:
-  std::string global_tag_;
-  //  nlohmann::json override_dict_;
+  //  dunenpc::DuneClient client_;
 };
