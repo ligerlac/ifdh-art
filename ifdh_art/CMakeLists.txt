@@ -5,6 +5,7 @@ subdirs (IFBeamService)
 subdirs (NUconDBService)
 subdirs (IFFileTransfer)
 subdirs (IFCatalogInterface)
-subdirs (ConditionsDataService)
+# subdirs (ConditionsDataService)
+subdirs (AtomicNumber)
 subdirs (bin)
 

@@ -8,6 +8,7 @@ IFBeam::IFBeam( __attribute__((unused)) fhicl::ParameterSet const & cfg, __attri
         
 std::unique_ptr<BeamFolder>
 IFBeam::getBeamFolder(std::string bundle_name, std::string url, double time_width) {
+    std::cout << "IFBeam::getBeamFolder()" << std::endl;
     std::unique_ptr<BeamFolder> res(new BeamFolder(bundle_name, url, time_width));
     return res;
 }
