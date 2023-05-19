@@ -1,4 +1,4 @@
-cet_build_plugin(ConditionsData art::service
+cet_build_plugin(ConditionsDataService art::service
   IMPL_SOURCE
   LIBRARIES INTERFACE
   larcore::ServiceProviderWrappers

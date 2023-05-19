@@ -1,8 +1,6 @@
 #ifndef CONDITIONSDATASERVICE_H
 #define CONDITIONSDATASERVICE_H
 
-//#include "art/Framework/Services/Registry/ActivityRegistry.h"
-                                                                
 #include "larcore/CoreUtils/ServiceProviderWrappers.h"
 #include "ifdh_art/ConditionsDataService/Providers/ConditionsData.h"
 #include "art/Framework/Services/Registry/ServiceDeclarationMacros.h"
