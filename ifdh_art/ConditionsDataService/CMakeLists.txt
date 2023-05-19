@@ -1,14 +1,5 @@
-cet_build_plugin(ConditionsData art::service
-  LIBRARIES
-  messagefacility::MF_MessageLogger
-  art::Utilities
-  fhiclcpp::fhiclcpp
-  cetlib::cetlib
-#  nopayloadclient
-#  dunenpc
-  BASENAME_ONLY
-  )
+add_subdirectory(Providers)
+add_subdirectory(Services)
 
 install_headers()
 install_source()
-
