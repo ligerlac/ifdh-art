@@ -7,7 +7,8 @@
 #include "fhiclcpp/types/Tuple.h"
 #include "fhiclcpp/types/DelegatedParameter.h"
 
-//#include <nopayloadclient/dunenpc.hpp>
+#include <nopayloadclient/nopayloadclient.hpp>
+//#include <dunenpc/dunenpc.hpp>
 
 
 class ConditionsData  {
@@ -59,5 +60,6 @@ public:
   ConditionsData& operator=(ConditionsData&& pset) = delete;
 
 private:
+  nopayloadclient::NoPayloadClient client_;
   //  dunenpc::DuneClient client_;
 };

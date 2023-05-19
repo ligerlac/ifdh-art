@@ -3,9 +3,11 @@ cet_make_library(LIBRARY_NAME ConditionsData INTERFACE
   LIBRARIES INTERFACE
   messagefacility::MF_MessageLogger
   fhiclcpp::types
-#  nopayloadclient
+  nopayloadclient
 #  dunenpc
   )
+
+message(STATUS "from Providers: npc_lib: [${npc_lib}]") 
 
 install_headers()
 install_source()
