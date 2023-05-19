@@ -1,7 +1,7 @@
 cet_build_plugin(ConditionsData art::service
   IMPL_SOURCE
   LIBRARIES INTERFACE
-#  larcore::ServiceProviderWrappers
+  larcore::ServiceProviderWrappers
   BASENAME_ONLY
   )
 
