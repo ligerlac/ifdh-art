@@ -1,0 +1,7 @@
+ConditionsDataService: {
+    global_tag: "test_gt"
+    override_dict: [
+        ["my_type", "my_url"],
+        ["my_other_type", "my_other_url"]
+    ]
+}
