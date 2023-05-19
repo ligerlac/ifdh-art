@@ -25,43 +25,6 @@ find_package(ifbeam REQUIRED PUBLIC)
 find_package(nucondb REQUIRED PUBLIC)
 find_package(cetlib_except REQUIRED)
 
-
-### STUFF FROM LINO
-find_package(larcore REQUIRED EXPORT)
-find_package(larcorealg REQUIRED EXPORT)
-find_package(larcoreobj REQUIRED EXPORT)
-find_package(lardata REQUIRED EXPORT)
-find_package(lardataobj REQUIRED EXPORT)
-find_package(larsim REQUIRED EXPORT)
-
-find_package(nusimdata REQUIRED EXPORT)
-
-find_package(art_root_io REQUIRED EXPORT)
-find_package(art REQUIRED EXPORT)
-find_package(messagefacility REQUIRED EXPORT)
-find_package(canvas_root_io REQUIRED EXPORT)
-find_package(canvas REQUIRED EXPORT)
-find_package(fhiclcpp REQUIRED EXPORT)
-find_package(cetlib REQUIRED)
-find_package(cetlib_except REQUIRED)
-
-find_package(ROOT COMPONENTS Core EG Hist MathMore Physics RIO Tree REQUIRED EXPORT)
-
-message(STATUS "ENV{NPC_INSTALL_DIR}: [$ENV{NPC_INSTALL_DIR}]")
-if (DEFINED ENV{NPC_INSTALL_DIR})
-    message(STATUS "Detected user defined NPC_INSTALL_DIR...")
-    set(CMAKE_INSTALL_PREFIX "$ENV{NPC_INSTALL_DIR}")
-    set(CMAKE_PREFIX_PATH "$ENV{NPC_INSTALL_DIR}")
-else()
-    message(STATUS "NPC_INSTALL_DIR not set. Using default...")
-endif()
-message(STATUS "CMAKE_INSTALL_PREFIX: [${CMAKE_INSTALL_PREFIX}]")
-message(STATUS "CMAKE_PREFIX_PATH: [${CMAKE_PREFIX_PATH}]")
-find_library(npc_lib NAMES nopayloadclient)
-find_path(npc_include NAMES nopayloadclient)
-#####################
-
-
 # macros
 include(ArtMake)
 include(BuildPlugins)
